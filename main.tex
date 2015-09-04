@@ -1,0 +1,39 @@
+\documentclass[letterpaper]{ieeeconf}
+\usepackage{amsmath,amssymb}
+%\usepackage{amsthm}
+%\usepackage{showframe}
+%\usepackage[showframe,margin=1in]{geometry}
+\usepackage{graphicx}   
+\usepackage[hidelinks]{hyperref}
+\usepackage[ruled]{algorithm2e}
+\usepackage{tikz}
+\usepackage{lipsum}
+\usepackage{todonotes}
+\def\spoke#1#2{
+\begin{scope}[shift={#1}, rotate=#2]
+    \draw[thick] (0,-.15) -- (0,-1);
+\end{scope}
+}
+\providecommand{\red}[1]{\textcolor{red}{#1}}
+\providecommand{\R}{\ensuremath \mathbb{R}}
+\providecommand{\N}{\ensuremath \mathbb{N}}
+\providecommand{\ip}[1]{\ensuremath \left\langle #1\right\rangle}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+%\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{assump}{Assumption}
+\begin{document}
+  \title{Convex computation of the reachable set of a class of uncertain systems}
+  \author{Shankar Mohan, Ram Vasudevan\thanks{The authors are with the University of Michigan, Ann Arbor, MI, USA}\\$\{$elemsn, ramv$\}$@umich.edu}
+  \maketitle
+  \begin{abstract}
+    \lipsum[1]
+  \end{abstract}
+  \input{sections/sec_intro}
+  \input{sections/sec_notations}
+  \input{sections/sec_PF}
+  \input{sections/sec_relax}
+  \input{sections/sec_examples}
+  \input{sections/sec_conc}
+\end{document}

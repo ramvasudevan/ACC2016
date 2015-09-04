@@ -1,0 +1,30 @@
+  \section{Numerical Implementation}
+  The infinite-dimensional problems described in Secs.~\ref{ssec:primal} and \ref{ssec:dual} are hard to implement and solve directly. In this section, a sequence of {\em relaxed} SDPs---that contains a sub-sequence whose optimal values converges to the optimal value of the problems introduced in Secs.~\ref{ssec:primal} and \ref{ssec:dual}---is introduced.
+  \par
+  The fundamental idea behind this sequence of relaxations is that measures supported on a compact can be characterized by their moments\footnote{The $n$th moment of a measure ($\mu$) is obtained by evaluating the following expression
+  $$y_{\mu,n}=\ip{\mu,x^n}.$$
+  By this definition, the mean of a probability distribution (read probability measure) is $y_\mu^1$ and its variance is $y_{\mu}^2-(y_{\mu}^1)^2$.}. Much like Taylor approximations, longer the length of the sequence of moments (higher the order of moments considered), better is the approximation of the measure. For any finite $d$-degree truncation of the sequence, the {\em relaxed} primal $P$ can be transformed into a SDP $P_d$ in the moments.
+  \par
+  The dual to $P_d$, $D_d$, can be expressed as a sub-of-squares program (SOS program) by considering $d$-degree polynomials in place of the continuous variables in $D$. In the following presentation of $D_d$, the set $Q_d(h_{T_j}^i),\forall (i,j)\in \N_{n_{h_{T}}^j}\times \mathcal J$ and the like are defined as the follows.
+  \begin{align*}
+  \begin{split}
+  Q_d(h_{T_j}^i)=\bigg\{q\in \R_d[x]\,\bigg|\, \exists s_k\in \R_{\le d}[x],k\in \N_{n_{h_T}^j\cup\{0\}},\\ q=s_0+\sum_{l\in \N_{n_{h_T}^j}}h_{T_j}^ls_l\bigg\}
+  \end{split}
+  \end{align*}
+  Using the above notation, the $d$-degree relaxation of the dual is presented below.
+\par
+  \small
+  \begin{flalign*}
+    &\inf_{\Xi_d} \sum_{j\in \mathcal J}l'\,\text{vec}(w_j)&(D_d)\\
+    &\text{st.}\\
+    & w_j^d\in Q_d(h_{T_j}^i)& \forall (i,j)\in \N_{n_{h_T}^j}\times \mathcal J\\
+    & v_j^d(T,\cdot)+q\in Q_d(h_{X_{j}}^i)&\forall (i,j)\in \N_{n_{h_X}^j}\times \mathcal J\\
+    &-\mathcal L_{\tilde f_j}v_j^d\in Q_d(h_\tau,h_{X_{j}}^i)&\forall (i,j)\in \N_{n^j_{h_X}}\times \mathcal J\\
+    & w_j^d-\ip{\mu_{\theta_j},v_j^d(0,\cdot)}-q-1\in Q_d(h_{X_j}^i)&\forall (i,j)\in \N_{n^j_{h_X}}\times \mathcal J\\
+    & v_j^d-\ip{\mu_{\theta_k},v_k^d}\circ R_{(j,k)}\in Q_d(h_\tau,h_{X_j}^i)& \forall (i,j,k)\in \Upsilon
+  \end{flalign*}
+  \normalsize
+  where $\Xi_d=\{v^d_j,w^d_j,q\}\in (\R_d[t,x,\theta])^{n_m}\times (\R_d[x])^{n_m}\times\R$, \mbox{$\Upsilon=\{(a,b,c)\mid b\in \mathcal J,\,a\in \N_{n^b_{h_X}},\,(b,c)\in \mathcal E\}$} and the other variables are from the given hybrid system $\mathcal H$.
+  \begin{lemma}
+    The sequence $(\cup_{j\in \mathcal J}\{x\mid w_j^d\ge 1\})_d$ is a convergent sequence of outer approximation of the BRS.
+  \end{lemma}

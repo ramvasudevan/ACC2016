@@ -1,0 +1,66 @@
+  \section{Preliminaries}
+  \subsection{Notations}
+  In the remainder of this text, for ease of convenience, the following notations are employed. Finite truncations of the set of natural numbers are expressed as \mbox{$\N_n:=\N\cap [0,n]$}. The ring of polynomials on $x$ is denoted by $\R[x]$ and continuous variables supported on set $K$ are represented by $\mathcal C(K)$. The degree of a polynomial is equal to degree its largest multinomial; the degree of the multinomial $x^\alpha,\,\alpha\in \R^n$ is $|\alpha|=\sum_{i}^n[\alpha]_i$; and $\R_d[x]$ is the set of polynomials in $x$ with degree $d$. The dual to $\mathcal C(K)$, the set of measures on $K$, is identified by $\mathcal M(K)$, and the pairing of $\mu\in \mathcal M(K)$ and $v\in \mathcal C(K)$ is
+  $$\ip{\mu,v}=\int_{K}v(x)\,d\mu(z).$$
+  The Lebesgue measure is, as usual, denoted as $\lambda$; the support $\lambda$ is explicitly defined if it is not evident from the context. Sets are labeled in capitalized ($K$) and their respective boundaries are represented as $\partial K$; the disjoint union of sets takes the usual definition: $\coprod_{i\in I}A_i=\cup_{i\in I}A_i\times \{i\}$. Supports of measures ($\mu$) are identified as $\text{sup}(\mu)$. The projection operator of both sets and measures are denoted as $\pi_{*}$; for example, $\pi_{x}A$ is the x-projection of the set $A=\{(x,y)\mid \text{constraints}\}$. Finally, uniform distributions with support $[a,b]$ are denoted as $\mathcal U(a,b)$.
+  \subsection{Problem description}
+  The class of uncertain systems considered in this study is constituted by \emph{autonomous}\footnote{Whilst time-invariant systems are typically referred to as being autonomous, in this context, that label is applied to drift, time-invariant systems.} polynomial hybrid systems that have a common trait--in each discrete state, the uncertainty that affects the system's dynamics is constant. More specifically, for every visit of a discrete state, the uncertainty assumes a value drawn from some distribution and retains the value until the system transitions to another discrete state; we term such systems as being \emph{quasi-uncertain}. Def.~\ref{def:system} formalizes the description of quasi-uncertain systems.
+\begin{defn}\label{def:system}
+  A polynomial `quasi-uncertain' hybrid system is a tuple \mbox{$\mathcal H=(\mathcal J,\mathcal E,\mathcal D,\mathcal F,\mathcal G,\mathcal R,\Gamma)$}, where
+  \begin{itemize}
+    \item $\mathcal J$ is a finite set of indices of discrete states in of $\mathcal H$; $|\mathcal J|=\N_{n_m}$
+    \item $\mathcal E\subset \mathcal J\times \mathcal J$ is the set of tuple of terminals of directed edges; $e_{ij}$ is the edge connecting discrete state $i$ with $j$
+    \item $\mathcal D:=\coprod_{j\in\mathcal J} \mathcal X_j$ is the disjoint union of domains; \mbox{$\mathcal X_j:=\{x\in \R^{n_{x}^i}\mid h_{X}^i(x)\ge 0,\,\forall i\in \N_{n_{h_X}^j}\}$}
+    \item if $\mu_{\theta_j}\in \mathcal P(\Theta_j)$ with  $\Theta_j\subset \R^{n_\theta^j}$ (compact) is the distribution of the uncertainty associated with state $j$, $\Gamma:=\coprod_{j\in \mathcal J} \mu_{\theta_j}$ is the disjoint union of probability distributions
+    \item $\mathcal F:=\{f_j\}_{j\in \mathcal J}$ where $f_j\colon \mathcal X_j\times \Theta_j\rightarrow \mathcal X_j$, \mbox{$f_j\in (\R[x,\theta])^{n_{x_j}}$} is a tangent vector to $\mathcal X_j$ at $(x,\theta)$.
+    \item $\mathcal G:=\coprod_{p\in \mathcal E}\mathcal G_p$ is the disjoint union of guards; \mbox{\footnotesize$\mathcal G_{(i,j)}:=\{(x,\theta)\in \partial \mathcal X_i\times \Theta_j\mid h_{g_{(i,j)}}^k(x,\theta)=0,\forall k\in \N_{n_{h_g}^{(i,j)}}\}$}; $\forall (i,j),(i,k)\in \mathcal E$,
+        $\mathcal G_{(i,j)}\cap \mathcal G_{(i,k)}=\emptyset, \forall j\ne k$
+    \item $\mathcal R$ is the set of reset maps with each edge in $\mathcal E$ being represented; $R_{(i,j)}\colon \pi_{x}(\mathcal G_{(i,j)})\rightarrow \mathcal X_j$ is a continuously differentiable injection, $\,R_{(i,j)}\in \R[x]$ and denotes the transformation accompanying state transition
+  \end{itemize}
+  and $h_{X}^j(x,\theta),\,h_{g_{(i,j)}}^k(x,\theta)\in \R[x]$ for all appropriate values of $j,k$.
+\end{defn}
+In line with what is standard definition in literature related to switched systems, the discrete state are alternatively referred to as {\em modes} of the system. In addition, the systems considered are not allowed to undergo infinite mode transitions in a finite time.
+\begin{assump}
+  $\mathcal H$ has no zeno execution.
+\end{assump}
+\begin{algorithm}[!t]
+ {\bf Initialization:} $t=0,\,j\in \mathcal J,\,(x_0,j)\in \mathcal D,\,x(0)=x_0$\;
+ {\bf loop}\newline
+ {\em Let} $\theta$ be drawn according to $\mu_{\theta_j}$\newline
+ {\em Let} $\gamma_\theta\colon \mathcal T\rightarrow \mathcal X_j$, abs. ct. st.
+ \begin{enumerate}
+ \item $\dot \gamma_\theta(s)=f(\gamma_\theta(s),\theta)$ $\lambda_t^*$-a.e.
+ \item $\gamma_\theta(t)=x(t)$
+  \end{enumerate}
+ $\Lambda_{(j,t)}:=\{r\in [t,\infty)\mid \exists (j,k)\in \mathcal E, (\gamma_\theta(r),\theta)\in \mathcal G_{(j,k)}\}$\newline
+ {\bf if} $\Lambda_{(j,t)}\ne \emptyset$\\\hspace{.2in}
+    $t':=\inf \Lambda_{(j,t)}$, $k$ st. $\gamma_\theta(t')\in \pi_{x}(\mathcal G_{(j,k)})$\\\hspace{.2in}
+     $x(s)\leftarrow \gamma_\theta(s)$, $\forall s\in [t,t')$\\ \hspace{.2in}
+    $t\leftarrow t',\,x(t')\leftarrow R_{(j,k)}(\gamma_\theta(t')),\,j\leftarrow k$\newline
+ {\bf else}\\\hspace{.2in}
+ {\em Stop}\newline
+ {\bf end}
+ \caption{Execution of $\mathcal H$}
+ \label{alg:execution}
+ $^*$where $\lambda_t$ is the Lebesgue measure on $[t,\infty)$
+\end{algorithm}
+
+The objective of this work is to estimate the {\em largest} set of initial conditions from which the flow of trajectories reach the terminal set $\mathcal X_T$ in finite time $T$. The projection of $\mathcal X_T$ onto each mode is the following
+$$\mathcal X_{T_j}=\{x\mid x\in \mathcal X_j\},\phantom{10}\forall j\in \mathcal J.$$
+\begin{assump}
+  $\mathcal X_{T_j},\,\forall j\in \mathcal J$, is a compact semi-algebraic set with bounding polynomials $h_{T_j}^i$, $i\in \N_{n_{h_T}^j}$.
+\end{assump}
+\begin{assump}
+The terminal set and guards are mutually exclusive; i.e.
+  $\forall \pi_{x}\left(\cup_{(i,j)\in \mathcal E}\,\mathcal G_{(i,j)}\right)\cap \mathcal X_T=\emptyset$.
+  \label{assump:guards_terminal}
+\end{assump}
+The set being approximated can be represented as
+$$\mathcal X_0=\bigcup_{i\in \mathcal J} \mathcal X_{0_i}$$
+where
+\begin{align}
+\begin{aligned}
+    \mathcal X_{0_i}=\{(y,i)\in \mathcal D\mid x_0=y, x\colon [0,T]\rightarrow \pi_{x}(\mathcal D),\\\,x(T)\in \mathcal X_T \text{ using Alg.~\ref{alg:execution}}\}
+\end{aligned}
+\end{align}
+is the set of initial conditions in each mode from which trajectories that emanate reach $\mathcal X_T$ at time $T$. For convenience, hereafter the times at which the system's state is relevant is denoted by the set $\mathcal T:=[0,\,T]$.
