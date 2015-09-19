@@ -1,2 +1,38 @@
-  \section{Introduction}
-  \lipsum[1-6]
+\section{Introduction}
+  
+Computing the set of configurations that are able to safely reach a desired configuration is critical to ensuring the correct performance of a system in dynamic environments where deviations from planned behavior are to be expected.
+Given its potential, many methods have been proposed to efficiently compute this set of configurations, which is usually referred to as the \emph{backwards reachable set}, for deterministic systems.
+Unfortunately, the effect of intermittent contact with the world, especially in fluctuating environments, is difficult to model deterministically. 
+A roboticist, for example, may be tasked with ensuring that a control for a legged robot beginning from an initial configuration is able to safely reach a desired goal; however, limitations in sensing or environment variability may render exact modeling of terrain height or friction infeasible.
+Few numerical methods exist to tractably compute the backwards reachable set of a dynamical system in spite of parametric model uncertainty while providing systematic guarantees on the computed set. 
+
+This paper leverages a method developed in several recent papers that describe the evolution of trajectories of a deterministic hybrid dynamical system using measures to describe the evolution of a hybrid dynamical system with parametric uncertainty as a linear equation over measures. 
+As a result of this characterization, the set of configurations that are able to reach a target set despite parametric uncertainty, called the \emph{uncertain backwards reachable set}, can be computed as the solution to an infinite dimensional linear program over the space of nonnegative measures. 
+To compute an approximate solution to this infinite dimensional linear program, a sequence of finite dimensional relaxations semidefinite programs are constructed that satisfy an important property:
+each solution to this sequence of semidefinite programs is an outer approximation to the uncertain backwards reachable set with asymptotically vanishing conservatism.
+
+Several researchers have attempted to systematically construct controllers that can cope with uncertainty in terrain height. 
+One approach that has seen success in simulation relies upon discretizing the dynamics according to the step height by considering several possible terrain step sizes \citep{byl2008metastable,saglam2013switching}. 
+The effect of walking over these different terrain step sizes is transformed into a Markov Chain with the addition of a discrete state corresponding to falling.
+To synthesize a stabilizing controller, the parameters of a simple controller are optimized to find the largest possible mean first passage time to arrive at the falling state. 
+This method however is unable to certify the safety of different configurations of a legged robotic system under the generated control. 
+Another recent approach considered a single numerical nonlinear optimization program to find a controller that minimized the effect of disturbances across a range of terrain heights \citep{dai2012optimizing}.
+To accomplish this objective, the researchers linearized the dynamics around the trajectory dictated by the control input decision variable and penalized the LQR cost-to-go for this linearization at the step time. 
+If the optimization program is feasible, its output is a controller that would behave robustly across the range of terrain in a neighborhood of the linearization; however, since the neighborhood where this linearization is valid is not explicitly specified, this method is unable to certify whether a specific configuration of a legged robot can be safely controlled.
+More recently, an approach that generates a single control input using a nonlinear program that is constrained to work across a variety of hand selected terrains has been proposed and experimentally validated \citep{griffin2015}. 
+For specific configurations and terrain profiles, this method is able to certify the safety of a legged locomotion system since specific trajectories discovered by the optimization under specific terrains are able to walk safely; however, little can be said about arbitrary configurations or step sizes or points in neighborhoods of the discovered configurations. 
+
+More broadly, 
+
+\vspace{1mm}
+Uncertainty in the dynamics of these legged robots can also appear due to uncertainty associated with imperfect knowledge of terrain friction or the continuous dynamic model. 
+Since controllers from either category are not certified to perform safely in the presence of these more general forms of uncertainty, their translation to real-world systems is still demanding and usually requires stringent model and scenario knowledge followed by thorough testing. 
+Controllers designed using exhaustive tuning forfeit the ability to readily generalize lessons learned from controlling one legged robot in a single scenario to other scenarios and other legged robotic systems.
+As a result, progress in controlling legged robotic locomotion has been gradual.
+
+The remainder of the paper is organized as follows: 
+Section \ref{sec:preliminaries} introduces the notation used in the remainder of the paper, the class of systems under consideration, and the backwards reachable set problem under parametric uncertainty; 
+Section \ref{sec:prob} describes how the backwards reachable set under parametric uncertainty is the solution to an infinite dimensional linear program; 
+Section \ref{sec:implementation} constructs a sequence of finite dimensional semidefinite programs that outer approximate the infinite dimensional linear program with vanishing conservatism; 
+Section \ref{sec:examples} describes the performance of the approach on a pair of examples; 
+and, Section \ref{sec:conclusion} concludes the paper. 
