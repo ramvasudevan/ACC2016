@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  19 SEP 2015 16:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  19 SEP 2015 19:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -684,20 +684,20 @@ LaTeX Info: Redefining \addtolength on input line 77.
  (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
 
 (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -728,7 +728,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box47
-Package hyperref Info: Link coloring OFF on input line 26.
+Package hyperref Info: Link coloring OFF on input line 32.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -738,59 +738,46 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count153
 )
-LaTeX Info: Redefining \ref on input line 26.
-LaTeX Info: Redefining \pageref on input line 26.
-LaTeX Info: Redefining \nameref on input line 26.
+LaTeX Info: Redefining \ref on input line 32.
+LaTeX Info: Redefining \pageref on input line 32.
+LaTeX Info: Redefining \nameref on input line 32.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
  ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 32.
+LaTeX Font Info:    Try loading font information for U+msa on input line 34.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 32.
+LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 32.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 34.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 32.
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 34.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 32.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 34.
 
 (./sections/sec_intro.tex
-./sections/sec_intro.tex:11: Undefined control sequence.
-l.11 ...several possible terrain step sizes \citep
-                                                  {byl2008metastable,saglam2...
-
-? 
-./sections/sec_intro.tex:15: Undefined control sequence.
-l.15 ...s across a range of terrain heights \citep
-                                                  {dai2012optimizing}.
-? 
-./sections/sec_intro.tex:18: Undefined control sequence.
-l.18 ...oposed and experimentally validated \citep
-                                                  {griffin2015}.
-? 
-) (./sections/sec_notations.tex
 Underfull \vbox (badness 3895) has occurred while \output is active []
 
  [1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]
+])
+(./sections/sec_notations.tex
 Underfull \hbox (badness 3108) in paragraph at lines 16--17
 []$\OMS/cmsy/m/n/10 F \OT1/cmr/m/n/10 := \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 f[]
 \OMS/cmsy/m/n/10 g[]$ \OT1/ptm/m/n/10 where $\OML/cmm/m/it/10 f[] [] [] \OMS/cm
@@ -832,7 +819,7 @@ File: figures/1D_3.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/1D_3.pdf used on input line 18.
 (pdftex.def)             Requested size: 245.71811pt x 187.6425pt.
 
-[5 <./figures/1D_3.pdf>]
+[5]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -844,30 +831,32 @@ Underfull \hbox (badness 2020) in paragraph at lines 71--73
 \OT1/ptm/m/n/10 An an-a-lyt-i-cally com-putable sta-ble limit cy-cle for the
  []
 
-<figures/rw_0p1_4.pdf, id=186, 614.295pt x 794.97pt>
+<figures/rw_0p1_4.pdf, id=185, 614.295pt x 794.97pt>
 File: figures/rw_0p1_4.pdf Graphic file (type pdf)
 
 <use figures/rw_0p1_4.pdf>
 Package pdftex.def Info: figures/rw_0p1_4.pdf used on input line 78.
 (pdftex.def)             Requested size: 245.71811pt x 187.6425pt.
-) (./sections/sec_conc.tex)
-No file main.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 50.
-[6 <./figures/rw_0p1_4.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 50.
+) (./sections/sec_conc.tex) (./main.bbl [6 <./figures/1D_3.pdf> <./figures/rw_0
+p1_4.pdf>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 51.
+ [7
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 51.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 50.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 50.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 51.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 51.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F58133F379B0EAB642FE17127E6CB5E4;672.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 50.
+(rerunfilecheck)             Checksum: 35021E3CD6FE7F9341A07E1A79966935;719.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 51.
  ) 
 Here is how much of TeX's memory you used:
- 17127 strings out of 493315
- 299155 string characters out of 6137904
- 494115 words of memory out of 5000000
- 20192 multiletter control sequences out of 15000+600000
- 46570 words of font info for 101 fonts, out of 8000000 for 9000
+ 17147 strings out of 493315
+ 299379 string characters out of 6137904
+ 496341 words of memory out of 5000000
+ 20200 multiletter control sequences out of 15000+600000
+ 47706 words of font info for 102 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,18n,55p,904b,611s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -899,10 +888,10 @@ pe1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2013/texmf-dist/fonts
 rw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/u
 tmbi8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (6 pages, 348089 bytes).
+Output written on main.pdf (7 pages, 351602 bytes).
 PDF statistics:
- 322 PDF objects out of 1000 (max. 8388607)
- 265 compressed objects within 3 object streams
- 56 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 340 PDF objects out of 1000 (max. 8388607)
+ 282 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 139 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,47 @@
+\begin{thebibliography}{1}
+
+\bibitem{byl2008metastable}
+K.~Byl.
+\newblock {\em Metastable legged-robot locomotion}.
+\newblock PhD thesis, Massachusetts Institute of Technology, 2008.
+
+\bibitem{dai2012optimizing}
+H.~Dai and R.~Tedrake.
+\newblock Optimizing robust limit cycles for legged locomotion on unknown
+  terrain.
+\newblock In {\em 2012 IEEE 51st Annual Conference on Decision and Control},
+  pages 1207--1213. IEEE, 2012.
+
+\bibitem{griffin2015}
+B.~Griffin and J.~Grizzle.
+\newblock Walking gait optimization for accomodation of unknown terrain height
+  variations.
+\newblock In {\em American Control Conference 2015}, 2015.
+
+\bibitem{henrion2014convex}
+D.~Henrion and M.~Korda.
+\newblock Convex computation of the region of attraction of polynomial control
+  systems.
+\newblock {\em IEEE Transactions on Automatic Control}, 59(2):297--312, 2014.
+
+\bibitem{majumdar2014convex}
+A.~Majumdar, R.~Vasudevan, M.~M. Tobenkin, and R.~Tedrake.
+\newblock Convex optimization of nonlinear feedback controllers via occupation
+  measures.
+\newblock {\em The International Journal of Robotics Research}, page
+  0278364914528059, 2014.
+
+\bibitem{saglam2013switching}
+C.~O. Saglam and K.~Byl.
+\newblock Switching policies for metastable walking.
+\newblock In {\em 2013 IEEE 52nd Annual Conference on Decision and Control
+  (CDC)}, pages 977--983. IEEE, 2013.
+
+\bibitem{shia2014convex}
+V.~Shia, R.~Vasudevan, R.~Bajcsy, and R.~Tedrake.
+\newblock Convex computation of the reachable set for controlled polynomial
+  hybrid systems.
+\newblock In {\em 2014 IEEE 53rd Annual Conference on Decision and Control
+  (CDC)}, pages 1499--1506. IEEE, 2014.
+
+\end{thebibliography}
