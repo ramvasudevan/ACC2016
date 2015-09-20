@@ -56,9 +56,15 @@ V.~Shia, R.~Vasudevan, R.~Bajcsy, and R.~Tedrake, ``Convex computation of the
   53rd Annual Conference on Decision and Control (CDC)}, pp.~1499--1506, IEEE,
   2014.
 
+\bibitem{prajna2004safety}
+S.~Prajna and A.~Jadbabaie, ``Safety verification of hybrid systems using
+  barrier certificates,'' in {\em Hybrid Systems: Computation and Control},
+  pp.~477--492, Springer, 2004.
+
 \bibitem{Burden2013}
 S.~{Burden}, H.~{Gonzalez}, R.~{Vasudevan}, R.~{Bajcsy}, and S.~{Shankar
   Sastry}, ``{Metrization and Simulation of Controlled Hybrid Systems},'' {\em
-  ArXiv e-prints}, Feb. 2013.
+  IEEE Transactions on Automatic Control}, vol.~60, no.~9, pp.~2307--2320,
+  2015.
 
 \end{thebibliography}

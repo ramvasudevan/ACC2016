@@ -20,8 +20,8 @@ This paper leverages a method developed in several recent papers \cite{henrion20
 As a result of this characterization, the set of configurations that are able to reach a target set despite parametric uncertainty, called the \emph{uncertain backwards reachable set}, can be computed as the solution to an infinite dimensional linear program over the space of nonnegative measures. 
 To compute an approximate solution to this infinite dimensional linear program, a sequence of finite dimensional relaxations semidefinite programs are constructed that satisfy an important property:
 each solution to this sequence of semidefinite programs is an outer approximation to the uncertain backwards reachable set with asymptotically vanishing conservatism.
-The approach is most comparable to those that check Lyapunov's criteria for stability via sums-of-squares programming to verify the safety of a system \cite{}.
-
+The approach is most comparable to those that check Lyapunov's criteria for stability via sums-of-squares programming to verify the safety of a system \cite{prajna2004safety}.
+In contrast to these approaches, the algorithm described in this paper does note require solving a bilinear optimization problem that requires feasible initialization and allows for more general descriptions of the parametric uncertainty in the model.
 
 The remainder of the paper is organized as follows: 
 Section \ref{sec:preliminaries} introduces the notation used in the remainder of the paper, the class of systems under consideration, and the backwards reachable set problem under parametric uncertainty; 

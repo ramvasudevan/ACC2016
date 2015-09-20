@@ -16,28 +16,23 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\citation{byl2008metastable}
-\citation{dai2012optimizing}
-\citation{griffin2015}
-\citation{saglam2013switching}
-\citation{girard2005reachability}
-\citation{althoff2008reachability}
+\citation{byl2008metastable,dai2012optimizing,griffin2015,saglam2013switching}
+\citation{girard2005reachability,althoff2008reachability}
 \citation{tomlin2003computational}
 \citation{maidens2013lagrangian}
-\citation{henrion2014convex}
-\citation{majumdar2014convex}
-\citation{shia2014convex}
+\citation{henrion2014convex,majumdar2014convex,shia2014convex}
+\citation{prajna2004safety}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}}
 \citation{Burden2013}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Preliminaries}{2}{section.2}}
 \newlabel{sec:preliminaries}{{II}{2}{Preliminaries}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {II-A}Notations}{2}{subsection.2.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {II-B}System class description}{2}{subsection.2.2}}
-\newlabel{def:system}{{1}{2}{System class description}{defn.1}{}}
-\newlabel{example:1D}{{II-B}{2}{System class description}{algocf.1}{}}
+\newlabel{def:system}{{1}{2}{}{defn.1}{}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Execution of $\mathcal  H$}}{3}{algocf.1}}
 \newlabel{alg:execution}{{1}{3}{System class description}{algocf.1}{}}
-\newlabel{example:rw}{{II-B}{3}{System class description}{algocf.1}{}}
+\newlabel{example:1D}{{1}{3}{1-D linear dynamics}{example.1}{}}
+\newlabel{example:rw}{{2}{3}{Planar rimless wheel (PRW)}{example.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Schematic of the rimless wheel with $\theta $ being the disturbance.}}{3}{figure.1}}
 \newlabel{fig:rw_schematic}{{1}{3}{Schematic of the rimless wheel with $\theta $ being the disturbance}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {II-C}Problem description}{3}{subsection.2.3}}
@@ -49,21 +44,20 @@
 \newlabel{eq:Lv}{{5}{4}{Problem formulation}{equation.3.5}{}}
 \newlabel{eq:FTC}{{6}{4}{Problem formulation}{equation.3.6}{}}
 \newlabel{eq:liouville_1}{{8}{4}{Problem formulation}{equation.3.8}{}}
-\newlabel{eq:liouville_2}{{9}{4}{Problem formulation}{equation.3.9}{}}
+\newlabel{eq:liouville_2}{{9}{5}{Problem formulation}{equation.3.9}{}}
 \newlabel{eq:reset_measure}{{12}{5}{Problem formulation}{equation.3.12}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {III-A}The primal}{5}{subsection.3.1}}
 \newlabel{ssec:primal}{{III-A}{5}{The primal}{subsection.3.1}{}}
 \newlabel{eq:mass_conservation}{{13}{5}{The primal}{equation.3.13}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {III-B}The dual}{5}{subsection.3.2}}
 \newlabel{ssec:dual}{{III-B}{5}{The dual}{subsection.3.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Numerical Implementation}{5}{section.4}}
-\newlabel{sec:implementation}{{IV}{5}{Numerical Implementation}{section.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Numerical Implementation}{6}{section.4}}
+\newlabel{sec:implementation}{{IV}{6}{Numerical Implementation}{section.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Outer approximations of the BRS of the extreme deterministic cases and the stochastic case.(green) $\theta =0$, (blue) $\theta =1$ and (red) $\mu _\theta $}}{6}{figure.2}}
+\newlabel{fig:1D:linear}{{2}{6}{Outer approximations of the BRS of the extreme deterministic cases and the stochastic case.(green) $\theta =0$, (blue) $\theta =1$ and (red) $\mu _\theta $}{figure.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Examples}{6}{section.5}}
 \newlabel{sec:examples}{{V}{6}{Examples}{section.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {V-A}1-D linear dynamics}{6}{subsection.5.1}}
-\newlabel{eq:ex:1}{{14}{6}{1-D linear dynamics}{equation.5.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Outer approximations of the BRS of the extreme deterministic cases and the stochastic case.(green) $\theta =0$, (blue) $\theta =1$ and (red) $\mu _\theta $}}{6}{figure.2}}
-\newlabel{fig:1D:linear}{{2}{6}{Outer approximations of the BRS of the extreme deterministic cases and the stochastic case.(green) $\theta =0$, (blue) $\theta =1$ and (red) $\mu _\theta $}{figure.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {V-B}Rimless wheel}{6}{subsection.5.2}}
 \bibstyle{ieeetr}
 \bibdata{references,refs}
@@ -78,11 +72,10 @@
 \bibcite{henrion2014convex}{9}
 \bibcite{majumdar2014convex}{10}
 \bibcite{shia2014convex}{11}
-\bibcite{Burden2013}{12}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Schematic of the rimless wheel with $\beta _\delta $ being the disturbance.}}{7}{figure.3}}
-\newlabel{fig:rw_schematic}{{3}{7}{Schematic of the rimless wheel with $\beta _\delta $ being the disturbance}{figure.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Outer approximation and estimated BRS based on 100 iterations and T=4. Red band is the terminal set and the black outer is the boundary of the estimated BRS; the crosses correspond to results of MC simulation.}}{7}{figure.4}}
-\newlabel{fig:rw_brs}{{4}{7}{Outer approximation and estimated BRS based on 100 iterations and T=4. Red band is the terminal set and the black outer is the boundary of the estimated BRS; the crosses correspond to results of MC simulation}{figure.4}{}}
+\bibcite{prajna2004safety}{12}
+\bibcite{Burden2013}{13}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Outer approximation and estimated BRS based on 100 iterations and T=4. Red band is the terminal set and the black outer is the boundary of the estimated BRS; the crosses correspond to results of MC simulation.}}{7}{figure.3}}
+\newlabel{fig:rw_brs}{{3}{7}{Outer approximation and estimated BRS based on 100 iterations and T=4. Red band is the terminal set and the black outer is the boundary of the estimated BRS; the crosses correspond to results of MC simulation}{figure.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{7}{section.6}}
 \newlabel{sec:conclusion}{{VI}{7}{Conclusions}{section.6}{}}
 \@writefile{toc}{\contentsline {section}{References}{7}{section*.1}}
