@@ -9,6 +9,8 @@
 \usepackage{tikz}
 \usepackage{lipsum}
 \usepackage{todonotes}
+% \usepackage[square, comma, numbers, sort&compress]{natbib}
+
 \def\spoke#1#2{
 \begin{scope}[shift={#1}, rotate=#2]
     \draw[thick] (0,-.15) -- (0,-1);
@@ -46,6 +48,6 @@
   \input{sections/sec_relax}
   \input{sections/sec_examples}
   \input{sections/sec_conc}
-\bibliographystyle{abbrv}
+\bibliographystyle{ieeetr}
 \bibliography{references}
 \end{document}
