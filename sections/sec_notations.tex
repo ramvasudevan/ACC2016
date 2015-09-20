@@ -2,8 +2,10 @@
 \label{sec:preliminaries}
   This section establishes the notations adopted in this paper, describes the class of systems considered hereafter, and formalizes the problem definition.
   \subsection{Notations}
-  In the remainder of this text, for ease of convenience, the following notations are adopted. Sets are italicized and capitalized (ex. $K$); and the disjoint union of sets takes the usual definition: $\coprod_{i\in I}K_i=\cup_{i\in I}K_i\times \{i\}$. Finite truncations of the set of natural numbers are expressed as \mbox{$\N_n:=\{1,\ldots,n\}$}. The set of continuous function supported on $K$ are represented as $\mathcal C(K)$ and the ring of polynomials in $x$ is denoted by $\R[x]$. The degree of a polynomial is equal to degree its largest multinomial; the degree of the multinomial $x^\alpha,\,\alpha\in \R_{\ge 0}^n$ is $|\alpha|=\|\alpha\|_1$; and $\R_d[x]$ is the set of polynomials in $x$ with degree $d$. The dual to $\mathcal C(K)$, the set of measures on $K$, is identified by $\mathcal M(K)$, and the pairing of $\mu\in \mathcal M(K)$ and $v\in \mathcal C(K)$ is
-  $$\ip{\mu,v}=\int_{K}v(x)\,d\mu(z).$$
+  In the remainder of this text, for ease of convenience, the following notations are adopted. Sets are italicized and capitalized (ex. $K$); and the disjoint union of sets takes the usual definition: $\coprod_{i\in I}K_i=\cup_{i\in I}K_i\times \{i\}$. Finite truncations of the set of natural numbers are expressed as \mbox{$\N_n:=\{1,\ldots,n\}$}. The set of continuous functions and absolutely-continuous functions supported on $K$ are represented as $\mathcal C(K)$ and $\mathcal C_{ab}(K)$. The ring of polynomials in $x$ is denoted by $\R[x]$ and the degree of a polynomial is equal to degree its largest multinomial; the degree of the multinomial $x^\alpha,\,\alpha\in \R_{\ge 0}^n$ is $|\alpha|=\|\alpha\|_1$; and $\R_d[x]$ is the set of polynomials in $x$ with degree $d$. The dual to $\mathcal C(K)$, the set of measures on $K$, is identified by $\mathcal M(K)$, and the pairing of $\mu\in \mathcal M(K)$ and $v\in \mathcal C(K)$ is
+  \begin{align}
+  \ip{\mu,v}=\int_{K}v(x)\,d\mu(x).
+  \end{align}
   The Lebesgue measure is denoted as $\lambda$; the support of $\lambda$ is explicitly defined if it is not evident from the context. Finally, supports of measures, $\mu$, are identified as $supp(\mu)$.
   \subsection{System class description}
   The class of uncertain systems considered in this study, $\mathfrak{U}$, consists of hybrid systems that conform to the definition in Defn.~\ref{def:system} and undergo execution as described in Alg.~\ref{alg:execution}.
@@ -22,15 +24,18 @@
 A further qualification of the systems under consideration is warranted. It is assumed that upon reaching a guard, there is no ambiguity in into which discrete state the system transitions; this can be achieved by enforcing the next assumption.
 \begin{assump}
     In each discrete state, the guards are mutually exclusive; i.e.
-    $$\mathcal G_{(i,j)}\cap \mathcal G_{(i,k)}=\emptyset,\phantom{8}\forall (i,j),(i,k)\in \mathcal E, \forall j\ne k$$
+    \begin{align}
+    \mathcal G_{(i,j)}\cap \mathcal G_{(i,k)}=\emptyset,\phantom{8}\forall (i,j),(i,k)\in \mathcal E, \forall j\ne k
+    \end{align}
 \end{assump}
 In line with standard definition in literature related to switched systems, the discrete states are alternatively referred to as {\em modes} of the system. In addition, the systems considered are not allowed to undergo infinite mode transitions in a finite time-interval.
 \begin{assump}
   $\mathcal H$ has no zeno execution.
+  \label{assump:zeno}
 \end{assump}
 To complete the characterization of systems in $\mathfrak{U}$, a description of how the components in Defn.~\ref{def:system} are related is warranted. Algorithm~\ref{alg:execution} describes the finite-time execution ($t\in [0,T]$) of a hybrid system $\mathcal H$ as defined by Defn.~\ref{def:system} and whose states are denoted by $x$. The sequence of steps undertaken as the states evolve in accordance with Alg.~\ref{alg:execution} is briefly elaborated below.
 \par
-Suppose, without loss of generality, that the system enters mode $j$ at time $t$. As a reminder, the dynamics of this system, $\tilde f_j$, is a function of a random parameter drawn from the distribution $\mu_{\theta_j}$; let this random variable take the value $\theta$. Consider a (non-hybrid) system, $\Sigma$, with states denoted by $\gamma$ whose dynamics is identical to that of $x$ in mode $j$, $\tilde f_j$; and let $\gamma$ have identical initial conditions as $x$ in mode $j$. The trajectory of the states of $\Sigma$ is given by an absolutely continuous function that is the solution to the ODE in Steps~\circled{5}\&\circled{6}. If $\gamma(s),\,s\in [t,T]$, does not satisfies any of the constraints that define the guards of mode $j$ of $\mathcal H$, then the trajectory of $x$ remains in mode $j$ and is identical to that of $\gamma$, and the execution is terminated; otherwise, $\mathcal H$ undergoes a mode transition. Steps~\circled{7}--\circled{11} isolates the first hitting-time of a guard of mode $j$ and resets $\mathcal H$ to a new mode whereafter the same procedure is repeated until $t=T$.
+Suppose, without loss of generality (wlog.), that the system enters mode $j$ at time $t$. As a reminder, the dynamics of this system, $\tilde f_j$, is a function of a random parameter drawn from the distribution $\mu_{\theta_j}$; let this random variable take the value $\theta$. Consider a (non-hybrid) system, $\Sigma$, with states denoted by $\gamma$ whose dynamics is identical to that of $x$ in mode $j$, $\tilde f_j$; and let $\gamma$ have identical initial conditions as $x$ in mode $j$. The trajectory of the states of $\Sigma$ is given by an absolutely continuous function that is the solution to the ODE in Steps~\circled{5}\&\circled{6}. If $\gamma(s),\,s\in [t,T]$, does not satisfies any of the constraints that define the guards of mode $j$ of $\mathcal H$, then the trajectory of $x$ remains in mode $j$ and is identical to that of $\gamma$, and the execution is terminated; otherwise, $\mathcal H$ undergoes a mode transition. Steps~\circled{7}--\circled{11} isolates the first hitting-time of a guard of mode $j$ and resets $\mathcal H$ to a new mode whereafter the same procedure is repeated until $t=T$.
 \par
 \begin{algorithm}[!t]
 \small
@@ -59,33 +64,37 @@ Of key note in the system execution is the fact that the uncertainty does not ev
 \begin{example}[1-D linear dynamics]
 \label{example:1D}
 One of the simplest linear examples in $\mathfrak{U}$ has dynamics described by
-$$
+\begin{align}
 	\dot x = -0.7x+0.2\theta-0.1,
-$$
+\end{align}
 where \mbox{$x(t)\in [-1,1]$} and $\theta\in [-1,1]$ is an uncertain, unknown parameter; the uncertain parameter can be thought of as having arisen due to structural modeling errors or as a result of reducing a singular-perturbed system. Note that this system is not a hybrid system; however, it can be hybridized. One way to achieve this is by setting $n_m=1$ and using placing a guard $\mathcal G_{(1,1)}$ at $x(t)=-1$ with a corresponding reset map $x\mapsto -x$.
 \end{example}
 \begin{example}[Planar rimless wheel (PRW)]
 \label{example:rw}
   The planar rimless wheel---constituted by a massless axle to which $n$ (angularly) equidistant spokes are connected---is one of the simplest models of legged locomotion. Figure~\ref{fig:rw_schematic} presents a schematic of a rimless wheel---with spokes separated by an angle $2\alpha$---rolling down an infinite wedge. The PRW is, by definition, a hybrid system consisting of one mode; every-time the spoke make contact with the surface of wedge, the system undergoes a rest as the pivoting leg, and the origin of the local generalized coordinates changes. Between resets, the dynamics of the PRW is described by
-$$
+\begin{align}
   \begin{bmatrix}
     \dot \vartheta& \ddot\vartheta
   \end{bmatrix}'=\begin{bmatrix}
     \dot\vartheta&\sin(\vartheta)
   \end{bmatrix}',
-$$
+\end{align}
 where $\vartheta$ is the angle between the pivoted spoke and the vertical located at the stationary leg. Once the marching spoke makes contact with the terrain, the states are reset using the reset map
-$$
+\begin{align}
 R_{(1,1)}\colon (\vartheta^-,\dot \vartheta^-)\rightarrow\begin{bmatrix}
     2\gamma-\vartheta^-&
     \cos(2\alpha)\,\dot\vartheta^-
   \end{bmatrix}'.
-$$
+\end{align}
 For a PRW rolling down a flat (constant slope) wedge, at the instance when the marching spoke makes contact with the wedge, and the system undergoes a reset, the states of the system satisfy the following condition
-$$\vartheta = \gamma+\alpha.$$
+\begin{align}
+\vartheta = \gamma+\alpha.
+\end{align}
 For a PRW rolling down a wedge with an uneven ramp with the relative slope between the pivoted leg and the contact point of the marching leg, $\theta$, the guard, $\mathcal G_{(1,1)}$ is defined as follows
-$$\mathcal G_{(1,1)}=\{x\mid x=\gamma+\alpha+\theta\}.$$
-Observe that as the PRW continues to roll, the undulations in the surface can change and hence the random variable, $\theta$, will take different values as the system resets.
+\begin{align}
+\mathcal G_{(1,1)}=\{x\mid x=\gamma+\alpha+\theta\}.
+\end{align}
+Observe that as the PRW continues to roll, the undulations in the surface can change and hence the random variable, $\theta$, will likely take different values as the system resets.
 \end{example}
 \begin{figure}[!t]
 \centering
@@ -115,24 +124,25 @@ Observe that as the PRW continues to roll, the undulations in the surface can ch
 \subsection{Problem description}
 The objective of this work is to estimate the {\em largest set of initial conditions} from which all state trajectories of a hybrid quasi-uncertain system reach the terminal set $X_T$ in a pre-specified time, $T$.
 \par
-Depending on the edge set $\mathcal E$, there may be more than on trunk through which state trajectories can reach the terminal set. Consequently, the problem can be re-stated, with specificity, as wanting to find the largest set of initial conditions in each mode, $X_{(0,j)},\,\forall j\in \mathcal J$, that can reach $X_T$. That is, find $X_0$ where
-%The projection of $\mathcal X_T$ onto each mode is the following
-%$$\mathcal X_{T_j}=\{x\mid x\in \mathcal X_j\},\phantom{10}\forall j\in \mathcal J.$$
-%\begin{assump}
-%  $\mathcal X_{T_j},\,\forall j\in \mathcal J$, is a compact semi-algebraic set with bounding polynomials $h_{T_j}^i$, $i\in \N_{n_{h_T}^j}$.
-%\end{assump}
-%\begin{assump}
-%The terminal set and guards are mutually exclusive; i.e.
-%  $\forall \pi_{x}\left(\cup_{(i,j)\in \mathcal E}\,\mathcal G_{(i,j)}\right)\cap \mathcal X_T=\emptyset$.
-%  \label{assump:guards_terminal}
-%\end{assump}
-$$X_0=\bigcup_{j\in \mathcal J} \mathcal X_{(0,j)},$$
-and
-\begin{align*}
-\begin{aligned}
-     X_{(0,j)}=\{y\in \mathrm M_j\mid x_0=y, x\colon [0,T]\rightarrow \cup_{i\in \mathcal J} \mathrm{M}_i,\\\,x(T)\in X_T \text{ using Alg.~\ref{alg:execution}}\}
-\end{aligned}
-\end{align*}
-Observe that, by definition, for systems from $\mathfrak{U}$, if $X_{(0,j)}$ is the largest non-empty BRS in mode $j$, then all initial conditions from $X_{O0,j)}$, must reach $X_T$ at time $T$, regardless of the number of mode transitions that may occur in the interim and for every possible concomitant sequence of parametric uncertainty.
+Depending on $\mathcal E$, there may be more than one trunk through which state trajectories can reach the terminal set. Consequently, the problem can be re-stated, with specificity, as wanting to find the largest set of initial conditions in each mode, $X_{(0,j)},\,\forall j\in \mathcal J$, that can reach $X_T$.
 \par
+Let $S(x_0)$ represent the set of finite sequences of mode-transitions that a system, $\mathcal H\in \mathfrak U$ that is initialized with $x(0)=x_0$, can undertake by $t=T$; $S(x_0)$ and each of its elements are finite by Assumption~\ref{assump:zeno}. Let $A(x_0)$ be the index set of $S(x_0)$. By definition, for every $s\in S(x_0)$, there is a tuple of random-variables, $\Omega(s)$, with each coordinate-entry representing the uncertainty in the indexed mode; for example, if \mbox{$s:=(1,3,1,2)\in S(x_0)$}, then
+\begin{align*}
+\Omega(s)=(\theta_1,\theta_3,\theta_1,\theta_2)\in \Theta_1\times \Theta_3\times \Theta_1\times \Theta_2.
+\end{align*}
+Let $s\mapsto \mho(s)$ represent the function that relates each sequence of mode-transitions to all possible instantiations of parametric uncertainties.
+\par
+For convenience, with a slight abuse of notations, let the execution of $\mathcal H$ with initial condition and $x(0)=x_0$ and terminal time $T$ be denoted as $\mathcal H(x_0,j,T)$
+\begin{align}
+    \mathcal H\colon \mathcal D\times \R\rightarrow \mathcal C_{ab}(\R;\cup_{j\in \mathcal J} M_j)\times \{\cup_{s\in S(x_0)} \mho(s)\}.
+\end{align}
+That is, $\mathcal H$ outputs the temporal evolution of states of $\mathcal H$, and the discrete sequence of disturbances encountered.
+\par
+Then, $X_{(0,j)}$ is defined as the following
+\begin{align}
+\begin{aligned}
+     X_{(0,j)}:=\{y\in \mathrm M_j\mid (x,\rho)=\mathcal H(y,j,T),\\\,x(T)\in X_T,\forall \rho\in \mho(x_0) \}
+\end{aligned}
+\end{align}
+%Observe that, by definition, for systems from $\mathfrak{U}$, if $X_{(0,j)}$ is the largest non-empty BRS in mode $j$, then all initial conditions from $X_{(0,j)}$, must reach $X_T$ at time $T$, regardless of the number of mode transitions that may occur in the interim and for every possible concomitant sequence of parametric uncertainty.
 For convenience, hereafter the times at which the system's state is relevant is denoted by the set $\mathcal T:=[0,\,T]$, and the projections of $X_T$ onto every mode, $j$, is denoted by $X_{(T,j)}$.
