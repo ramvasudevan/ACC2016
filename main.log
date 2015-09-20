@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  19 SEP 2015 20:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  20 SEP 2015 12:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -681,25 +681,28 @@ LaTeX Info: Redefining \addtolength on input line 77.
 \c@remark=\count144
 \c@defn=\count145
 \c@assump=\count146
- (./main.aux)
+ (./main.aux
+
+LaTeX Warning: Label `fig:rw_schematic' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-
-(/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+ (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count147
 \scratchdimen=\dimen179
@@ -728,7 +731,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box47
-Package hyperref Info: Link coloring OFF on input line 34.
+Package hyperref Info: Link coloring OFF on input line 38.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -738,79 +741,142 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count153
 )
-LaTeX Info: Redefining \ref on input line 34.
-LaTeX Info: Redefining \pageref on input line 34.
-LaTeX Info: Redefining \nameref on input line 34.
+LaTeX Info: Redefining \ref on input line 38.
+LaTeX Info: Redefining \pageref on input line 38.
+LaTeX Info: Redefining \nameref on input line 38.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
  ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 36.
+LaTeX Font Info:    Try loading font information for U+msa on input line 40.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 36.
+LaTeX Font Info:    Try loading font information for U+msb on input line 40.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 36.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 40.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 36.
+Underfull \hbox (badness 1708) in paragraph at lines 40--40
+[][][]\OT1/ptm/m/n/8 S. Mo-han is with the De-part-ment of Elec-tri-cal En-gi-n
+eer-ing and
+ []
 
-(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omspcr.fd
-File: omspcr.fd 
-)
-LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 36.
+
+Underfull \hbox (badness 2310) in paragraph at lines 40--40
+\OT1/ptm/m/n/8 Com-puter Sci-ence, Uni-ver-sity of Michi-gan, Ann Ar-bor, MI 48
+109
+ []
 
 (./sections/sec_intro.tex) (./sections/sec_notations.tex [1{/usr/local/texlive/
 2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 3108) in paragraph at lines 16--17
-[]$\OMS/cmsy/m/n/10 F \OT1/cmr/m/n/10 := \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 f[]
-\OMS/cmsy/m/n/10 g[]$ \OT1/ptm/m/n/10 where $\OML/cmm/m/it/10 f[] [] [] \OMS/cm
-sy/m/n/10 X[] ^^B \OT1/cmr/m/n/10 ^^B[] \OMS/cmsy/m/n/10 ! X[]$\OT1/ptm/m/n/10 
-,
- []
+LaTeX Font Info:    Try loading font information for U+euf on input line 9.
 
-
-Underfull \hbox (badness 1502) in paragraph at lines 17--19
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
+Underfull \hbox (badness 1502) in paragraph at lines 18--19
 []$\OMS/cmsy/m/n/10 G \OT1/cmr/m/n/10 := [][] \OMS/cmsy/m/n/10 G[]$ \OT1/ptm/m/
 n/10 is the dis-joint union of guards;
  []
 
+./sections/sec_notations.tex:33: Undefined control sequence.
+l.33 ... the solution to the ODE in Steps~\circled
+                                                  {5}\&\circled{6}. If $\gam...
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--19
-[]\OT1/ptm/m/n/10 ;
- []
+? 
+./sections/sec_notations.tex:33: Undefined control sequence.
+l.33 ... to the ODE in Steps~\circled{5}\&\circled
+                                                  {6}. If $\gamma(s),\,s\in ...
 
+? 
+./sections/sec_notations.tex:33: Undefined control sequence.
+l.33 ...ndergoes a mode transition. Steps~\circled
+                                                  {7}--\circled{11} isolates...
 
-Overfull \hbox (10.0pt too wide) detected at line 47
-[][] 
- []
+? 
+./sections/sec_notations.tex:33: Undefined control sequence.
+l.33 ...de transition. Steps~\circled{7}--\circled
+                                                  {11} isolates the first hi...
 
-) (./sections/sec_PF.tex [2]
+? 
+
+./sections/sec_notations.tex:59: LaTeX Error: Environment example undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.59 \begin{example}
+                    [1-D linear dynamics]
+? 
+
+./sections/sec_notations.tex:66: LaTeX Error: \begin{document} ended by \end{ex
+ample}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.66 \end{example}
+                  
+? 
+
+./sections/sec_notations.tex:67: LaTeX Error: Environment example undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.67 \begin{example}
+                    [Planar rimless wheel (PRW)]
+? 
+[2]
+
+./sections/sec_notations.tex:89: LaTeX Error: \begin{document} ended by \end{ex
+ample}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.89 \end{example}
+                  
+? 
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+) (./sections/sec_PF.tex [3]
 Underfull \hbox (badness 2229) in paragraph at lines 37--38
 []\OT1/ptm/m/n/10 Similarly, mea-sures on ter-mi-nals sets $\OMS/cmsy/m/n/10 X[
 ]$\OT1/ptm/m/n/10 , $\OML/cmm/m/it/10 ^^V[] \OMS/cmsy/m/n/10 2
  []
 
-[3]
+
+LaTeX Warning: Reference `assump:guards_terminal' on page 4 undefined on input 
+line 99.
+
+[4]
 Underfull \hbox (badness 5847) in paragraph at lines 137--138
 []\OT1/ptm/m/n/10 The op-ti-mal value of (P) is equal to
  []
 
-) (./sections/sec_relax.tex [4]) (./sections/sec_examples.tex
-<figures/1D_3.pdf, id=171, 614.295pt x 794.97pt>
+) (./sections/sec_relax.tex [5]) (./sections/sec_examples.tex
+<figures/1D_3.pdf, id=180, 614.295pt x 794.97pt>
 File: figures/1D_3.pdf Graphic file (type pdf)
  <use figures/1D_3.pdf>
 Package pdftex.def Info: figures/1D_3.pdf used on input line 18.
@@ -822,40 +888,42 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-[5 <./figures/1D_3.pdf>]
 Underfull \hbox (badness 2020) in paragraph at lines 71--73
 \OT1/ptm/m/n/10 An an-a-lyt-i-cally com-putable sta-ble limit cy-cle for the
  []
 
-<figures/rw_0p1_4.pdf, id=191, 614.295pt x 794.97pt>
+[6 <./figures/1D_3.pdf>] <figures/rw_0p1_4.pdf, id=199, 614.295pt x 794.97pt>
 File: figures/rw_0p1_4.pdf Graphic file (type pdf)
 
 <use figures/rw_0p1_4.pdf>
 Package pdftex.def Info: figures/rw_0p1_4.pdf used on input line 78.
 (pdftex.def)             Requested size: 245.71811pt x 187.6425pt.
 ) (./sections/sec_conc.tex) (./main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 53.
- [6 <./figures/rw_0p1_4.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 53.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 57.
+ [7 <./figures/rw_0p1_4.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 57.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 53.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 53.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 57.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 57.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 35021E3CD6FE7F9341A07E1A79966935;719.
+(rerunfilecheck)             Checksum: BFD341B232C35B2CA1BFA94CE4B8A75A;793.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 53.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 57.
  ) 
 Here is how much of TeX's memory you used:
- 17146 strings out of 493315
- 299373 string characters out of 6137904
- 493341 words of memory out of 5000000
- 20200 multiletter control sequences out of 15000+600000
- 47706 words of font info for 102 fonts, out of 8000000 for 9000
+ 17157 strings out of 493315
+ 299517 string characters out of 6137904
+ 492610 words of memory out of 5000000
+ 20203 multiletter control sequences out of 15000+600000
+ 51336 words of font info for 110 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,18n,55p,904b,611s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,18n,55p,1195b,613s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/tex
@@ -879,16 +947,17 @@ s/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2013/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/
-public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2013/texmf-dist/fonts/ty
-pe1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2013/texmf-dist/fonts
-/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/u
-rw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/u
-tmbi8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
-></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (6 pages, 350025 bytes).
+public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type
+1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2013/texmf-dist/fonts/
+type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2013/texmf-dist/fon
+ts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1
+/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times
+/utmbi8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmr8a.p
+fb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (7 pages, 362033 bytes).
 PDF statistics:
- 334 PDF objects out of 1000 (max. 8388607)
- 277 compressed objects within 3 object streams
- 64 named destinations out of 1000 (max. 500000)
- 139 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 353 PDF objects out of 1000 (max. 8388607)
+ 294 compressed objects within 3 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 147 words of extra memory for PDF output out of 10000 (max. 10000000)
 

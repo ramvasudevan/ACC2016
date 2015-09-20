@@ -1,4 +1,43 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{byl2008metastable}
+K.~Byl, {\em Metastable legged-robot locomotion}.
+\newblock PhD thesis, Massachusetts Institute of Technology, 2008.
+
+\bibitem{dai2012optimizing}
+H.~Dai and R.~Tedrake, ``Optimizing robust limit cycles for legged locomotion
+  on unknown terrain,'' in {\em 2012 IEEE 51st Annual Conference on Decision
+  and Control}, pp.~1207--1213, IEEE, 2012.
+
+\bibitem{griffin2015}
+B.~Griffin and J.~Grizzle, ``Walking gait optimization for accomodation of
+  unknown terrain height variations,'' in {\em American Control Conference
+  2015}, 2015.
+
+\bibitem{saglam2013switching}
+C.~O. Saglam and K.~Byl, ``Switching policies for metastable walking,'' in {\em
+  2013 IEEE 52nd Annual Conference on Decision and Control (CDC)},
+  pp.~977--983, IEEE, 2013.
+
+\bibitem{girard2005reachability}
+A.~Girard, ``Reachability of uncertain linear systems using zonotopes,'' in
+  {\em Hybrid Systems: Computation and Control}, pp.~291--305, Springer, 2005.
+
+\bibitem{althoff2008reachability}
+M.~Althoff, O.~Stursberg, and M.~Buss, ``Reachability analysis of nonlinear
+  systems with uncertain parameters using conservative linearization,'' in {\em
+  47th IEEE Conference on Decision and Control}, pp.~4042--4048, IEEE, 2008.
+
+\bibitem{tomlin2003computational}
+C.~J. Tomlin, I.~Mitchell, A.~M. Bayen, and M.~Oishi, ``Computational
+  techniques for the verification of hybrid systems,'' {\em Proceedings of the
+  IEEE}, vol.~91, no.~7, pp.~986--1001, 2003.
+
+\bibitem{maidens2013lagrangian}
+J.~N. Maidens, S.~Kaynama, I.~M. Mitchell, M.~M. Oishi, and G.~A. Dumont,
+  ``Lagrangian methods for approximating the viability kernel in
+  high-dimensional systems,'' {\em Automatica}, vol.~49, no.~7, pp.~2017--2029,
+  2013.
 
 \bibitem{henrion2014convex}
 D.~Henrion and M.~Korda, ``Convex computation of the region of attraction of
@@ -17,23 +56,9 @@ V.~Shia, R.~Vasudevan, R.~Bajcsy, and R.~Tedrake, ``Convex computation of the
   53rd Annual Conference on Decision and Control (CDC)}, pp.~1499--1506, IEEE,
   2014.
 
-\bibitem{byl2008metastable}
-K.~Byl, {\em Metastable legged-robot locomotion}.
-\newblock PhD thesis, Massachusetts Institute of Technology, 2008.
-
-\bibitem{saglam2013switching}
-C.~O. Saglam and K.~Byl, ``Switching policies for metastable walking,'' in {\em
-  2013 IEEE 52nd Annual Conference on Decision and Control (CDC)},
-  pp.~977--983, IEEE, 2013.
-
-\bibitem{dai2012optimizing}
-H.~Dai and R.~Tedrake, ``Optimizing robust limit cycles for legged locomotion
-  on unknown terrain,'' in {\em 2012 IEEE 51st Annual Conference on Decision
-  and Control}, pp.~1207--1213, IEEE, 2012.
-
-\bibitem{griffin2015}
-B.~Griffin and J.~Grizzle, ``Walking gait optimization for accomodation of
-  unknown terrain height variations,'' in {\em American Control Conference
-  2015}, 2015.
+\bibitem{Burden2013}
+S.~{Burden}, H.~{Gonzalez}, R.~{Vasudevan}, R.~{Bajcsy}, and S.~{Shankar
+  Sastry}, ``{Metrization and Simulation of Controlled Hybrid Systems},'' {\em
+  ArXiv e-prints}, Feb. 2013.
 
 \end{thebibliography}
