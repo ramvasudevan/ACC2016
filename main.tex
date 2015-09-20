@@ -1,15 +1,13 @@
 \documentclass[letterpaper]{ieeeconf}
 \usepackage{amsmath,amssymb}
-%\usepackage{amsthm}
-%\usepackage{showframe}
-%\usepackage[showframe,margin=1in]{geometry}
-\usepackage{graphicx}   
+\usepackage{cite}
+\usepackage{amsthm,amsfonts}
+\usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 \usepackage[ruled]{algorithm2e}
 \usepackage{tikz}
 \usepackage{lipsum}
-\usepackage{todonotes}
-% \usepackage[square, comma, numbers, sort&compress]{natbib}
+%\usepackage{todonotes}
 
 \def\spoke#1#2{
 \begin{scope}[shift={#1}, rotate=#2]
@@ -22,9 +20,13 @@
 \providecommand{\ip}[1]{\ensuremath \left\langle #1\right\rangle}
 \newtheorem{lemma}{Lemma}
 \newtheorem{remark}{Remark}
-%\theoremstyle{definition}
+\theoremstyle{definition}
 \newtheorem{defn}{Definition}
 \newtheorem{assump}{Assumption}
+\newtheorem{example}{Example}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=.pt] (char) {#1};}}
 
 \title{Convex Computation of the Reachable Set for Hybrid Systems with Parametric Uncertainty}
 
@@ -39,11 +41,11 @@
 \maketitle
   \begin{abstract}
 	Constructing models for systems interacting in highly dynamic environments is difficult.
-	In spite of these challenges, engineers still need to determine the set of configurations of a dynamical model that are able to safely reach a specified configuration under a control law to ensure the correct operation of such systems. 
+	In spite of these challenges, engineers still need to determine the set of configurations of a dynamical model that are able to safely reach a specified configuration under a control law to ensure the correct operation of such systems.
 	This paper presents a convex optimization method to compute the set of configurations of a polynomial hybrid dynamical system that are able to safely reach a user defined target set despite parametric uncertainty in the model.
-	This class of models describes, for example, legged robots moving over uncertain terrains. 
-	The presented approach utilizes the notion of occupation measures to describe the evolution of trajectories of a nonlinear hybrid dynamical system with parametric uncertainty as a linear equation over measures whose supports coincide with the trajectories under investigation. 
-	This linear equation with user defined support constraints is approximated with vanishing conservatism using a hierarchy of semidefinite programs each of which is proven to compute an outer approximation to the set of initial conditions that can reach the user defined target set safely in spite of uncertainty. 
+	This class of models describes, for example, legged robots moving over uncertain terrains.
+	The presented approach utilizes the notion of occupation measures to describe the evolution of trajectories of a nonlinear hybrid dynamical system with parametric uncertainty as a linear equation over measures whose supports coincide with the trajectories under investigation.
+	This linear equation with user defined support constraints is approximated with vanishing conservatism using a hierarchy of semidefinite programs each of which is proven to compute an outer approximation to the set of initial conditions that can reach the user defined target set safely in spite of uncertainty.
 	The efficacy of this method is illustrated on a pair of nonlinear systems with parametric uncertainty.
   \end{abstract}
   \input{sections/sec_intro}
