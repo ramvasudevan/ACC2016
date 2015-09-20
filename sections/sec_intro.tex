@@ -1,23 +1,27 @@
 \section{Introduction}
   
 Computing the set of configurations that are able to safely reach a desired configuration is critical to ensuring the correct performance of a system in dynamic environments where deviations from planned behavior are to be expected.
-Given its potential, many methods have been proposed to efficiently compute this set of configurations, which is usually referred to as the \emph{backwards reachable set}, for deterministic systems.
-Unfortunately, the effect of intermittent contact with the world, especially in fluctuating environments, is difficult to model deterministically. 
-A roboticist, for example, may be tasked with ensuring that a control for a legged robot beginning from an initial configuration is able to safely reach a desired goal; however, limitations in sensing or environment variability may render exact modeling of terrain height or friction infeasible.
-Despite its potential utility and concerted research effort, the development of a numerical tool to tractably compute the backwards reachable set of a nonlinear hybrid dynamical system with parametric model uncertainty while providing systematic guarantees has been a challenge. 
+Given its potential, many methods have been proposed to efficiently compute this set that is generally referred to as the \emph{backwards reachable set} for deterministic systems.
+Unfortunately, the effect of intermittent contact with the world, especially in fluctuating environments, is demanding to model deterministically. 
+A roboticist, for example, may be tasked with ensuring that a control for a legged robot beginning from an initial configuration is able to safely reach a desired goal; however, limitations in sensing or environment variability may render exact modeling of terrain height or friction impossible.
+The development of numerical tools to tractably compute the backwards reachable set of dynamical systems undergoing contact, or \emph{hybrid dynamical systems}, with parametric uncertainty while providing systematic guarantees has been challenging due to the difficulty of efficiently accounting for the uncertainty.   
 
-Given its importance to verifying the performance of legged robotic systems locomoting over real world terrain, several researchers have attempted to utilize this backwards reachable set while constructing controllers that are able to walk over terrains of varying heights \cite{byl2008metastable,dai2012optimizing,griffin2015,saglam2013switching}. 
-These approaches have all relied upon discretizing the height of the terrain under consideration while constructing a controller that performs robustly across these specified heights.
-In addition to only verifying the performance of the controller over specific heights, these approaches are unable to account for uncertainty associated with imperfect knowledge of terrain friction or parameters affecting the continuous dynamics.
+Given its potential utility, many researchers have attempted to develop numerical tools to compute this \emph{uncertain backwards reachable set}.
+Several researchers, for instance, have attempted to utilize this backwards reachable set while constructing controllers for legged robots that are able to walk over terrains of varying heights \cite{byl2008metastable,dai2012optimizing,griffin2015,saglam2013switching}. 
+These approaches have relied upon discretizing the height of the terrain or selecting specific terrain profiles while constructing a safe controller across these specified heights, which verifies the performance of the controller only at those specific heights.
+Moreover, these approaches are unable to account for uncertainty associated with imperfect knowledge of terrain friction or parameters affecting the continuous dynamics.
 
-Other approaches have developed tools to outer approximate the uncertain backwards reachable for linear systems with uncertain parameters using a variety of approaches. 
-These methods can be extended to nonlinear hybrid systems, but can require a large number of hybrid modes to represent the nonlinear behavior or require overly conservative estimates of potential uncertainty. 
-Hamilton-Jacobi Bellman approaches based approaches have also been applied to compute the uncertain backwards reachable set even in the presence of continuous  
+Other researchers have developed tools to outer approximate the uncertain backwards reachable for linear systems with uncertain parameters using a variety of approaches \cite{girard2005reachability,althoff2008reachability}. 
+These methods can be extended to nonlinear hybrid systems, but can require the introduction of a large number of discrete states to represent the nonlinear behavior or require overly conservative estimates of potential uncertainty. 
+More generally, Hamilton-Jacobi Bellman based approaches have also been applied to compute the uncertain backwards reachable set for nonlinear systems with arbitrary uncertainty affecting the state at any instance in time \cite{tomlin2003computational}. 
+These approaches solve a more general problem but rely on state space discretization which can be prohibitive for systems of dimension greater than four without relying upon specific system structure \cite{maidens2013lagrangian}.
 
 This paper leverages a method developed in several recent papers \cite{henrion2014convex,majumdar2014convex,shia2014convex} that describe the evolution of trajectories of a deterministic hybrid dynamical system using measures to describe the evolution of a hybrid dynamical system with parametric uncertainty as a linear equation over measures. 
 As a result of this characterization, the set of configurations that are able to reach a target set despite parametric uncertainty, called the \emph{uncertain backwards reachable set}, can be computed as the solution to an infinite dimensional linear program over the space of nonnegative measures. 
 To compute an approximate solution to this infinite dimensional linear program, a sequence of finite dimensional relaxations semidefinite programs are constructed that satisfy an important property:
 each solution to this sequence of semidefinite programs is an outer approximation to the uncertain backwards reachable set with asymptotically vanishing conservatism.
+The approach is most comparable to those that check Lyapunov's criteria for stability via sums-of-squares programming to verify the safety of a system \cite{}.
+
 
 The remainder of the paper is organized as follows: 
 Section \ref{sec:preliminaries} introduces the notation used in the remainder of the paper, the class of systems under consideration, and the backwards reachable set problem under parametric uncertainty; 
