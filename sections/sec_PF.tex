@@ -143,16 +143,16 @@ Variables $\hat\mu_{0_j}\in \mathcal M(\mathrm M_j)$ are slack variables introdu
   \label{ssec:dual}
     The dual corresponding to $(P)$ is derived using standard techniques and is presented below.
     \par
-    \small
-    \begin{flalign*}
-    &&&\inf \sum_{j\in \N_{n_m}}\ip{\lambda_j,w_j}&(D)\\
-    &&&\text{st.}\\
+    \footnotesize
+    \begin{flalign}\nonumber
+    &&&\inf \sum_{j\in \N_{n_m}}\ip{\lambda_j,w_j}&(D)\\\nonumber
+    &&&\text{st.}\\\nonumber
     &&&w_j\ge \,0&\forall (x,j)\in \mathcal D\\
     &&& v_j(T,\cdot)+q\ge\, 0 ,\> &\forall (x,j,\theta)\in \mathcal X_T\times \Theta\\
     &&& - \mathcal L_{\tilde f}v_j\ge\,0 ,\> &\forall (t,x,j,\theta)\in \mathcal T\times\mathcal D\times \Theta\\
     &&& w_j-\ip{\mu_{\theta_j},v(0,\cdot)}-q\ge \,1 ,\> &\forall (x,j)\in \mathcal D\\
-    &&&v_j\ge\, \ip{\mu_{\theta_k},v_k}\circ R_{(j,k)},&\forall (t,x,\theta,(j,k)),\in \mathcal T\times \mathcal G\times \mathcal E
-    \end{flalign*}
+    &&&v_j\ge\, \ip{\mu_{\theta_k},v_k}\circ R_{(j,k)},&\forall (t,x,\theta,(j,k)),\in \mathcal T\times \mathcal G\times \mathcal E\label{eq:dual:mode_transition}
+    \end{flalign}
     \normalsize
     where $q\in \R$, $v_j\in C^1(\mathcal T\times \mathrm M_j\times \Theta_j)$ and $w_j\in C(\mathrm M_j)$.
     \begin{lemma}
@@ -164,20 +164,26 @@ Variables $\hat\mu_{0_j}\in \mathcal M(\mathrm M_j)$ are slack variables introdu
     \end{lemma}
     \begin{proof}
     The approach we adopt to prove this lemma is to construct the projection of the BRS on any mode and show that it is a 1-level set of the appropriate function. To assist in constructing the arguments, assume wlog., that the system is initialized in mode $j_1$ with initial conditions $x=x_0\in \mathrm M_{j_1}$, and that through a sequence of $k$-mode switches reaches the terminal set at $t=T$. Let the sequence of mode switches undertaken at times $(\tau_2,\ldots,\tau_{k})$ be given by $(j_2,\ldots,j_{k})$.
-    
-    \small
-        \begin{align}
-          -q\le v_{j_k}(T,x(T\mid\theta),\theta)=&\,v_j(\tau_k,x(\tau_k),\theta)+\ip{\mathcal L_{f_{j_k}}\mu_{j_k},v_{j_k}}\\
-          \le&\, v_{j_k}(\tau_k,x(\tau_k),\theta)\\
-          \le&\, \ip{\mu_{\theta_{j_k}},v_{j_k}(\tau_k,x(\tau_k),\theta)}\\
-          \le&\, v_{j_{k-1}}(\tau_{k-1},x(\tau_{k-1}),\theta)\\\nonumber
-          &\,\vdots\\
-          \le &\,v_{j_1}(\tau_2,x(\tau_2),\theta)\\
-          \le &\,v_{j_1}(0,x_0,\theta)\\
-          \le &\,\ip{\mu_{\theta_{j_1}},v_{j_1}(0,x_0,\theta)}\\
-          \le &\, w_{j_1}-q-1
-        \end{align}
-    \normalfont
+    \begin{align}
+      -q\le v_{j_k}(T,x(T\mid x(\tau_k^+),\theta),\theta)\le v_j(\tau_k,x(\tau_k^+),\theta)\\
+      \Rightarrow -q\le \ip{\mu_{\theta_{j_k}},v_{j_k}(\tau_k,x(\tau_k^+),\theta)}
+    \end{align}
+    By iterative application of the constraint in Eqn.~(\ref{eq:dual:mode_transition}), it follows that
+    \begin{align}
+      -q\le&\, \ip{\mu_{\theta_{j_k}},v_{j_k}(t,x,\theta)}\circ R_{(j_{k-1},j_{k})}(\tau_{k},x(\tau_{k}^-))\\
+      \le&\, v_{j_{k-1}}(\tau_{k},x(\tau_{k}^-\mid x(\tau_{k-1}^+),\theta),\theta)\\
+      \le &\, \ip{\mu_{\theta_{j_{k-1}}},v_{j_k}(\tau_k,x(\tau_{k-1}^+),\theta)}\\\nonumber
+      &\,\vdots\\
+      \le &\,v_{j_0}(\tau_1,x(\tau_1^-\mid x_0,\theta),\theta)\\
+      \le &\,v_{j_0}(0,x_0,\theta)\\
+      \le &\,\ip{\mu_{\theta_{j_0}},v_{j_0}(0,x_0,\theta)}\\
+      \le &\, w_{j_0}-q-1.
+    \end{align}
+    Thus the set of initial conditions that begin in mode $j_0$ and reach the terminal set projected into mode $j_k$ is given by the super-level set
+    \begin{align}
+      I_{(j_0,j_k)}=\{x\mid w_{j_0}\ge 1\}.
+    \end{align}
+    Note that the definition of $I_{j_0,j_k}$ does not depend on the mode in which the terminal set is reached; thus \mbox{$I_{(j_0,\mathcal J)}=X_{(0,j_0)}$}. Finally, by observing that $j_0$ is an arbitrary element of $\mathcal J$, we deduce the stated result.
     \end{proof}
     \begin{lemma}
       There is not gap between (P) and (D).
