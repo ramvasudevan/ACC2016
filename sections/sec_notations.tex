@@ -14,7 +14,7 @@
   \begin{itemize}
     \item $\mathcal J$ is a finite set of indices of discrete states in of $\mathcal H$; $|\mathcal J|=\N_{n_m}$,
     \item $\mathcal E\subset \mathcal J\times \mathcal J$ is the set of tuple of terminals of directed edges,
-    \item $\mathcal D:=\coprod_{j\in\mathcal J} \mathrm{M}_j$ is the disjoint union of domains with  $\mathrm{M}_j$ representing a compact manifold,
+    \item $\mathcal D:=\coprod_{j\in\mathcal J} \mathrm{M}_j$ is the disjoint union of domains with  $\mathrm{M}_j$ representing a compact differentiable manifold,
     \item if $\mu_{\theta_j}\in \mathcal P(\Theta_j)$ with  $\Theta_j$ (compact) being the manifold from which the uncertainty associated with state $j$ takes values, $\Gamma:=\coprod_{j\in \mathcal J} \mu_{\theta_j}$ is the disjoint union of probability distributions,
     \item $\mathcal F:=\{\tilde f_j\}_{j\in \mathcal J}$ where \mbox{$\tilde f_j\in (\mathcal C(\mathrm{M}_j\times \Theta_j;\R))^{n_{x_j}}$} is a tangent vector to $\mathrm{M}_j$ at $(x,\theta)$,
     \item $\mathcal G:=\coprod_{p\in \mathcal E}\mathcal G_p$ is the disjoint union of guards; \mbox{$\mathcal G_{(i,j)}:=\{(x,\theta)\in \mathrm{M}_j\times \Theta_j\mid \text{algebraic constraints}\}$},
@@ -42,12 +42,12 @@ Suppose, without loss of generality (wlog.), that the system enters mode $j$ at 
  {\bf Initialization:} $t=0,\,j\in \mathcal J,\,(x_0,j)\in \mathcal D,\,x(0)=x_0$\;
  \While{1}{
  {\em Let} $\theta$ be drawn according to $\mu_{\theta_j}$\;
- {\em Let} $\gamma\colon [0,T]\rightarrow \mathrm{M}_j$, abs. ct. st.\\\hspace{.2in}
+ {\em Let} $\gamma\colon [t,T]\rightarrow \mathrm{M}_j$, abs. ct. st.\\\hspace{.2in}
  $\dot \gamma(s)=\tilde f(\gamma(s),\theta)$ $\lambda_t^{\text{\tiny a}}$-a.e., $s\in [t,T]$\\\hspace{.2in}
  $\gamma(t)=x(t)$\;
  $\Lambda_{(j,t)}:=\{r\in [t,T]| \exists (j,k)\in \mathcal E \text{ st. } (\gamma(r),\theta)\in \mathcal G_{(j,k)}\}$\;
  \eIf {$\Lambda_{(j,t)}\ne \emptyset$}{%\\\hspace{.2in}
-    $t':=\min \Lambda_{(j,t)}$, $k$ st. $\gamma(t')\in \pi_{x}(\mathcal G_{(j,k)})$\\\hspace{.2in}
+    $t':=\min \Lambda_{(j,t)}$, $k$ st. $\gamma(t')\in \pi_{x}\mathcal G_{(j,k)}$\\\hspace{.2in}
      $x(s)\leftarrow \gamma(s)$, $\forall s\in [t,t')$\\ \hspace{.2in}
     $t\leftarrow t',\,x(t')\leftarrow R_{(j,k)}(\gamma(t')),\,j\leftarrow k$
  }
@@ -69,6 +69,31 @@ One of the simplest linear examples in $\mathfrak{U}$ has dynamics described by
 \end{align}
 where \mbox{$x(t)\in [-1,1]$} and $\theta\in [-1,1]$ is an uncertain, unknown parameter; the uncertain parameter can be thought of as having arisen due to structural modeling errors or as a result of reducing a singular-perturbed system. Note that this system is not a hybrid system; however, it can be hybridized. One way to achieve this is by setting $n_m=1$ and using placing a guard $\mathcal G_{(1,1)}$ at $x(t)=-1$ with a corresponding reset map $x\mapsto -x$.
 \end{example}
+\begin{figure}[!t]
+\centering
+  \begin{tikzpicture}
+    \draw[-,ultra thick] (0,2) to (2,1);
+    \draw[dashed, thick] (2,1) -- (5.6,-0.8)-- (4.85,-.8);
+    \draw[ultra thick] (2,1) to (1.85,0.7) -- (4.85,-0.8)--(0,-0.8);
+    \draw[thick] (2.95,1.25) circle (.15cm);
+    \spoke{(2.95,1.25)}{-75};
+    \spoke{(2.95,1.25)}{-15};
+    \spoke{(2.95,1.25)}{45};
+    \spoke{(2.95,1.25)}{105};
+    \spoke{(2.95,1.25)}{165};
+    \spoke{(2.95,1.25)}{-135};
+    \draw[dotted,thick] (2,1) -- (2,2);
+    \draw[dotted, thick] (2,1) -- (2.75,.25);
+    \draw[->,thick] (2.3, 0.7) to [out=-145, in =125] (2.3,0.2) node[below] {$\theta$};
+    \draw[->,thick] (4,-.35) to  [out=-145, in =125] (4,-0.8);
+    \node at (3.7,-0.6) {$\gamma$};
+    \draw[->, thick] (3.08,1.75) to [out=150, in =65] (2.6,1.6);
+    \node at (2.8,2) {$2\alpha$};
+    \draw[->,thick] (2.5,1.12) to [out=135, in =-90] (1.8,1.7) node[left]{$\vartheta$};
+  \end{tikzpicture}
+  \caption{Schematic of the rimless wheel with $\theta$ being the disturbance.}
+  \label{fig:rw_schematic}
+\end{figure}
 \begin{example}[Planar rimless wheel (PRW)]
 \label{example:rw}
   The planar rimless wheel---constituted by a massless axle to which $n$ (angularly) equidistant spokes are connected---is one of the simplest models of legged locomotion. Figure~\ref{fig:rw_schematic} presents a schematic of a rimless wheel---with spokes separated by an angle $2\alpha$---rolling down an infinite wedge. The PRW is, by definition, a hybrid system consisting of one mode; every-time the spoke make contact with the surface of wedge, the system undergoes a rest as the pivoting leg, and the origin of the local generalized coordinates changes. Between resets, the dynamics of the PRW is described by
@@ -96,32 +121,31 @@ For a PRW rolling down a wedge with an uneven ramp with the relative slope betwe
 \end{align}
 Observe that as the PRW continues to roll, the undulations in the surface can change and hence the random variable, $\theta$, will likely take different values as the system resets.
 \end{example}
-\begin{figure}[!t]
-\centering
-  \begin{tikzpicture}
-    \draw[-,ultra thick] (0,2) to (2,1);
-    \draw[dashed, thick] (2,1) -- (5.6,-0.8)-- (4.85,-.8);
-    \draw[ultra thick] (2,1) to (1.85,0.7) -- (4.85,-0.8)--(0,-0.8);
-    \draw[thick] (2.95,1.25) circle (.15cm);
-    \spoke{(2.95,1.25)}{-75};
-    \spoke{(2.95,1.25)}{-15};
-    \spoke{(2.95,1.25)}{45};
-    \spoke{(2.95,1.25)}{105};
-    \spoke{(2.95,1.25)}{165};
-    \spoke{(2.95,1.25)}{-135};
-    \draw[dotted,thick] (2,1) -- (2,2);
-    \draw[dotted, thick] (2,1) -- (2.75,.25);
-    \draw[->,thick] (2.3, 0.7) to [out=-145, in =125] (2.3,0.2) node[below] {$\theta$};
-    \draw[->,thick] (4,-.35) to  [out=-145, in =125] (4,-0.8);
-    \node at (3.7,-0.6) {$\gamma$};
-    \draw[->, thick] (3.08,1.75) to [out=150, in =65] (2.6,1.6);
-    \node at (2.8,2) {$2\alpha$};
-    \draw[->,thick] (2.5,1.12) to [out=135, in =-90] (1.8,1.7) node[left]{$\vartheta$};
-  \end{tikzpicture}
-  \caption{Schematic of the rimless wheel with $\theta$ being the disturbance.}
-  \label{fig:rw_schematic}
-\end{figure}
 \subsection{Problem description}
+\begin{algorithm}[!t]
+\small
+\KwData{Tuple of parametric uncertainties, $\theta$}
+\KwResult{Trajectory of x}
+ {\bf Initialization:} $t=0,\,x(0)=x_0,i=1$\;
+ \While{$i\le|\theta|$}{
+ {\em Let} $\gamma\colon [t,T]\rightarrow \mathrm{M}_j$, abs. ct. st.\\\hspace{.2in}
+ $\dot \gamma(s)=\tilde f(\gamma(s),\theta_i)$ $\lambda_t^{\text{\tiny a}}$-a.e., $s\in [t,T]$\\\hspace{.2in}
+ $\gamma(t)=x(t)$\;
+ $\Lambda_{(j,t)}:=\{r\in [t,T]| \exists (j,k)\in \mathcal E \text{ st. } (\gamma(r),\theta_i)\in \mathcal G_{(j,k)}\}$\;
+ \eIf {$\Lambda_{(j,t)}\ne \emptyset$}{%\\\hspace{.2in}
+    $t':=\min \Lambda_{(j,t)}$, $k$ st. $\gamma(t')\in \pi_{x}\mathcal G_{(j,k)}$\\\hspace{.2in}
+     $x(s)\leftarrow \gamma(s)$, $\forall s\in [t,t')$\\ \hspace{.2in}
+    $t\leftarrow t',\,x(t')\leftarrow R_{(j,k)}(\gamma(t')),\,j\leftarrow k,\,i\leftarrow i+1$
+ }
+ {
+ $x(s)=\gamma(s),\,\forall s\in [t,T]$\;
+ Stop\;
+ }
+ }
+ \caption{Execution of $\mathcal dH(x_0,j,T,\theta)$}
+ \label{alg:execution:simple}
+ $^a$where $\lambda_t$ is the Lebesgue measure on $[t,T]$
+\end{algorithm}
 The objective of this work is to estimate the {\em largest set of initial conditions} from which all state trajectories of a hybrid quasi-uncertain system reach the terminal set $X_T$ in a pre-specified time, $T$.
 \par
 Depending on $\mathcal E$, there may be more than one trunk through which state trajectories can reach the terminal set. Consequently, the problem can be re-stated, with specificity, as wanting to find the largest set of initial conditions in each mode, $X_{(0,j)},\,\forall j\in \mathcal J$, that can reach $X_T$.
@@ -130,18 +154,18 @@ Let $S(x_0)$ represent the set of finite sequences of mode-transitions that a sy
 \begin{align*}
 \Omega(s)=(\theta_1,\theta_3,\theta_1,\theta_2)\in \Theta_1\times \Theta_3\times \Theta_1\times \Theta_2.
 \end{align*}
-Let $s\mapsto \mho(s)$ represent the function that relates each sequence of mode-transitions to all possible instantiations of parametric uncertainties.
+Let $x_0\mapsto \mho(x_0)$ represent the function that relates each state-space initial condition to the set of all possible instantiations of parametric uncertainties for all possible mode-transitions of $\mathcal H$.
 \par
-For convenience, with a slight abuse of notations, let the execution of $\mathcal H$ with initial condition and $x(0)=x_0$ and terminal time $T$ be denoted as $\mathcal H(x_0,j,T)$
+For convenience, with a slight abuse of notations, let the execution of \emph{deterministic} $\mathcal H$, $d\mathcal H$, with initial condition and $x(0)=x_0$, terminal time $T$, and a tuple of uncertainty instantiation be denoted as $d\mathcal H(x_0,j,T,\theta)$.
 \begin{align}
-    \mathcal H\colon \mathcal D\times \R\rightarrow \mathcal C_{ab}(\R;\cup_{j\in \mathcal J} M_j)\times \{\cup_{s\in S(x_0)} \mho(s)\}.
+    d\mathcal H\colon \mathcal D\times \R\times \mho(x_0)\rightarrow \mathcal C_{ab}(R;\cup_{j\in \mathcal J} M_j).
 \end{align}
-That is, $\mathcal H$ outputs the temporal evolution of states of $\mathcal H$, and the discrete sequence of disturbances encountered.
+That is, the output of $d\mathcal H$ is the temporal evolution of states of $\mathcal H$ for a given sequence of mode-transitions and a corresponding tuple of uncertainties.
 \par
 Then, $X_{(0,j)}$ is defined as the following
 \begin{align}
 \begin{aligned}
-     X_{(0,j)}:=\{y\in \mathrm M_j\mid (x,\rho)=\mathcal H(y,j,T),\\\,x(T)\in X_T,\forall \rho\in \mho(x_0) \}
+     X_{(0,j)}:=\{x_0\in \mathrm M_j\mid x=d\mathcal H(y,j,T,\rho),\\\,x(T)\in X_T,\forall \rho\in \mho(x_0) \}
 \end{aligned}
 \end{align}
 %Observe that, by definition, for systems from $\mathfrak{U}$, if $X_{(0,j)}$ is the largest non-empty BRS in mode $j$, then all initial conditions from $X_{(0,j)}$, must reach $X_T$ at time $T$, regardless of the number of mode transitions that may occur in the interim and for every possible concomitant sequence of parametric uncertainty.
