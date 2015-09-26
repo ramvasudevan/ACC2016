@@ -1,7 +1,7 @@
 \section{Introduction}
   
 Computing the set of configurations that are able to safely reach a desired configuration is critical to ensuring the correct performance of a system in dynamic environments where deviations from planned behavior are to be expected.
-Given its potential, many methods have been proposed to efficiently compute this set that is generally referred to as the \emph{backwards reachable set} for deterministic systems.
+Many methods have been proposed to efficiently compute this set that is generally referred to as the \emph{backwards reachable set} for deterministic systems.
 Unfortunately, the effect of intermittent contact with the world, especially in fluctuating environments, is demanding to model deterministically. 
 A roboticist, for example, may be tasked with ensuring that a control for a legged robot beginning from an initial configuration is able to safely reach a desired goal; however, limitations in sensing or environment variability may render exact modeling of terrain height or friction impossible.
 The development of numerical tools to tractably compute the backwards reachable set of dynamical systems undergoing contact, or \emph{hybrid dynamical systems}, with parametric uncertainty while providing systematic guarantees has been challenging due to the difficulty of efficiently accounting for the uncertainty.   
@@ -14,7 +14,7 @@ Moreover, these approaches are unable to account for uncertainty associated with
 Other researchers have developed tools to outer approximate the uncertain backwards reachable for linear systems with uncertain parameters using a variety of approaches \cite{girard2005reachability,althoff2008reachability}. 
 These methods can be extended to nonlinear hybrid systems, but can require the introduction of a large number of discrete states to represent the nonlinear behavior or require overly conservative estimates of potential uncertainty. 
 More generally, Hamilton-Jacobi Bellman based approaches have also been applied to compute the uncertain backwards reachable set for nonlinear systems with arbitrary uncertainty affecting the state at any instance in time \cite{tomlin2003computational}. 
-These approaches solve a more general problem but rely on state space discretization which can be prohibitive for systems of dimension greater than four without relying upon specific system structure \cite{maidens2013lagrangian}.
+These approaches solve a more general problem, but rely on state space discretization which can be prohibitive for systems of dimension greater than four without relying upon specific system structure \cite{maidens2013lagrangian}.
 
 This paper leverages a method developed in several recent papers \cite{henrion2014convex,majumdar2014convex,shia2014convex} that describe the evolution of trajectories of a deterministic hybrid dynamical system using measures to describe the evolution of a hybrid dynamical system with parametric uncertainty as a linear equation over measures. 
 As a result of this characterization, the set of configurations that are able to reach a target set despite parametric uncertainty, called the \emph{uncertain backwards reachable set}, can be computed as the solution to an infinite dimensional linear program over the space of nonnegative measures. 

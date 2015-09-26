@@ -1,12 +1,20 @@
   \section{Preliminaries}
 \label{sec:preliminaries}
-  This section establishes the notations adopted in this paper, describes the class of systems considered hereafter, and formalizes the problem definition.
+  This section defines the notation, the class of systems, and problem considered throughout the paper.
+
   \subsection{Notations}
-  In the remainder of this text, for ease of convenience, the following notations are adopted. Sets are italicized and capitalized (ex. $K$); and the disjoint union of sets takes the usual definition: $\coprod_{i\in I}K_i=\cup_{i\in I}K_i\times \{i\}$. Finite truncations of the set of natural numbers are expressed as \mbox{$\N_n:=\{1,\ldots,n\}$}. The set of continuous functions and absolutely-continuous functions supported on $K$ are represented as $\mathcal C(K)$ and $\mathcal C_{ab}(K)$. The ring of polynomials in $x$ is denoted by $\R[x]$ and the degree of a polynomial is equal to degree its largest multinomial; the degree of the multinomial $x^\alpha,\,\alpha\in \R_{\ge 0}^n$ is $|\alpha|=\|\alpha\|_1$; and $\R_d[x]$ is the set of polynomials in $x$ with degree $d$. The dual to $\mathcal C(K)$, the set of measures on $K$, is identified by $\mathcal M(K)$, and the pairing of $\mu\in \mathcal M(K)$ and $v\in \mathcal C(K)$ is
+  In the remainder of this text the following notations is adopted: 
+Sets are italicized and capitalized (ex. $K$). 
+The disjoint union of sets is defined as: $\coprod_{i\in I}K_i=\cup_{i\in I}K_i\times \{i\}$. 
+Finite truncations of the set of natural numbers are expressed as \mbox{$\N_n:=\{1,\ldots,n\}$}. 
+The set of continuous functions and absolutely-continuous functions supported on $K$ are represented as $\mathcal C(K)$ and $\mathcal C_{ab}(K)$. 
+The ring of polynomials in $x$ is denoted by $\R[x]$, and the degree of a polynomial is equal to degree its largest multinomial; the degree of the multinomial $x^\alpha,\,\alpha\in \R_{\ge 0}^n$ is $|\alpha|=\|\alpha\|_1$; and $\R_d[x]$ is the set of polynomials in $x$ with maximum degree $d$. 
+The dual to $\mathcal C(K)$ is the set of measures on $K$, denoted as $\mathcal M(K)$, and the pairing of $\mu\in \mathcal M(K)$ and $v\in \mathcal C(K)$ is:
   \begin{align}
   \ip{\mu,v}=\int_{K}v(x)\,d\mu(x).
   \end{align}
-  The Lebesgue measure is denoted as $\lambda$; the support of $\lambda$ is explicitly defined if it is not evident from the context. Finally, supports of measures, $\mu$, are identified as $supp(\mu)$.
+The Lebesgue measure is denoted by $\lambda$. Finally, supports of measures, $\mu$, are identified as $supp(\mu)$.
+
   \subsection{System class description}
   The class of uncertain systems considered in this study, $\mathfrak{U}$, consists of hybrid systems that conform to the definition in Defn.~\ref{def:system} and undergo execution as described in Alg.~\ref{alg:execution}.
 \begin{defn}[Inspired by \cite{Burden2015}]\label{def:system}
