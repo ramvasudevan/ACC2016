@@ -25,13 +25,13 @@ From the above, the follow relation between the Lesbegue measure on $\mathcal T$
 Note that in its definition, the occupational measure is a conditional measure -- conditioned on the arrival-time and initial values of the states in that mode.
 When considering a set of possible arrival-times and initial conditions, the {\em average occupation measure} is defined by {\em averaging} the occupation measure wrt. to a measure on the set of possible initial conditions of the mode ($\check\mu_{0_j}$); i.e.
 \begin{align}
-\mu_j(A\times B\times C)=\int\limits_{\mathcal T\times \mathrm M_j\times \Theta}\mu_j(A\times B\times C\mid x_0,\theta)\,d\check \mu_{0_j}.
+\mu_j(A\times B\times C)=\int\limits_{\mathcal T\times \mathrm M_j\times \Theta}\mu_j(A\times B\times C\mid \tau_k,x_0,\theta)\,d\check \mu_{0_j}.
 \label{eq:mu_avg}
 \end{align}
 \normalsize
 Observe that by definition, the uncertain variables are independent of the states' initial conditions; hence $\check\mu_{0_i}\in \mathcal M(\mathcal T\times\mathrm M_j\times \Theta)$ is expressible as a product measure:
 \begin{align}
-\check\mu_{0_j}=\bar\mu_{0_j}\otimes \mu_{\theta_j},\
+\mu_{s_j}=\bar\mu_{0_j}\otimes \mu_{\theta_j},\
 \end{align}
 where $\bar \mu_{0_j}\in \mathcal M(\mathcal T\times \mathrm M_j)$ is the measure on the set of initial conditions, and $\mu_{\theta_j}\in \mathcal M(\Theta)$ is provided by in the definition of $\mathcal H$.\par
 Similarly, measures on terminals sets $X_{(T,j)}$, $\mu_{T_j}\in \mathcal M(X_{(T,j)}\times \Theta)$
@@ -47,14 +47,14 @@ and guards, $\mu_{\mathcal G_{(j,k)}}\in \mathcal M(\mathcal T\times \mathcal G_
 are defined. While measure $\mu_{T_j}$---supported on the terminal set at the final time---has an obvious interpretation, measures $\mu_{\mathcal G_{(j,k)}},\,\forall (j,k)\in \mathcal E$ are supported on the guards of mode $j$ and should be interpreted as the hitting times of the guard.
 For convenience, the {\em final measure} for each mode $j$ is defined as
 \begin{align}
-  \check\mu_{f,j}=\delta_T\otimes \mu_{T_j}+\sum_{k\in\{l\mid (j,l)\in \mathcal E\}}\mu_{\mathcal G_{(j,k)}}.
+  \mu_{f_j}=\delta_T\otimes \mu_{T_j}+\sum_{k\in\{l\mid (j,l)\in \mathcal E\}}\mu_{\mathcal G_{(j,k)}}.
 \label{eq:mu_T}
 \end{align}
 \normalsize
 \par
-Given a set of initial conditions $X_{0}$, the dynamics of the system---under appropriate assumptions---defines a bundle of trajectories of the system states. It is of interest to ensure that this bundle terminates in the desired set $X_T$, making $X_0$ a subset of the BRS; stated differently, it is necessary to relate $\coprod_{j\in \mathcal J}\check\mu_{0_j}$ with $\coprod_{j\in \mathcal J}\check\mu_{f,i}$ and the dynamics of the system. As a first step towards deducing said relation, linear operators {$\mathcal L_{ f_j}\colon \mathcal C^1(\mathcal T\times \mathrm M_j\times \Theta_j)\rightarrow \mathcal C(\mathcal T\times \mathrm M_j\times \Theta_j)$} satisfying Eqn.~(\ref{eq:Lv}) in which $v\in \mathcal C^1(\mathcal T\times \mathrm M_j\times \Theta_j;\R)$ is an arbitrary test function, are defined.
+Given a set of initial conditions $X_{0}$, the dynamics of the system---under appropriate assumptions---defines a bundle of trajectories of the system states. It is of interest to ensure that this bundle terminates in the desired set $X_T$, making $X_0$ a subset of the BRS; stated differently, it is necessary to relate $\coprod_{j\in \mathcal J}\mu_{s_j}$ with $\coprod_{j\in \mathcal J}\mu_{f_i}$ and the dynamics of the system. As a first step towards deducing said relation, linear operators {$\mathcal L_{ f_j}\colon \mathcal C^1(\mathcal T\times \mathrm M_j\times \Theta_j)\rightarrow \mathcal C(\mathcal T\times \mathrm M_j\times \Theta_j)$} satisfying Eqn.~(\ref{eq:Lv}) in which $v\in \mathcal C^1(\mathcal T\times \mathrm M_j\times \Theta_j;\R)$ is an arbitrary test function, are defined.
 \begin{align}
-      \mathcal L_{f_j}v=\ip{\nabla_x v,\tilde f_j}
+      \mathcal L_{f_j}v=\frac{\partial v}{\partial t}+\ip{\nabla_x v,\tilde f_j}
     \label{eq:Lv}
 \end{align}
 \par
@@ -78,7 +78,7 @@ Using Eqn.~(\ref{eq:mu_lambda}), Eqn.~(\ref{eq:FTC}) can be re-written as
 \normalsize
 which can be simplified by \emph{averaging} wrt. to the set of initial conditions $x(\tau_{k-1})$ and $\theta$ using Eqns.~(\ref{eq:mu_avg})--(\ref{eq:mu_T}) to arrive at
 \begin{align}
-  \ip{\check\mu_{f,j},v}=\ip{\check\mu_{0_j},v}+\ip{\mu_{j},\mathcal L_{f}v}.
+  \ip{\mu_{f_j},v}=\ip{\mu_{s_j},v}+\ip{\mu_{j},\mathcal L_{f}v}.
   \label{eq:liouville_1}
 \end{align}
 \par
@@ -87,7 +87,7 @@ Alternatively, using the standard definition of adjoint operators\footnote{A lin
     \ip{\mathcal L'\mu,v}=\ip{\mu,\mathcal Lv}=\int\limits_{\mathcal X}\mathcal Lv\,d\mu.
 \end{align*}}, Eqn.~(\ref{eq:liouville_1}) is re-written as
 \begin{align}
-\ip{\check\mu_{f,j},v}=\ip{\check\mu_{0_j},v}+\ip{\mathcal L'_{f}\mu_{j},v}
+\ip{\mu_{f_j},v}=\ip{\mu_{s_j},v}+\ip{\mathcal L'_{f}\mu_{j},v}
   \label{eq:liouville_2}
 \end{align}
 Eqn~(\ref{eq:liouville_2}) is the desired equation that relates the dynamics of the state to the initial and final measures in each mode of the system.
@@ -121,24 +121,40 @@ essentially, $\sigma_{(i,j)}$ is a push-forward measure of $\mu_{\mathcal G_{(i,
   With the constraints expressed in terms of measures, the problem of approximating the BRS is formulated as an infinite-dimensional Linear Program that supremizes the \emph{volume} of the set of initial condition.
   \begin{flalign}\nonumber
   &\sup_{\Lambda}&\sum_{j=1}^{n_m}\ip{\mu_{0_j},1}&&(P)\\\nonumber
-  &\text{st.}\\\nonumber
-  &&\check\mu_{0_j}+\mathcal L_{f}'\mu_j=&\,\mu_{f,j}&\forall j\in \N_{n_m}\\\nonumber
-  &&\mu_{0_j}+\hat\mu_{0_j}=&\,\lambda_j&\forall j\in \N_{n_m}\\
+  &\text{st.}\\
+  &&\mu_{s_j}+\mathcal L_{f}'\mu_j=&\,\mu_{f_j}&\forall j\in \N_{n_m}\label{eq:primal:liouville}\\
+  &&\mu_{0_j}+\hat\mu_{0,j}=&\,\lambda_j&\forall j\in \N_{n_m}\\
   &&\sum_{j=1}^{n_m}\ip{\mu_{T_j},1}=&\,\sum_{j=1}^{n_m}\ip{\mu_{0_j},1}\label{eq:mass_conservation}
   \end{flalign}
   where $\lambda_j$ is the Lebesgue measure supported on $\mathrm M_j$.
   $$\Lambda=\{\mu_j,\mu_{0_j},\mu_{T_j},\hat\mu_{0_j},\mu_{\mathcal G_{(j,k)}}\ge 0,\,\forall j\in \mathcal \N_{n_m},(j,k)\in \mathcal E\}.$$
 Variables $\hat\mu_{0_j}\in \mathcal M(\mathrm M_j)$ are slack variables introduced to enforce a stronger constraint than absolute continuity of $\mu_{0_j}$ wrt. to $\lambda_j$
   \begin{flalign}
-  &&&\mu_{0_j}(A)\le \lambda_j(A)&\forall A\subset \mathcal X_j
+  &&&\mu_{0_j}(A)\le \lambda_j(A)&\forall A\subset \mathrm M_j\label{eq:primal:domination}
     \end{flalign}
-  The constraint in Eqn.~(\ref{eq:mass_conservation}) ensures that all trajectories that emanate $\cup_{j\in \N_{n_m}}\,\text{supp}(\mu_{0_j})$ reach $X_{T}$ at $t=T$, and is not {\em stuck} at any of the guards.
+  The constraint in Eqn.~(\ref{eq:mass_conservation}) ensures that all trajectories that emanate $\cup_{j\in \mathcal J}\,spt(\mu_{0_j})$ reach $X_{T}$ at $t=T$, and is not {\em stuck} at any of the guards.
+  %%%%%%%%%%
   \begin{lemma}
-    The optimal value of (P) is equal to $\sum_{j\in \N_{n_m}}\lambda_j(X_{0_j})$, the sum of \emph{volumes} of the BRSs in each mode. In addition, $\bigcup_{j\in \N_{n_m}}\text{supp}(\mu_{0_j})$ is the BRS of the system.
+   If $\mu_{0_j},\forall j\in \mathcal J$ is part of the optimal solution of ($P$) then $\bigcup_{j\in \mathcal J}\,spt(\mu_{0_j})$ is the BRS of the system. In addition, the optimal value of ($P$) is equal to $\sum_{j\in \mathcal J}\lambda_j(X_{0_j})$, the sum of \emph{volumes} of the BRSs in each mode.
   \end{lemma}
+
   \begin{proof}
-    ytest
+  Suppose $\sum_{j\in \mathcal J}\lambda_j(spt(\mu_{0_j})\backslash X_{(0,j)})>0$, then by Lemma~\ref{lemma:existence}, there exist trajectories that begin in $\cup_{j\in \mathcal J}(spt(\mu_{0_j})\backslash X_{(0,j)})$ that reach $X_T$; this is a contradiction. Thus,
+  \begin{align}
+  &\bigcup_{j\in \mathcal J} spt(\mu_{0_j})\subset \bigcup_{j\in \mathcal J} X_{(0,j)},\\
+  &\sum_{j\in \mathcal J}\lambda_j(spt(\mu_{0_j}))\le\sum_{j\in \mathcal J}\lambda_j( X_{(0,j)}).
+  \label{eq:support_lemma:1}
+  \end{align}
+    By definition of the BRS, all state trajectories that emanate from a subset of $X_0$ end in $X_T$. That is, for each $j\in \mathcal J$ and initial measure $\mu_{0_j}$, if $spt(\mu_{0_j})\subset X_{(0,j)}$, there exist measures $\mu_{j}$ and $\mu_{f,j}$ that satisfy Eqn.~(\ref{eq:primal:liouville}). Thus the following inequality is true.
+    \begin{align}
+    \sum_{j\in \mathcal J}\lambda_j(spt(\mu_{0_j}))\ge \sum_{j\in \mathcal J}\lambda_j(X_{(0,j)})
+      \label{eq:support_lemma:2}
+    \end{align}
+   From Eqns.~(\ref{eq:support_lemma:1})\&(\ref{eq:support_lemma:2}), $\cup_{j\in \mathcal J}\,spt(\mu_{0_j})$ is the BRS of the system.
+    \par
+    That the optimal value of $(P)$ is volume of the BRS follows from Eqn.~(\ref{eq:primal:domination}) and the observation that \mbox{$\lambda_{j}|_{X_{(0,j)}},\forall j\in \mathcal J$} is feasible in ($P$).
   \end{proof}
+
   \subsection{The dual}
   \label{ssec:dual}
     The dual corresponding to $(P)$ is derived using standard techniques and is presented below.
@@ -146,11 +162,11 @@ Variables $\hat\mu_{0_j}\in \mathcal M(\mathrm M_j)$ are slack variables introdu
     \footnotesize
     \begin{flalign}\nonumber
     &&&\inf \sum_{j\in \N_{n_m}}\ip{\lambda_j,w_j}&(D)\\\nonumber
-    &&&\text{st.}\\\nonumber
+    &&&\text{st.}\\
     &&&w_j\ge \,0&\forall (x,j)\in \mathcal D\\
-    &&& v_j(T,\cdot)+q\ge\, 0 ,\> &\forall (x,j,\theta)\in \mathcal X_T\times \Theta\\
-    &&& - \mathcal L_{\tilde f}v_j\ge\,0 ,\> &\forall (t,x,j,\theta)\in \mathcal T\times\mathcal D\times \Theta\\
-    &&& w_j-\ip{\mu_{\theta_j},v(0,\cdot)}-q\ge \,1 ,\> &\forall (x,j)\in \mathcal D\\
+    &&& v_j(T,\cdot)+q\ge\, 0 ,\> &\forall (x,j,\theta)\in \mathcal X_T\times \Theta \label{eq:dual:terminal}\\
+    &&& - \mathcal L_{\tilde f}v_j\ge\,0 ,\> &\forall (t,x,j,\theta)\in \mathcal T\times\mathcal D\times \Theta\label{eq:dual:lfv}\\
+    &&& w_j-\ip{\mu_{\theta_j},v(0,\cdot)}-q\ge \,1 ,\> &\forall (x,j)\in \mathcal D\label{eq:dual:levelset}\\
     &&&v_j\ge\, \ip{\mu_{\theta_k},v_k}\circ R_{(j,k)},&\forall (t,x,\theta,(j,k)),\in \mathcal T\times \mathcal G\times \mathcal E\label{eq:dual:mode_transition}
     \end{flalign}
     \normalsize
@@ -163,12 +179,12 @@ Variables $\hat\mu_{0_j}\in \mathcal M(\mathrm M_j)$ are slack variables introdu
       is an outer approximation of the BRS of the system whose dynamics is described by Alg.~\ref{alg:execution}.
     \end{lemma}
     \begin{proof}
-    The approach we adopt to prove this lemma is to construct the projection of the BRS on any mode and show that it is a 1-level set of the appropriate function. To assist in constructing the arguments, assume wlog., that the system is initialized in mode $j_1$ with initial conditions $x=x_0\in \mathrm M_{j_1}$, and that through a sequence of $k$-mode switches reaches the terminal set at $t=T$. Let the sequence of mode switches undertaken at times $(\tau_2,\ldots,\tau_{k})$ be given by $(j_2,\ldots,j_{k})$.
+    The approach we adopt to prove this lemma is to construct the projection of the BRS on any mode and show that it is a 1-level set of the appropriate function. To assist in constructing the arguments, assume wlog., that the state trajectory terminates in $X_{(T,j_k)}$ for some $j_k$. The state trajectory must have arrived in mode $j_k$ through a finite sequence of mode-transitions (according to Assumption~\ref{assump:zeno}); wlog., let this sequences of mode-transitions be of length $k$. Suppose the states entered mode $j_k$ at time $\tau_k$, then, from the fundamental theorem of calculus and the constraints in Eqns.~(\ref{eq:dual:terminal})\&(\ref{eq:dual:lfv}), the following inequalities follow.
     \begin{align}
       -q\le v_{j_k}(T,x(T\mid x(\tau_k^+),\theta),\theta)\le v_j(\tau_k,x(\tau_k^+),\theta)\\
       \Rightarrow -q\le \ip{\mu_{\theta_{j_k}},v_{j_k}(\tau_k,x(\tau_k^+),\theta)}
     \end{align}
-    By iterative application of the constraint in Eqn.~(\ref{eq:dual:mode_transition}), it follows that
+    By iterative application of the constraint in Eqn.~(\ref{eq:dual:mode_transition}) and finally Eqn.~(\ref{eq:dual:levelset}), it follows that
     \begin{align}
       -q\le&\, \ip{\mu_{\theta_{j_k}},v_{j_k}(t,x,\theta)}\circ R_{(j_{k-1},j_{k})}(\tau_{k},x(\tau_{k}^-))\\
       \le&\, v_{j_{k-1}}(\tau_{k},x(\tau_{k}^-\mid x(\tau_{k-1}^+),\theta),\theta)\\
@@ -177,9 +193,9 @@ Variables $\hat\mu_{0_j}\in \mathcal M(\mathrm M_j)$ are slack variables introdu
       \le &\,v_{j_0}(\tau_1,x(\tau_1^-\mid x_0,\theta),\theta)\\
       \le &\,v_{j_0}(0,x_0,\theta)\\
       \le &\,\ip{\mu_{\theta_{j_0}},v_{j_0}(0,x_0,\theta)}\\
-      \le &\, w_{j_0}-q-1.
+      \le &\, w_{j_0}(x_0)-q-1.
     \end{align}
-    Thus the set of initial conditions that begin in mode $j_0$ and reach the terminal set projected into mode $j_k$ is given by the super-level set
+    The final inequality implies that for every trajectory that ends in $X_{(t,j_k)}$, $x(t)=x_0\in \mathrm M_{j_0}$  satisfies the condition $w_{x_0}\ge 1$. Thus the set of initial conditions that begin in mode $j_0$ and reach the terminal set projected into mode $j_k$ is given by the super-level set
     \begin{align}
       I_{(j_0,j_k)}=\{x\mid w_{j_0}\ge 1\}.
     \end{align}
@@ -189,7 +205,7 @@ Variables $\hat\mu_{0_j}\in \mathcal M(\mathrm M_j)$ are slack variables introdu
       There is not gap between (P) and (D).
     \end{lemma}
     \begin{proof}
-      test
+      The proof follows from \cite[Theorem 3.10]{Anderson1987}, and is similar to \cite[Theorem 2]{henrion2014convex}; it is not presented for brevity.
     \end{proof}
     \begin{remark}
     There are two key aspects of the presentation in this section that deserve re-iteration: (1) by definition, the uncertainties that influence the dynamics can be visualized as a discrete random process with updates to the instantiation of the uncertainty occurring upon entering a new mode; (2) the estimated BRS is the set of initial conditions from which {\em all} trajectories that emanate reach the terminal set for {\em all} possible discrete sequence of uncertainty. As a direct implication of the second point, the solution of the problem is the intersection of the BRS of every possible sequence of uncertainty.

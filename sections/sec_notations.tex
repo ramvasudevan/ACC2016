@@ -9,7 +9,7 @@
   The Lebesgue measure is denoted as $\lambda$; the support of $\lambda$ is explicitly defined if it is not evident from the context. Finally, supports of measures, $\mu$, are identified as $supp(\mu)$.
   \subsection{System class description}
   The class of uncertain systems considered in this study, $\mathfrak{U}$, consists of hybrid systems that conform to the definition in Defn.~\ref{def:system} and undergo execution as described in Alg.~\ref{alg:execution}.
-\begin{defn}[Inspired by \cite{Burden2013}]\label{def:system}
+\begin{defn}[Inspired by \cite{Burden2015}]\label{def:system}
   A `quasi-uncertain' hybrid system is a tuple \mbox{$\mathcal H=(\mathcal J,\mathcal E,\mathcal D,\mathcal F,\mathcal G,\mathcal R,\Gamma)$}, where
   \begin{itemize}
     \item $\mathcal J$ is a finite set of indices of discrete states in of $\mathcal H$; $|\mathcal J|=\N_{n_m}$,
@@ -18,7 +18,7 @@
     \item if $\mu_{\theta_j}\in \mathcal P(\Theta_j)$ with  $\Theta_j$ (compact) being the manifold from which the uncertainty associated with state $j$ takes values, $\Gamma:=\coprod_{j\in \mathcal J} \mu_{\theta_j}$ is the disjoint union of probability distributions,
     \item $\mathcal F:=\{\tilde f_j\}_{j\in \mathcal J}$ where \mbox{$\tilde f_j\in (\mathcal C(\mathrm{M}_j\times \Theta_j;\R))^{n_{x_j}}$} is a tangent vector to $\mathrm{M}_j$ at $(x,\theta)$,
     \item $\mathcal G:=\coprod_{p\in \mathcal E}\mathcal G_p$ is the disjoint union of guards; \mbox{$\mathcal G_{(i,j)}:=\{(x,\theta)\in \mathrm{M}_j\times \Theta_j\mid \text{algebraic constraints}\}$},
-    \item $\mathcal R$ is the set of reset maps with each edge in $\mathcal E$ being represented; $R_{(i,j)}\colon \pi_{x}\mathcal G_{(i,j)}\rightarrow \mathrm{M}_j$ is a continuously differentiable injection; $\,R_{(i,j)}\in \mathcal C(\mathrm{M}_j)$ and denotes the transformation accompanying state transition.
+    \item $\mathcal R$ is the set of reset maps associated with each edge in $\mathcal E$; $R_{(i,j)}\colon \mathcal T\times \pi_{x}\mathcal G_{(i,j)}\rightarrow \mathcal T\times\mathrm{M}_j$ is a continuously differentiable injection; $\,R_{(i,j)}\in \mathcal C(\mathcal T\times \mathrm{M}_j)$ and denotes the transformation accompanying state transition.
   \end{itemize}
 \end{defn}
 A further qualification of the systems under consideration is warranted. It is assumed that upon reaching a guard, there is no ambiguity in into which discrete state the system transitions; this can be achieved by enforcing the next assumption.
@@ -106,7 +106,7 @@ where \mbox{$x(t)\in [-1,1]$} and $\theta\in [-1,1]$ is an uncertain, unknown pa
 \end{align}
 where $\vartheta$ is the angle between the pivoted spoke and the vertical located at the stationary leg. Once the marching spoke makes contact with the terrain, the states are reset using the reset map
 \begin{align}
-R_{(1,1)}\colon (\vartheta^-,\dot \vartheta^-)\rightarrow\begin{bmatrix}
+R_{(1,1)}(t,\vartheta^-,\dot \vartheta^-)=\begin{bmatrix}t&
     2\gamma-\vartheta^-&
     \cos(2\alpha)\,\dot\vartheta^-
   \end{bmatrix}'.
@@ -122,51 +122,15 @@ For a PRW rolling down a wedge with an uneven ramp with the relative slope betwe
 Observe that as the PRW continues to roll, the undulations in the surface can change and hence the random variable, $\theta$, will likely take different values as the system resets.
 \end{example}
 \subsection{Problem description}
-\begin{algorithm}[!t]
-\small
-\KwData{Tuple of parametric uncertainties, $\theta$}
-\KwResult{Trajectory of x}
- {\bf Initialization:} $t=0,\,x(0)=x_0,i=1$\;
- \While{$i\le|\theta|$}{
- {\em Let} $\gamma\colon [t,T]\rightarrow \mathrm{M}_j$, abs. ct. st.\\\hspace{.2in}
- $\dot \gamma(s)=\tilde f(\gamma(s),\theta_i)$ $\lambda_t^{\text{\tiny a}}$-a.e., $s\in [t,T]$\\\hspace{.2in}
- $\gamma(t)=x(t)$\;
- $\Lambda_{(j,t)}:=\{r\in [t,T]| \exists (j,k)\in \mathcal E \text{ st. } (\gamma(r),\theta_i)\in \mathcal G_{(j,k)}\}$\;
- \eIf {$\Lambda_{(j,t)}\ne \emptyset$}{%\\\hspace{.2in}
-    $t':=\min \Lambda_{(j,t)}$, $k$ st. $\gamma(t')\in \pi_{x}\mathcal G_{(j,k)}$\\\hspace{.2in}
-     $x(s)\leftarrow \gamma(s)$, $\forall s\in [t,t')$\\ \hspace{.2in}
-    $t\leftarrow t',\,x(t')\leftarrow R_{(j,k)}(\gamma(t')),\,j\leftarrow k,\,i\leftarrow i+1$
- }
- {
- $x(s)=\gamma(s),\,\forall s\in [t,T]$\;
- Stop\;
- }
- }
- \caption{Execution of $\mathcal dH(x_0,j,T,\theta)$}
- \label{alg:execution:simple}
- $^a$where $\lambda_t$ is the Lebesgue measure on $[t,T]$
-\end{algorithm}
 The objective of this work is to estimate the {\em largest set of initial conditions} from which all state trajectories of a hybrid quasi-uncertain system reach the terminal set $X_T$ in a pre-specified time, $T$.
 \par
-Depending on $\mathcal E$, there may be more than one trunk through which state trajectories can reach the terminal set. Consequently, the problem can be re-stated, with specificity, as wanting to find the largest set of initial conditions in each mode, $X_{(0,j)},\,\forall j\in \mathcal J$, that can reach $X_T$.
-\par
-Let $S(x_0)$ represent the set of finite sequences of mode-transitions that a system, $\mathcal H\in \mathfrak U$ that is initialized with $x(0)=x_0$, can undertake by $t=T$; $S(x_0)$ and each of its elements are finite by Assumption~\ref{assump:zeno}. Let $A(x_0)$ be the index set of $S(x_0)$. By definition, for every $s\in S(x_0)$, there is a tuple of random-variables, $\Omega(s)$, with each coordinate-entry representing the uncertainty in the indexed mode; for example, if \mbox{$s:=(1,3,1,2)\in S(x_0)$}, then
-\begin{align*}
-\Omega(s)=(\theta_1,\theta_3,\theta_1,\theta_2)\in \Theta_1\times \Theta_3\times \Theta_1\times \Theta_2.
-\end{align*}
-Let $x_0\mapsto \mho(x_0)$ represent the function that relates each state-space initial condition to the set of all possible instantiations of parametric uncertainties for all possible mode-transitions of $\mathcal H$.
-\par
-For convenience, with a slight abuse of notations, let the execution of \emph{deterministic} $\mathcal H$, $d\mathcal H$, with initial condition and $x(0)=x_0$, terminal time $T$, and a tuple of uncertainty instantiation be denoted as $d\mathcal H(x_0,j,T,\theta)$.
-\begin{align}
-    d\mathcal H\colon \mathcal D\times \R\times \mho(x_0)\rightarrow \mathcal C_{ab}(R;\cup_{j\in \mathcal J} M_j).
-\end{align}
-That is, the output of $d\mathcal H$ is the temporal evolution of states of $\mathcal H$ for a given sequence of mode-transitions and a corresponding tuple of uncertainties.
-\par
-Then, $X_{(0,j)}$ is defined as the following
+Depending on $\mathcal E$, there may be more than one trunk through which state trajectories can reach the terminal set. Consequently, the problem can be re-stated, with specificity, as wanting to find the largest set of initial conditions in each mode, $X_{(0,j)},\,\forall j\in \mathcal J$, that can reach $X_T$ where $X_{(0,j)}$ is given by
 \begin{align}
 \begin{aligned}
-     X_{(0,j)}:=\{x_0\in \mathrm M_j\mid x=d\mathcal H(y,j,T,\rho),\\\,x(T)\in X_T,\forall \rho\in \mho(x_0) \}
+     X_{(0,j)}:=\{x_0\in \mathrm M_j\mid \forall x=\mathcal H(x_0,[0,T]) \\\,x(T)\in X_T\}
+     \label{eq:brs}
 \end{aligned}
 \end{align}
-%Observe that, by definition, for systems from $\mathfrak{U}$, if $X_{(0,j)}$ is the largest non-empty BRS in mode $j$, then all initial conditions from $X_{(0,j)}$, must reach $X_T$ at time $T$, regardless of the number of mode transitions that may occur in the interim and for every possible concomitant sequence of parametric uncertainty.
+Observe that, by definition, for systems from $\mathfrak{U}$, if $X_{(0,j)}$ is the largest non-empty BRS in mode $j$, then all initial conditions from $X_{(0,j)}$, must reach $X_T$ at time $T$, regardless of the number of mode transitions that may occur in the interim and for every possible concomitant sequence of parametric uncertainty.
+\par
 For convenience, hereafter the times at which the system's state is relevant is denoted by the set $\mathcal T:=[0,\,T]$, and the projections of $X_T$ onto every mode, $j$, is denoted by $X_{(T,j)}$.
