@@ -5,9 +5,10 @@
   \subsection{Notations}
   In the remainder of this text the following notation is adopted: 
 Sets are italicized and capitalized (ex. $K$). 
-The disjoint union of sets is defined as: $\coprod_{i\in I}K_i=\cup_{i\in I}K_i\times \{i\}$. 
+The boundary of a set $K$ is denoted by $\partial K$.
+% The disjoint union of sets is defined as: $\coprod_{i\in I}K_i=\cup_{i\in I}K_i\times \{i\}$. 
 Finite truncations of the set of natural numbers are expressed as \mbox{$\N_n:=\{1,\ldots,n\}$}. 
-The set of continuous functions and absolutely-continuous functions supported on a compact set $K$ are represented as $\mathcal C(K)$ and $\mathcal C_{ab}(K)$, respectively. 
+The set of continuous functions on a compact set $K$ is represented as $\mathcal C(K)$. 
 The ring of polynomials in $x$ is denoted by $\R[x]$, and the degree of a polynomial is equal to degree its largest multinomial; the degree of the multinomial $x^\alpha,\,\alpha\in \R_{\ge 0}^n$ is $|\alpha|=\|\alpha\|_1$; and $\R_d[x]$ is the set of polynomials in $x$ with maximum degree $d$. 
 The dual to $\mathcal C(K)$ is the set of Radon measures on $K$, denoted as $\mathcal M(K)$, and the pairing of $\mu\in \mathcal M(K)$ and $v\in \mathcal C(K)$ is:
   \begin{align}
@@ -26,7 +27,7 @@ Finally, supports of measures, $\mu$, are identified as $supp(\mu)$.
     \item $\mathcal E\subset \mathcal J\times \mathcal J$ is a set of two-tuples describing directed edges;
     \item $\mathcal D = \{D_j\}_{j \in {\cal J}}$ is the set of domains where each $D_j$ is a compact subset of $\R^{n_j}$, $n_j \in \N$;
     \item $\Gamma = \{\mu_{\theta_j} \}_{j \in {\cal J}}$ where $\mu_{\theta_j}\in \mathcal P(\Theta_j)$ describes the uncertainty associated with discrete state $j \in {\cal J}$;
-    \item $\mathcal F=\{\tilde f_j\}_{j\in \mathcal J}$ where $\tilde{f}_j: D_j \times \Theta_j \to D_j$ is the vector field defining the dynamics on $D_j$;
+    \item $\mathcal F=\{\tilde f_j\}_{j\in \mathcal J}$ where $\tilde{f}_j: D_j \times \Theta_j \to D_j$ is a Lipschitz continuous function describing the dynamics on $D_j$;
     \item $\mathcal G=\{G_e\}_{e \in {\cal E}}$ is the set of guards where each $G_{(j,j')} \subset \partial D_j$ is a guard in domain $j \in {\cal J}$ that defines a transition to mode $j' \in {\cal J}$;
     \item $\mathcal R = \{R_e\}_{e \in {\cal E}}$ is the set of reset maps, where each map is a continuously differentiably injection $R_{(j,j')}: G_{(j,j')} \to D_{j'}$ and defines the transition from guard $G_{(j,j')}$.
   \end{itemize}
