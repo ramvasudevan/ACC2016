@@ -3,27 +3,29 @@
   This section defines the notation, the class of systems, and problem considered throughout the paper.
 
   \subsection{Notations}
-  In the remainder of this text the following notations is adopted: 
+  In the remainder of this text the following notation is adopted: 
 Sets are italicized and capitalized (ex. $K$). 
 The disjoint union of sets is defined as: $\coprod_{i\in I}K_i=\cup_{i\in I}K_i\times \{i\}$. 
 Finite truncations of the set of natural numbers are expressed as \mbox{$\N_n:=\{1,\ldots,n\}$}. 
-The set of continuous functions and absolutely-continuous functions supported on $K$ are represented as $\mathcal C(K)$ and $\mathcal C_{ab}(K)$. 
+The set of continuous functions and absolutely-continuous functions supported on a compact set $K$ are represented as $\mathcal C(K)$ and $\mathcal C_{ab}(K)$, respectively. 
 The ring of polynomials in $x$ is denoted by $\R[x]$, and the degree of a polynomial is equal to degree its largest multinomial; the degree of the multinomial $x^\alpha,\,\alpha\in \R_{\ge 0}^n$ is $|\alpha|=\|\alpha\|_1$; and $\R_d[x]$ is the set of polynomials in $x$ with maximum degree $d$. 
-The dual to $\mathcal C(K)$ is the set of measures on $K$, denoted as $\mathcal M(K)$, and the pairing of $\mu\in \mathcal M(K)$ and $v\in \mathcal C(K)$ is:
+The dual to $\mathcal C(K)$ is the set of Radon measures on $K$, denoted as $\mathcal M(K)$, and the pairing of $\mu\in \mathcal M(K)$ and $v\in \mathcal C(K)$ is:
   \begin{align}
   \ip{\mu,v}=\int_{K}v(x)\,d\mu(x).
   \end{align}
-The Lebesgue measure is denoted by $\lambda$. Finally, supports of measures, $\mu$, are identified as $supp(\mu)$.
+The space of Radon probability measures on $K$ is denoted by ${\cal P}(K)$.
+The Lebesgue measure is denoted by $\lambda$. 
+Finally, supports of measures, $\mu$, are identified as $supp(\mu)$.
 
-  \subsection{System class description}
-  The class of uncertain systems considered in this study, $\mathfrak{U}$, consists of hybrid systems that conform to the definition in Defn.~\ref{def:system} and undergo execution as described in Alg.~\ref{alg:execution}.
+\subsection{System class description}
+  The class of uncertain systems considered in this study consists of hybrid systems that conform to the following definition and undergo executions as described by Alg.~\ref{alg:execution}.
 \begin{defn}[Inspired by \cite{Burden2015}]\label{def:system}
   A `quasi-uncertain' hybrid system is a tuple \mbox{$\mathcal H=(\mathcal J,\mathcal E,\mathcal D,\mathcal F,\mathcal G,\mathcal R,\Gamma)$}, where
   \begin{itemize}
-    \item $\mathcal J$ is a finite set of indices of discrete states in of $\mathcal H$; $|\mathcal J|=\N_{n_m}$,
-    \item $\mathcal E\subset \mathcal J\times \mathcal J$ is the set of tuple of terminals of directed edges,
-    \item $\mathcal D:=\coprod_{j\in\mathcal J} \mathrm{M}_j$ is the disjoint union of domains with  $\mathrm{M}_j$ representing a compact differentiable manifold,
-    \item if $\mu_{\theta_j}\in \mathcal P(\Theta_j)$ with  $\Theta_j$ (compact) being the manifold from which the uncertainty associated with state $j$ takes values, $\Gamma:=\coprod_{j\in \mathcal J} \mu_{\theta_j}$ is the disjoint union of probability distributions,
+    \item $\mathcal J$ is a finite set of indices of discrete states in of $\mathcal H$;
+    \item $\mathcal E\subset \mathcal J\times \mathcal J$ is a set of two-tuples describing directed edges;
+    \item $\mathcal D:=\coprod_{j\in\mathcal J} \mathrm{M}_j$ is a disjoint union of domains;
+    \item $\Gamma:=\coprod_{j\in \mathcal J} \mu_{\theta_j}$ where $\mu_{\theta_j}\in \mathcal P(\Theta_j)$ describes the uncertainty associated with discrete state $j \in {\cal J}$;
     \item $\mathcal F:=\{\tilde f_j\}_{j\in \mathcal J}$ where \mbox{$\tilde f_j\in (\mathcal C(\mathrm{M}_j\times \Theta_j;\R))^{n_{x_j}}$} is a tangent vector to $\mathrm{M}_j$ at $(x,\theta)$,
     \item $\mathcal G:=\coprod_{p\in \mathcal E}\mathcal G_p$ is the disjoint union of guards; \mbox{$\mathcal G_{(i,j)}:=\{(x,\theta)\in \mathrm{M}_j\times \Theta_j\mid \text{algebraic constraints}\}$},
     \item $\mathcal R$ is the set of reset maps associated with each edge in $\mathcal E$; $R_{(i,j)}\colon \mathcal T\times \pi_{x}\mathcal G_{(i,j)}\rightarrow \mathcal T\times\mathrm{M}_j$ is a continuously differentiable injection; $\,R_{(i,j)}\in \mathcal C(\mathcal T\times \mathrm{M}_j)$ and denotes the transformation accompanying state transition.
