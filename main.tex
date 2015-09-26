@@ -4,7 +4,7 @@
 \usepackage{amsthm,amsfonts}
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
-\usepackage[ruled]{algorithm2e}
+\usepackage[ruled,linesnumbered]{algorithm2e}
 \usepackage{tikz}
 \usepackage{lipsum}
 %\usepackage{todonotes}
@@ -15,10 +15,12 @@
 \end{scope}
 }
 \providecommand{\red}[1]{\textcolor{red}{#1}}
+\providecommand{\nf}[1]{\normalfont #1}
 \providecommand{\R}{\ensuremath \mathbb{R}}
 \providecommand{\N}{\ensuremath \mathbb{N}}
 \providecommand{\ip}[1]{\ensuremath \left\langle #1\right\rangle}
 \newtheorem{lemma}{Lemma}
+\theoremstyle{remark}
 \newtheorem{remark}{Remark}
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
@@ -27,6 +29,7 @@
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=.pt] (char) {#1};}}
+
 
 \title{Convex Computation of the Reachable Set for Hybrid Systems with Parametric Uncertainty}
 
@@ -54,6 +57,8 @@
   \input{sections/sec_relax}
   \input{sections/sec_examples}
   \input{sections/sec_conc}
+  \appendix
+  \input{sections/sec_app}
 \bibliographystyle{ieeetr}
 \bibliography{references,refs}
 \end{document}
