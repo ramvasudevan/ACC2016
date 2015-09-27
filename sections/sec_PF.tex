@@ -14,7 +14,7 @@ f_j=\begin{bmatrix}
 To address this problem, we rely on the notion of occupation measures, first introduced in \cite{Pitman1977}, to transform the hybrid nonlinear dynamics of the system into a set linear dynamics over measures that can more readily be solved.
 Occupation measures can be interested as measuring the time a solution spends in a portion of the state-space. 
 For instance, suppose the system enters mode $j$ at $\tau_k$ with the states being initialized as $x(\tau_k)=x_0$ and $\theta(\tau_k)=\theta$.
-The occupation measure, \mbox{$\mu_j(\cdot\mid \tau_k,x_0,\,\theta)\in \mathcal M(\mathcal T\times D_j\times \Theta_j)$}, is defined as:
+The occupation measure, \mbox{$\mu_j(\cdot\mid \tau_k,x_0,\,\theta)\in \mathcal M_+(\mathcal T\times D_j\times \Theta_j)$}, is defined as:
 \small
 \begin{align}
 \hspace*{-1mm}\mu_j(A\times B\times C| \tau_k ,x_0,\theta)=\hspace*{-1.25mm}\int\limits_{\cal T} \hspace*{-1.25mm} I_{A\times B\times C}(t,x(t|\tau_k,x_0,\theta),\theta)dt.
@@ -26,22 +26,22 @@ Note the follow relation between the Lebesgue measure on $\mathcal T$ and $\mu_j
 \label{eq:mu_lambda}
 \end{align}
 The occupational measure as defined is a conditional measure -- conditioned on the arrival-time and initial values of the states in that mode.
-To consider a set of possible arrival-times and initial conditions, we define the \emph{average occupation measure} by integrating the conditional occupation measure against a measure on the set of possible initial conditions of the mode, $\mu_{s_j} \in  M(\mathcal T\times D_j\times \Theta_j)$:
+To consider a set of possible arrival-times and initial conditions, we define the \emph{average occupation measure} by integrating the conditional occupation measure against a measure on the set of possible initial conditions of the mode, $\mu_{s_j} \in  {\cal M}_+(\mathcal T\times D_j\times \Theta_j)$:
 \begin{align}
 \mu_j(A\times B\times C)= \hspace*{-5mm}\int\limits_{\mathcal T\times D_j\times \Theta}\hspace*{-5mm}\mu_j(A\times B\times C\mid \tau_k,x_0,\theta)\,d \mu_{s_j}.
 \label{eq:mu_avg}
 \end{align}
-Observe that by definition, the uncertain variables are independent of the states' initial conditions; hence $\mu_{s_i}\in \mathcal M(\mathcal T\times D_j\times \Theta)$ is expressible as a product measure:
+Observe that by definition, the uncertain variables are independent of the states' initial conditions; hence $\mu_{s_i}\in \mathcal M_+(\mathcal T\times D_j\times \Theta)$ is expressible as a product measure:
 \begin{align}
 \mu_{s_j}=\bar\mu_{0_j}\otimes \mu_{\theta_j},\
 \end{align}
-where $\bar \mu_{0_j}\in \mathcal M(\mathcal T\times D_j)$ is a measure describing the set of initial conditions, and $\mu_{\theta_j}\in \mathcal M(\Theta_j)$ is as in the definition of $\mathcal H$.
+where $\bar \mu_{0_j}\in \mathcal M_+(\mathcal T\times D_j)$ is a measure describing the set of initial conditions, and $\mu_{\theta_j}\in \mathcal M_+(\Theta_j)$ is as in the definition of $\mathcal H$.
 
-Similarly, measures on terminals sets, $\mu_{T_j}\in \mathcal M(X_{(T,j)}\times \Theta_j)$:
+Similarly, measures on terminals sets, $\mu_{T_j}\in \mathcal M_+(X_{(T,j)}\times \Theta_j)$:
 \begin{align}
 \mu_{T_j}(A\times B)= \hspace*{-4mm}\int\limits_{\mathcal T\times X_{(T,j)}\times \Theta}\hspace*{-4mm}I_{A\times B}(x(T\mid \tau_k,x_0,\theta),\theta)\,d\mu_{s_{j}},
 \end{align}
-and guards, $\mu_{ G_{e}}\in \mathcal M(\mathcal T\times  G_{(j,k)})$:
+and guards, $\mu_{ G_{e}}\in \mathcal M_+(\mathcal T\times  G_{(j,k)})$:
 \begin{align}
 \mu_{G_{(j,k)}}(A\times B\times C)=\hspace*{-5mm}\int\limits_{\mathcal T\times G_{(j,k)}}\hspace*{-5mm}I_{A\times B\times C}(t,x(t\mid \tau_k,x_0,\theta),\theta)\,d\mu_{s_{j}}
 \end{align}
@@ -60,7 +60,7 @@ As a first step, define linear operators {$\mathcal L_{ f_j}\colon \mathcal C^1(
       \mathcal L_{f_j}v=\frac{\partial v}{\partial t}+\ip{\nabla_x v,\tilde f_j}
     \label{eq:Lv}
 \end{align}
-where $v\in \mathcal C^1(\mathcal T\times D_j\times \Theta_j;\R)$ is an arbitrary test function.
+where $v\in \mathcal C^1(\mathcal T\times D_j\times \Theta_j;\R)$ is an arbitrary test function and $\nabla_x v$ computes the gradient of $v$ in the $D_j$ coordinates.
 Suppose the system transitioned to mode $j$ at \mbox{$t=\tau_{k-1}$} with the state taking value upon reset $x(\tau_{k-1})$ and $\theta$.
 The value of $v$, evaluated along the flow of the system and at $t=\tau_{k}$ is computed using the Fundamental Theorem of Calculus:
 \begin{align}
@@ -105,7 +105,7 @@ The initial measure in the $(t,x)$-coordinate can be decomposed as:
 \begin{align}
   \bar\mu_{0_j}=\delta_0\otimes\mu_{0_j}+\pi^{(t,x)}_*\sigma_{0_j}
 \end{align}
-where $\mu_{0_j}\in \mathcal M(D_j)$ is the measure describing initial conditions to the system at $t=0$, $\sigma_{0_j}\in \mathcal M(\mathcal T\times D_j\times \Theta_j)$ is a measure describing initial conditions arriving due to reset, and $\pi^{(t,x)}_*$ denotes the pushforward constructed by lifting the $(t,x)$-projection operator, $\pi^{(t,x)}: \mathcal T\times D_j\times \Theta_j \to \mathcal T\times D_j$, to measures (refer to Chapter 11 in \cite{lee2003smooth} for an introduction to pushforwards). 
+where $\mu_{0_j}\in \mathcal M_+(D_j)$ is the measure describing initial conditions to the system at $t=0$, $\sigma_{0_j}\in \mathcal M_+(\mathcal T\times D_j\times \Theta_j)$ is a measure describing initial conditions arriving due to reset, and $\pi^{(t,x)}_*$ denotes the pushforward constructed by lifting the $(t,x)$-projection operator, $\pi^{(t,x)}: \mathcal T\times D_j\times \Theta_j \to \mathcal T\times D_j$, to measures (refer to Chapter 11 in \cite{lee2003smooth} for an introduction to pushforwards). 
 State resets occur when the state reaches a guard. 
 As a result, we must formalize a relationship between $\mu_{ G_{(i,j)}}$ and $\sigma_{0_j},~\forall (i,j)\in \mathcal E$.
 To formalize this relationship notice that $\sigma_{0_j}$ can be decomposed into measures corresponding to the source of each arrival state:
@@ -119,86 +119,93 @@ By applying a change of variables formula, as in Lemma 1 in \cite{shia2014convex
     \ip{\sigma_{(i,j)},w}=\ip{\pi^{(t,x)}_*\mu_{ G_{(i,j)}},w\circ R_{(i,j)}}
     \label{eq:reset_measure}
 \end{align}
-where $w\in \mathcal C(\mathcal T\times \mathcal D_j)$ and
-$$
-  \ip{\pi_{t,x}\mu_{ G_{(i,j)}},s}=\ip{\mu_{ G_{(i,j)}},s},\,\forall s\in \mathcal C(\mathcal T\times D_i);
-$$
-essentially, $\sigma_{(i,j)}$ is a push-forward measure of $\mu_{ G_{(i,j)}}$.
+where $w\in \mathcal C(\mathcal T\times \mathcal D_j)$.
+Note that since $\mu_{\theta_j}$ is a probability distribution, and there is no evolution along the $\Theta_j$ coordinate:
+\begin{equation}
+  \ip{\pi^{(t,x)}_*\mu_{ G_{(i,j)}},s}=\ip{\mu_{ G_{(i,j)}},s},
+\end{equation}
+for all $s\in \mathcal C(\mathcal T\times D_i)$. Essentially, $\sigma_{(i,j)}$ can be thought of as the push-forward measure of $\mu_{ G_{(i,j)}}$.
+% essentially, $\sigma_{(i,j)}$ is a push-forward measure of $\mu_{ G_{(i,j)}}$.
 %\begin{remark}
 %\label{remark:primal}
 %  \red{A note on domain in time and the Liouville's equations}
 %\end{remark}
-  \subsection{The primal}
-  \label{ssec:primal}
-  With the constraints expressed in terms of measures, the problem of approximating the BRS is formulated as an infinite-dimensional Linear Program that supremizes the \emph{volume} of the set of initial condition.
-  \begin{flalign}\nonumber
-  &\sup_{\Lambda}\sum_{j=1}^{n_m}\ip{\mu_{0_j},1}&&&(P)\\\nonumber
-  &\text{st.}\\
-  &\mu_{s_j}+\mathcal L_{f}'\mu_j=\,\mu_{f_j}&&&\forall j\in \N_{n_m}\label{eq:primal:liouville}\\
-  &\mu_{0_j}+\hat\mu_{0,j}=\,\lambda_j&&&\forall j\in \N_{n_m}\\
-  &\sum_{j=1}^{n_m}\ip{\mu_{T_j},1}=\,\sum_{j=1}^{n_m}\ip{\mu_{0_j},1}\label{eq:mass_conservation}
-  \end{flalign}
-  where $\lambda_j$ is the Lebesgue measure supported on $D_j$.
-  $$\Lambda=\{\mu_j,\mu_{0_j},\mu_{T_j},\hat\mu_{0_j},\mu_{ G_{(j,k)}}\ge 0,\,\forall j\in \mathcal \N_{n_m},(j,k)\in \mathcal E\}.$$
-Variables $\hat\mu_{0_j}\in \mathcal M(D_j)$ are slack variables introduced to enforce a stronger constraint than absolute continuity of $\mu_{0_j}$ wrt. to $\lambda_j$
-  \begin{flalign}
-  &&&\mu_{0_j}(A)\le \lambda_j(A)&\forall A\subset D_j\label{eq:primal:domination}
-    \end{flalign}
-  The constraint in Eqn.~(\ref{eq:mass_conservation}) ensures that all trajectories that emanate $\cup_{j\in \mathcal J}\,spt(\mu_{0_j})$ reach $X_{T}$ at $t=T$, and is not {\em stuck} at any of the guards.
-  %%%%%%%%%%
-  \begin{lemma}
-   If $\mu_{0_j},\forall j\in \mathcal J$ is part of the optimal solution of ($P$) then $\bigcup_{j\in \mathcal J}\,spt(\mu_{0_j})$ is the BRS of the system. In addition, the optimal value of ($P$) is equal to $\sum_{j\in \mathcal J}\lambda_j(X_{0_j})$, the sum of \emph{volumes} of the BRSs in each mode.
-  \end{lemma}
 
-  \begin{proof}
-  Suppose $\sum_{j\in \mathcal J}\lambda_j(spt(\mu_{0_j})\backslash X_{(0,j)})>0$, then by Lemma~\ref{lemma:existence}, there exist trajectories that begin in $\cup_{j\in \mathcal J}(spt(\mu_{0_j})\backslash X_{(0,j)})$ that reach $X_T$; this is a contradiction. Thus,
+\subsection{The primal}
+\label{ssec:primal}
+
+The problem of computing the uncertain backwards reachable set of ${\cal H}$ can be formulated as an infinite-dimensional linear program that supremizes the \emph{volume} of the set of initial condition:
+  \begin{flalign}\nonumber
+  & & \sup_{\Lambda} \hspace*{1cm} & \sum_{j \in {\cal J}}\ip{\mu_{0_j},1} && (P) \nonumber \\
+  & & \text{st.} \hspace*{1cm} &\mu_{s_j}+\mathcal L_{f}'\mu_j=\,\mu_{f_j } && \forall j\in {\cal J} \label{eq:primal:liouville}\\
+  & & & \mu_{0_j}+\hat\mu_{0,j}=\,\lambda_j && \forall j\in {\cal J} \\
+  & & & \sum_{j \in {\cal J}}\ip{\mu_{T_j},1}=\,\sum_{j \in {\cal J}}\ip{\mu_{0_j},1} && \label{eq:mass_conservation}
+  \end{flalign}
+where $\lambda_j$ is the Lebesgue measure supported on $D_j$, $\Lambda=\Big\{\big(\{\mu_j\}_{j \in {\cal J}},\{\mu_{0_j}\}_{j \in {\cal J}},\{\mu_{T_j}\}_{j \in {\cal J}},\{\hat\mu_{0,j}\}_{j \in {\cal J}},\{\mu_e\}_{e \in {\cal E}}\big) \in \bigtimes\limits_{j \in {\cal J}} {\cal M}_+({\cal T} \times D_j \times \Theta_j) \bigtimes\limits_{j \in {\cal J}} {\cal M}_+( D_j )  \bigtimes\limits_{j \in {\cal J}} {\cal M}_+( X_{(T,j)} )$ $\bigtimes\limits_{j \in {\cal J}} {\cal M}_+( D_j ) \bigtimes\limits_{e \in {\cal E}} {\cal M}_+( G_e )  \Big\}$, and $1$ denotes the function that takes value $1$ everywhere.
+The $\hat\mu_{0_j}\in \mathcal M(D_j)$ are slack variables introduced to ensure that the mass of the $\mu_{0_j}$ are identical to the volume (under the Lebesgue measure) of the uncertain backwards reachable set, as we prove below. 
+Eqn.~(\ref{eq:mass_conservation}) ensures that all trajectories that emanate $\cup_{j\in \mathcal J}\,supp(\mu_{0_j})$ reach $X_{T}$ at $t=T$.
+
+\begin{lemma}
+If $\{\mu_{0_j}\}_{j \in {\cal J}}$ are components of some $\mu \in \Lambda$ that optimizes $(P)$, then ${\cal X}_{(0,j)} = supp(\mu_{0_j})$ for each $j \in {\cal J}$.
+In addition, the optimal value of $(P)$ is equal to the sum of \emph{volumes} of the uncertain backwards reachable set in each mode, i.e. $\sum_{j\in \mathcal J}\lambda_j(X_{0_j})$.
+\end{lemma}
+\begin{proof}
+Suppose $\sum_{j\in \mathcal J}\lambda_j(supp(\mu_{0_j})\backslash X_{(0,j)})>0$, then by Lemma~\ref{lemma:existence} (in the appendix), there exist trajectories that begin in $\cup_{j\in \mathcal J}(supp(\mu_{0_j})\backslash X_{(0,j)})$ that reach $X_T$; this is a contradiction. Thus,
   \begin{align}
-  &\bigcup_{j\in \mathcal J} spt(\mu_{0_j})\subset \bigcup_{j\in \mathcal J} X_{(0,j)},\\
-  &\sum_{j\in \mathcal J}\lambda_j(spt(\mu_{0_j}))\le\sum_{j\in \mathcal J}\lambda_j( X_{(0,j)}).
+  &\bigcup_{j\in \mathcal J} supp(\mu_{0_j})\subset \bigcup_{j\in \mathcal J} X_{(0,j)},\\
+  &\sum_{j\in \mathcal J}\lambda_j(supp(\mu_{0_j}))\le\sum_{j\in \mathcal J}\lambda_j( X_{(0,j)}).
   \label{eq:support_lemma:1}
   \end{align}
-    By definition of the BRS, all state trajectories that emanate from a subset of $X_0$ end in $X_T$. That is, for each $j\in \mathcal J$ and initial measure $\mu_{0_j}$, if $spt(\mu_{0_j})\subset X_{(0,j)}$, there exist measures $\mu_{j}$ and $\mu_{f_j}$ that satisfy Eqn.~(\ref{eq:primal:liouville}). Thus the following inequality is true.
+By definition of the BRS, all state trajectories that emanate from a subset of $X_0$ end in $X_T$. That is, for each $j\in \mathcal J$ and initial measure $\mu_{0_j}$, if $supp(\mu_{0_j})\subset X_{(0,j)}$, there exist measures $\mu_{j}$ and $\mu_{f_j}$ that satisfy Eqn.~(\ref{eq:primal:liouville}). 
+Thus the following inequality is true:
     \begin{align}
     \sum_{j\in \mathcal J}\lambda_j(spt(\mu_{0_j}))\ge \sum_{j\in \mathcal J}\lambda_j(X_{(0,j)})
       \label{eq:support_lemma:2}
     \end{align}
-   From Eqns.~(\ref{eq:support_lemma:1})\&(\ref{eq:support_lemma:2}), $\cup_{j\in \mathcal J}\,spt(\mu_{0_j})$ is the BRS of the system.
-    \par
-    That the optimal value of $(P)$ is volume of the BRS follows from Eqn.~(\ref{eq:primal:domination}) and the observation that \mbox{$\lambda_{j}|_{X_{(0,j)}},\forall j\in \mathcal J$} is feasible in ($P$).
+From Eqns.~(\ref{eq:support_lemma:1}) and (\ref{eq:support_lemma:2}), $\cup_{j\in \mathcal J}\,spt(\mu_{0_j})$ is the BRS of the system. 
+That the optimal value of $(P)$ is the volume of the uncertain backward reachable set follows by noting that the slack variables ensure absolute continuity of each $\mu_{0_j}$ with respect to the Lebesgue measure and the observation that \mbox{$\lambda_{j}|_{X_{(0,j)}},\forall j\in \mathcal J$} is feasible in ($P$).
   \end{proof}
 
-  \subsection{The dual}
-  \label{ssec:dual}
-    The dual corresponding to $(P)$ is derived using standard techniques and is presented below.
-    \par
-    \footnotesize
-    \begin{flalign}\nonumber
-    &&&\inf \sum_{j\in \N_{n_m}}\ip{\lambda_j,w_j}&(D)\\\nonumber
-    &&&\text{st.}\\
-    &&&w_j\ge \,0&\forall (x,j)\in \mathcal D\\
-    &&& v_j(T,\cdot)+q\ge\, 0 ,\> &\forall (x,j,\theta)\in \mathcal X_T\times \Theta \label{eq:dual:terminal}\\
-    &&& - \mathcal L_{\tilde f}v_j\ge\,0 ,\> &\forall (t,x,j,\theta)\in \mathcal T\times\mathcal D\times \Theta\label{eq:dual:lfv}\\
-    &&& w_j-\ip{\mu_{\theta_j},v(0,\cdot)}-q\ge \,1 ,\> &\forall (x,j)\in \mathcal D\label{eq:dual:levelset}\\
-    &&&v_j\ge\, \ip{\mu_{\theta_k},v_k}\circ R_{(j,k)},&\forall (t,x,\theta,(j,k)),\in \mathcal T\times \mathcal G\times \mathcal E\label{eq:dual:mode_transition}
-    \end{flalign}
-    \normalsize
-    where $q\in \R$, $v_j\in C^1(\mathcal T\times \mathrm M_j\times \Theta_j)$ and $w_j\in C(\mathrm M_j)$.
-    \begin{lemma}
-      If $(w,v,q)$ is the solution to (D), then the super-level set
-      \begin{align}
-      \bigcup_{j\in \mathcal J}\,\{x\mid w_j(x)\ge 1\}
-      \end{align}
-      is an outer approximation of the BRS of the system whose dynamics is described by Alg.~\ref{alg:execution}.
-    \end{lemma}
-    \begin{proof}
-    The approach we adopt to prove this lemma is to construct the projection of the BRS on any mode and show that it is a 1-level set of the appropriate function. To assist in constructing the arguments, assume wlog., that the state trajectory terminates in $X_{(T,j_k)}$ for some $j_k$. The state trajectory must have arrived in mode $j_k$ through a finite sequence of mode-transitions (according to Assumption~\ref{assump:zeno}); wlog., let this sequences of mode-transitions be of length $k$. Suppose the states entered mode $j_k$ at time $\tau_k$, then, from the fundamental theorem of calculus and the constraints in Eqns.~(\ref{eq:dual:terminal})\&(\ref{eq:dual:lfv}), the following inequalities follow.
-    \begin{align}
-      -q\le v_{j_k}(T,x(T\mid x(\tau_k^+),\theta),\theta)\le v_j(\tau_k,x(\tau_k^+),\theta)\\
-      \Rightarrow -q\le \ip{\mu_{\theta_{j_k}},v_{j_k}(\tau_k,x(\tau_k^+),\theta)}
-    \end{align}
-    By iterative application of the constraint in Eqn.~(\ref{eq:dual:mode_transition}) and finally Eqn.~(\ref{eq:dual:levelset}), it follows that
-    \begin{align}
-      -q\le&\, \ip{\mu_{\theta_{j_k}},v_{j_k}(t,x,\theta)}\circ R_{(j_{k-1},j_{k})}(\tau_{k},x(\tau_{k}^-))\\
+\subsection{The dual}
+\label{ssec:dual}
+The dual to $(P)$ for a quasi-uncertain hybrid system ${\cal H}$ can be written as:
+\begin{flalign}\nonumber
+	& & \inf_F \hspace*{0.1cm} & \sum_{j\in {\cal J}}\ip{\lambda_j,w_j} && \hspace*{-0.1cm} (D)\nonumber\\
+	& & \text{st.} \hspace*{0.1cm} & w_j(x)\ge \,0 && \hspace*{-0.1cm} \forall x \in D_j \nonumber \\
+	& & & && \hspace*{-0.1cm} \forall j\in \mathcal J, \nonumber \\
+	& & & v_j(T,x,\theta)+p\ge\, 0 ,\> && \hspace*{-0.1cm} \forall (x,\theta)\in \Phi_j \nonumber \\
+	& & & && \hspace*{-0.1cm}\forall j \in {\cal J}, \label{eq:dual:terminal}\\
+	& & & - \mathcal L_{f}v_j(t,x,\theta)\ge\,0 ,\> && \hspace*{-0.1cm} \forall (t,x,\theta)\in \Omega_j \nonumber \\
+	& & & && \hspace*{-0.1cm}\forall j \in {\cal J}, \label{eq:dual:lfv} \\
+	& & & w_j(x)-\ip{\mu_{\theta_j},v_j(0,x,\theta)}-p\ge \,1 ,\> && \hspace*{-0.1cm} \forall x \in D_j \nonumber\\
+	& & & && \hspace*{-0.1cm}\forall j \in {\cal J}, \label{eq:dual:levelset} \\
+	& & & v_j\ge\, \ip{\mu_{\theta_k},v_k}\circ R_{(j,k)},&& \hspace*{-0.1cm} \forall (x,\theta)\in \Upsilon_{(j,k)} \nonumber \\
+	& & & && \hspace*{-0.1cm} \forall (j,k) \in {\cal E}, \label{eq:dual:mode_transition}
+\end{flalign}
+where $F = \Big\{ \big(\{v\}_{j \in {\cal J}},\{w_j\}_{j \in {\cal J}},p\big) \in \bigtimes\limits_{j \in {\cal J}}C^1(\mathcal T\times D_j\times \Theta_j) \bigtimes\limits_{j \in {\cal J}} C( D_j) \times \R \Big\}$, $\Phi_j = X_{(T,j)} \times \Theta_j $, $\Omega_j = {\cal T} \times D_j \times \Theta_j$, and $\Upsilon_{(j,k)}= G_{(j,k)} \times \Theta_j$. 
+The solution to $D$ can be used to determine the uncertain backwards reachable set:
+\begin{lemma}
+If $\big(\{v\}_{j \in {\cal J}},\{w_j\}_{j \in {\cal J}},p\big)$ is a feasible point to $D$, then the super-level set:
+\begin{align}
+	\bigcup_{j\in \mathcal J}\,\{x \in D_j \mid w_j(x)\ge 1\}
+\end{align}
+is an outer approximation of the uncertain backwards reachable set of ${\cal H}$.
+Furthermore there is a sequence of feasible solutions to $(D)$ such that for each $j \in {\cal J}$, the 1-super-level set of the feasible $w_j$ converges from above to the indicator function on $X_{(0,j)}$ in the $L^1$ norm and almost uniformly.
+\end{lemma}
+
+\begin{proof}
+To prove this lemma we project the uncertain backwards reachable set into each mode and show that it is part of the 1-level set of $w$.
+Assume that the state trajectory terminates in $X_{(T,j_k)}$ for some $j_k$
+The state trajectory must have arrived in mode $j_k$ through a finite sequence of mode-transitions (according to Assumption~\ref{assump:zeno}). 
+Let this sequences of mode-transitions be of length $k$. 
+Suppose the states entered mode $j_k$ at time $\tau_k$, then from the Fundamental Theorem of Calculus and the constraints in Eqns.~(\ref{eq:dual:terminal})\&(\ref{eq:dual:lfv}), the following inequalities hold:
+\begin{align}
+	-q\le v_{j_k}(T,x(T\mid x(\tau_k^+),\theta),\theta)\le v_j(\tau_k,x(\tau_k^+),\theta)\\
+	\Rightarrow -q\le \ip{\mu_{\theta_{j_k}},v_{j_k}(\tau_k,x(\tau_k^+),\theta)}
+\end{align}
+By iterative application of the constraint in Eqn.~(\ref{eq:dual:mode_transition}) and finally Eqn.~(\ref{eq:dual:levelset}), it follows that:
+\begin{align}
+	-q\le&\, \ip{\mu_{\theta_{j_k}},v_{j_k}(t,x,\theta)}\circ R_{(j_{k-1},j_{k})}(\tau_{k},x(\tau_{k}^-))\\
       \le&\, v_{j_{k-1}}(\tau_{k},x(\tau_{k}^-\mid x(\tau_{k-1}^+),\theta),\theta)\\
       \le &\, \ip{\mu_{\theta_{j_{k-1}}},v_{j_k}(\tau_k,x(\tau_{k-1}^+),\theta)}\\\nonumber
       &\,\vdots\\
@@ -206,19 +213,19 @@ Variables $\hat\mu_{0_j}\in \mathcal M(D_j)$ are slack variables introduced to e
       \le &\,v_{j_0}(0,x_0,\theta)\\
       \le &\,\ip{\mu_{\theta_{j_0}},v_{j_0}(0,x_0,\theta)}\\
       \le &\, w_{j_0}(x_0)-q-1.
-    \end{align}
-    The final inequality implies that for every trajectory that ends in $X_{(t,j_k)}$, $x(t)=x_0\in D_{j}$  satisfies the condition $w_{x_0}\ge 1$. Thus the set of initial conditions that begin in mode $j_0$ and reach the terminal set projected into mode $j_k$ is given by the super-level set
-    \begin{align}
-      I_{(j_0,j_k)}=\{x\mid w_{j_0}\ge 1\}.
-    \end{align}
-    Note that the definition of $I_{j_0,j_k}$ does not depend on the mode in which the terminal set is reached; thus \mbox{$I_{(j_0,\mathcal J)}=X_{(0,j_0)}$}. Finally, by observing that $j_0$ is an arbitrary element of $\mathcal J$, we deduce the stated result.
-    \end{proof}
-    \begin{lemma}
-      There is not gap between (P) and (D).
-    \end{lemma}
-    \begin{proof}
-      The proof follows from \cite[Theorem 3.10]{Anderson1987}, and is similar to \cite[Theorem 2]{henrion2014convex}; it is not presented for brevity.
-    \end{proof}
-    \begin{remark}
-    There are two key aspects of the presentation in this section that deserve re-iteration: (1) by definition, the uncertainties that influence the dynamics can be visualized as a discrete random process with updates to the instantiation of the uncertainty occurring upon entering a new mode; (2) the estimated BRS is the set of initial conditions from which {\em all} trajectories that emanate reach the terminal set for {\em all} possible discrete sequence of uncertainty. As a direct implication of the second point, the solution of the problem is the intersection of the BRS of every possible sequence of uncertainty.
-    \end{remark}
+\end{align}
+The final inequality implies that the initial condition of every trajectory that ends in the terminal set belongs to the 1-superlevel set of $w_j$ for some $j \in {\cal J}$.
+The remainder of the proof follows from a straightforward extension to \cite[Theorem 2]{henrion2014convex}.
+\end{proof}
+
+Finally, note that the value computed by either optimization problem is equal which follows from \cite[Theorem 3.10]{Anderson1987} and is similar to \cite[Theorem 2]{henrion2014convex}:
+\begin{lemma}
+There is not gap between $(P)$ and $(D)$.
+\end{lemma}
+
+\begin{remark}
+There are two key aspects of the presentation that deserve re-iteration: 
+First, the uncertainties that influence the dynamics are drawn from the distribution each time a trajectory enters a new mode; 
+Second, the uncertain backwards reachable set corresponds to the set of initial conditions for \emph{all} trajectories that are able to reach the terminal set in spite of \emph{all} possible sequences of ``discrete'' uncertainty that each have non-zero probability.
+Notice that the uncertain backwards reachable set is the intersection of the backwards reachable set for ever possible discrete uncertainty with non-zero probability.
+\end{remark}
