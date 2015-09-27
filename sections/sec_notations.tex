@@ -2,7 +2,7 @@
 \label{sec:preliminaries}
   This section defines the notation, the class of systems, and problem considered throughout the paper.
 
-  \subsection{Notations}
+  \subsection{Notation}
   In the remainder of this text the following notation is adopted:
 Sets are italicized and capitalized (ex. $K$).
 The boundary of a set $K$ is denoted by $\partial K$.
@@ -19,7 +19,7 @@ The space of Radon probability measures on $K$ is denoted by ${\cal P}(K)$.
 The Lebesgue measure is denoted by $\lambda$.
 Finally, supports of measures, $\mu$, are identified as $supp(\mu)$.
 
-\subsection{System class description}
+\subsection{Quasi-Uncertain Hybrid Systems}
   The class of uncertain systems considered in this study consists of hybrid systems that conform to the following definition and undergo executions as described by Alg.~\ref{alg:execution}.
 \begin{defn}[Inspired by \cite{Burden2015}]\label{def:system}
   A `quasi-uncertain' hybrid system is a tuple \mbox{$\mathcal H=(\mathcal J,\mathcal E,\mathcal D,\mathcal F,\mathcal G,\mathcal R,\Gamma)$}, where
@@ -151,7 +151,7 @@ G_{(1,1)}=\{ (\beta, \dot{\beta})\mid \beta=\gamma+\alpha+\theta\}.
 Observe that as the PRW continues to roll, \emph{the terrain is allowed to change since the random variable $\theta$ is allowed to take a distinct value after each contact with the ground}.
 \end{example}
 
-\subsection{Problem description}
+\subsection{Problem Description}
 {\em The objective of this work is to estimate the largest set of initial conditions from which all state trajectories of $\mathcal H$, regardless of any encountered uncertainty, reach a terminal set by a pre-specified time, $T$.}
 To formalize the definition of this \emph{uncertain backwards reachable set}, we denote the terminal set as $X_T$ and its projection into each mode by $X_{(T,j)}$, which we assume is compact.
 For convenience, we define $\mathcal T=[0,\,T]$.
