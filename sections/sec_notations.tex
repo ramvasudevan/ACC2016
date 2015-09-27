@@ -8,7 +8,8 @@ Sets are italicized and capitalized (ex. $K$).
 The boundary of a set $K$ is denoted by $\partial K$.
 % The disjoint union of sets is defined as: $\coprod_{i\in I}K_i=\cup_{i\in I}K_i\times \{i\}$.
 Finite truncations of the set of natural numbers are expressed as \mbox{$\N_n:=\{1,\ldots,n\}$}.
-The set of continuous and absolutely continuous functions on a compact set $K$ are represented as $\mathcal C(K)$ and $\mathcal C_{ab}(K)$ respectively.
+The set of continuous on a compact set $K$ are denoted by $\mathcal C(K)$.
+% The set of continuous and absolutely continuous functions on a compact set $K$ are represented as $\mathcal C(K)$ and $\mathcal C_{ab}(K)$ respectively.
 The ring of polynomials in $x$ is denoted by $\R[x]$, and the degree of a polynomial is equal to degree its largest multinomial; the degree of the multinomial $x^\alpha,\,\alpha\in \R_{\ge 0}^n$ is $|\alpha|=\|\alpha\|_1$; and $\R_d[x]$ is the set of polynomials in $x$ with maximum degree $d$.
 The dual to $\mathcal C(K)$ is the set of Radon measures on $K$, denoted as $\mathcal M(K)$, and the pairing of $\mu\in \mathcal M(K)$ and $v\in \mathcal C(K)$ is:
   \begin{align}
@@ -25,10 +26,10 @@ Finally, supports of measures, $\mu$, are identified as $supp(\mu)$.
   \begin{itemize}
     \item $\mathcal J$ is a finite set of indices of discrete states in of $\mathcal H$;
     \item $\mathcal E\subset \mathcal J\times \mathcal J$ is a set of two-tuples describing directed edges;
-    \item $\mathcal D = \{D_j\}_{j \in {\cal J}}$ is the set of domains where each $D_j$ is a compact subset of $\R^{n_j}$, $n_j \in \N$;
+    \item $\mathcal D = \{D_j\}_{j \in {\cal J}}$ is the set of domains where each $D_j$ is a compact $n_j$-dimensional manifold with boundary where $n_j \in \N$;
     \item $\Gamma = \{\mu_{\theta_j} \}_{j \in {\cal J}}$ where $\mu_{\theta_j}\in \mathcal P(\Theta_j)$ describes the uncertainty associated with discrete state $j \in {\cal J}$;
     \item $\mathcal F=\{\tilde f_j\}_{j\in \mathcal J}$ where $\tilde{f}_j: D_j \times \Theta_j \to D_j$ is a Lipschitz continuous function describing the dynamics on $D_j$;
-    \item $\mathcal G=\{G_e\}_{e \in {\cal E}}$ is the set of guards where each $G_{(j,j')} \subset \partial D_j$ is a guard in domain $j \in {\cal J}$ that defines a transition to mode $j' \in {\cal J}$;
+    \item $\mathcal G=\{G_e\}_{e \in {\cal E}}$ is the set of guards where each $G_{(j,j')} \subset \partial D_j$ is a closed, embedded, co-dimension 1 submanifold with boundary, and is a guard in domain $j \in {\cal J}$ that defines a transition to mode $j' \in {\cal J}$;
     \item $\mathcal R = \{R_e\}_{e \in {\cal E}}$ is the set of reset maps, where each map is a continuously differentiably injection $R_{(j,j')}: G_{(j,j')} \to D_{j'}$ and defines the transition from guard $G_{(j,j')}$.
   \end{itemize}
 \end{defn}
@@ -85,39 +86,37 @@ Steps~\circled{7}--\circled{11} isolates the first hitting-time of a guard of mo
 Note that the uncertainty does not evolve with time.
 The uncertainty only changes when the system mode resets.
 This class of systems is still quite rich as is illustrated by the two representative examples ---a simple 1D pedagogical example, and a 2D representative of walking models---presented next.
-\begin{example}[1-D quasi-uncertain linear dynamical system]
+\begin{example}[1-D Quasi-Uncertain Linear System on a Circle]
 \label{example:1D}
-Consider a quasi-uncertain linear system with dynamics:
+Consider a quasi-uncertain linear system evolving on a circle with dynamics:
 \begin{align}
 	\dot x = -0.7x+0.2\theta-0.1,
 \end{align}
-where \mbox{$x(t)\in [-1,1]$} and $\theta\in [-1,1]$ is an unknown parameter affecting the dynamics.
+where $D_1 = [-1,1]$, $G_{(1,1)} = \{-1\}$, $R_{(1,1)}(x) = -x$. and $\theta\in [-1,1]$ is an unknown parameter affecting the dynamics. 
 The uncertain parameter can be thought of as arising due to structural modeling errors, or as a result of reducing a singular-perturbed system.
-Note that this system is not a hybrid system; however, it can be treated as one.
-One way to achieve this is by considering a single mode hybrid system with domain $D_1 = [-1,1]$, with a guard $ G_{(1,1)} = \{-1\}$, and a reset map $R_{(1,1)}(x) = -x$.
 \end{example}
 \begin{figure}[!t]
 \centering
   \begin{tikzpicture}[scale=1]
     \draw[-,ultra thick] (0,2) to (2,1);
     \draw[dashed, thick] (2,1) -- (5.6,-0.8)-- (4.85,-.8);
-    \draw[ultra thick] (2,1) to (1.85,0.7) -- (4.85,-0.8)--(0,-0.8);
-    \draw[thick] (2.95,1.25) circle (.15cm);
-    \spoke{(2.95,1.25)}{-75};
-    \spoke{(2.95,1.25)}{-15};
-    \spoke{(2.95,1.25)}{45};
-    \spoke{(2.95,1.25)}{105};
-    \spoke{(2.95,1.25)}{165};
-    \spoke{(2.95,1.25)}{-135};
+    \draw[ultra thick] (2,1) to (1.77,0.5) -- (4.85,-0.8)--(0,-0.8);
+    \draw[thick] (3,1.1) circle (.15cm);
+    \spoke{(3.0,1.1)}{-85};
+    \spoke{(3.0,1.1)}{-25};
+    \spoke{(3.0,1.1)}{35};
+    \spoke{(3,1.1)}{95};
+    \spoke{(3,1.1)}{155};
+    \spoke{(3,1.1)}{-145};
     \draw[dotted,thick] (2,1) -- (2,2);
-    \draw[dotted, thick] (2,1) -- (2.75,.25);
-    \draw[->,thick] (2.3, 0.7) to [out=-145, in =75] (2.2,0.5) ;
-    \node at (2.1,0.7) {\small $\theta$};
-    \draw[->,thick] (4,-.35) to  [out=-145, in =125] (4,-0.8);
+    \draw[dotted, thick] (2,1) -- (2.63,0.12);
+    \draw[->,thick] (2.3, 0.6) to [out=-145, in =115] (2.2,0.3) ;
+    \node at (2.0,0.6) {$\theta$};
+    \draw[->,thick] (4,-.45) to  [out=-145, in =125] (4,-0.8);
     \node at (3.7,-0.6) {$\gamma$};
-    \draw[->, thick] (3.08,1.75) to [out=150, in =65] (2.6,1.6);
+    \draw[->, thick] (3.2,1.55) to [out=125, in =55] (2.7,1.5);
     \node at (2.8,2) {$2\alpha$};
-    \draw[->,thick] (2.5,1.12) to [out=115, in =0] node[pos=0.62, above]{\small $\beta$} (2,1.4) ;
+    \draw[->,thick] (2.5,1.05) to [out=115, in =0] node[pos=0.5, above]{\small $\beta$} (2,1.4) ;
   \end{tikzpicture}
   \caption{Schematic of the rimless wheel with $\theta$ being the disturbance.}
   \label{fig:rw_schematic}
@@ -136,34 +135,32 @@ The continuous dynamics of the PRW are:
     \dot\beta&\sin(\beta)
   \end{bmatrix}',
 \end{align}
-where $\vartheta$ is the angle between the swinging spoke and the vertical located at the pivoting leg. Once the swinging spoke makes contact with the terrain, the states are reset as:
+where $\beta$ is the angle between the vertical (which is defined as the line that is perpendicular to the base of the inclined plane) and the pivoting spoke. 
+Once the swinging spoke makes contact with the terrain, the states are reset as:
 \begin{align}
 R_{(1,1)}(\beta^-,\dot \beta^-)=\begin{bmatrix}
     2\gamma-\beta^-&
     \cos(2\alpha)\,\dot\beta^-
   \end{bmatrix}'.
 \end{align}
-For a PRW rolling down an inclined plane with flat terrain, at the instance when the swinging spoke makes contact with the ground, the states of the system satisfy the following condition which defines the guard:
+For a PRW rolling down an inclined plane with flat terrain, at the instance when the swinging spoke makes contact with the ground $\beta = \gamma + \alpha$.
+To encode the uncertainty due to terrain size, suppose the PRW encounters a step of size $\delta$, then if we let $\theta =  \arcsin \left( \frac{\delta}{2 l \sin \alpha} \right)$, the guard is defined as:
 \begin{align}
-\beta = \gamma+\alpha.
+G_{(1,1)}=\{ (\beta, \dot{\beta})\mid \beta=\gamma+\alpha+\theta\}.
 \end{align}
-For a PRW rolling down an inclined with an uneven terrain the guard is defined as:
-\begin{align}
-G_{(1,1)}=\{x\mid x=\gamma+\alpha+\theta\}.
-\end{align}
-Observe that as the PRW continues to roll, \emph{the terrain is allowed to change since the random variable $\theta$ is allowed to take a distinct value after each reset}.
+Observe that as the PRW continues to roll, \emph{the terrain is allowed to change since the random variable $\theta$ is allowed to take a distinct value after each contact with the ground}.
 \end{example}
 
 \subsection{Problem description}
-{\em The objective of this work is to estimate the largest set of initial conditions from which all state trajectories of $\mathcal H$, regardless of uncertainty sequence, reach the terminal set $X_T$ by a pre-specified time, $T$.}
-We define this set mode-wise with a slight abuse of notations as
+{\em The objective of this work is to estimate the largest set of initial conditions from which all state trajectories of $\mathcal H$, regardless of any encountered uncertainty, reach a terminal set by a pre-specified time, $T$.}
+To formalize the definition of this \emph{uncertain backwards reachable set}, we denote the terminal set as $X_T$ and its projection into each mode by $X_{(T,j)}$, which we assume is compact.
+For convenience, we define $\mathcal T=[0,\,T]$.
+We define the uncertain backwards reachable set mode-wise:
 \begin{align}
 \begin{aligned}
-     X_{(0,j)}:=\{x_0\in \mathrm M_j\mid \forall x=\mathcal H(x_0,T) \\\,x(T)\in X_T\}
+     X_{(0,j)}=\{x_0\in D_j \mid\ &\forall x: [0,T] \to {\cal D} \text{ constructed via Alg. 1} \\\ & \text{with } x(0) = x_0 \, x(T) \in X_T \}
      \label{eq:brs}
 \end{aligned}
 \end{align}
-where $\mathcal H\colon \cup_{j\in \mathcal J} D_j\times \R\rightarrow \mathcal C_{ab}([0,T])$ is a functional representation of the system execution.
-Observe that, by definition, for systems from $\mathfrak{U}$, if $X_{(0,j)}$ is the largest non-empty BRS in mode $j$, then all initial conditions from $X_{(0,j)}$, must reach $X_T$ at time $T$, regardless of the number of mode transitions that may occur in the interim and for every possible concomitant sequence of parametric uncertainty.
-\par
-For convenience, hereafter the times at which the system's state is relevant is denoted by the set $\mathcal T:=[0,\,T]$, and the projections of $X_T$ onto every mode, $j$, is denoted by $X_{(T,j)}$.
+The uncertain backwards reachable set is then defined as $X_0 = \{X_{(0,j)} \}_{j\in {\cal J}}$. 
+Observe that by definition all initial conditions beginning from $X_0$ must reach $X_T$ at time $T$ regardless of mode transitions and uncertainty encountered along the way.
