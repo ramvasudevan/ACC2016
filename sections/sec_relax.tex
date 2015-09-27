@@ -1,37 +1,44 @@
-  \section{Numerical Implementation}
+\section{Numerical Implementation}
 \label{sec:implementation}
-  The infinite-dimensional problems described in Secs.~\ref{ssec:primal} and \ref{ssec:dual} are hard to implement and solve directly. In this section, a sequence of {\em relaxed} SDPs---that contains a sub-sequence whose optimal values converges to the optimal value of the problems introduced in Secs.~\ref{ssec:primal} and \ref{ssec:dual}---is introduced.
-  \par
-  The fundamental idea behind this sequence of relaxations is that measures supported on a compact can be characterized by their moments\footnote{The $n$th moment of a measure ($\mu$) is obtained by evaluating the following expression
-  $$y_{\mu,n}=\ip{\mu,x^n}.$$
-  By this definition, the mean of a probability distribution (read probability measure) is $y_\mu^1$ and its variance is $y_{\mu}^2-(y_{\mu}^1)^2$.}. Similar to Taylor approximations of functions, longer sequence of moments (higher the order of moments considered) provide a finer approximation of the measure.
-  \par
-  Since polynomials are dense in set of continuous functions, we restrict our focus on members of $\mathfrak{U}$ that have a polynomial vector-field in each mode and have domains defined by semi-algebraic sets. For such systems, given any finite $d$-degree truncation of the moment sequence of all measures in the primal $P$, a new problem, $P_d$, can be formulated over the moments of measures. This new problem is a Semi-definite Program (SDP). The dual to $P_d$, $D_d$, can be expressed as a sub-of-squares program (SOS program) by considering $d$-degree polynomials in place of the continuous variables in $D$.
-  \par
-  For each semi-algebraic set $A$, let $(h_{a_i})$ be a collection of polynomials that define the set. For every semi-algebraic set $A$, let its $d$-degree {\em quadratic module} be defined as follows
-  \begin{align}
+
+In this section, a sequence of Semidefinite Programs (SDP)s that approximate the solution to the infinite dimensional primal and dual defined in Secs.~\ref{ssec:primal} and \ref{ssec:dual} are introduced.
+This sequence of relaxations is constructed by characterizing each measure using a sequences of moments\footnote{The $n$th moment of a measure ($\mu$) is obtained by evaluating the following expression
+  $$y_{\mu,n}=\ip{\mu,x^n}.$$}
+and assuming the following:
+\begin{assump}
+The vector field in each mode and reset map between modes is a polynomial. 
+Moreover the domain, the value of uncertainties, the guard, and the target set in each mode is a semi-algebraic set.
+  \label{assump:poly}
+\end{assump}
+Recall that polynomials are dense in the set of continuous functions by the Stone-Weierstrass Theorem so this assumption is made without too much loss of generality.
+
+Under this assumption, given any finite $d$-degree truncation of the moment sequence of all measures in the primal $(P)$, a primal relaxation, $(P_d)$, can be formulated over the moments of measures to construct an SDP. 
+The dual to $(P_d)$, $(D_d)$, can be expressed as a sums-of-squares (SOS) program by considering $d$-degree polynomials in place of the continuous variables in $D$.
+
+To formalize this dual program, first note that a polynomial $p \in \R[x]$ is SOS or $p \in \text{SOS}$ if it can be written as $p(x) = \sum_{i=1}^m q_i^2(x)$ for a set of polynomials $\{q_i\}_{i=1}^m \subset \R[x]$.
+Note efficient tools exist to check whether a finite dimensional polynomial is SOS using SDPs~\cite{parrilo2000structured}.
+Next, suppose we are given a semi-algebraic set $A = \{x \in \R^n \mid h_{i}(x) \geq 0, h_i \in \R[x], \forall i \in \N_m \}$.
+We define the $d$-degree {\em quadratic module} of $A$ as:
+\begin{align}
   \begin{split}
-  Q_d(A)=\bigg\{q\in \R_d[x]\,\bigg|\, \exists s_k\in \R_{\le d}[x], \text{ SOS },k\in \N_{n_{a}\cup\{0\}},\\
-  q=s_0+\sum_{j\in \N_{n_{a}}}h_{a_j}s_j\bigg\}
+  Q_d(A)=\bigg\{q\in \R_d[x]\,\bigg|\, \exists \{s_k\}_{k \in N_m \cup \{0\}} \subset \text{SOS s.t. } \\ q=s_0+\sum_{k\in \N_{m}}h_{k}s_k \bigg\}
   \end{split}
-  \end{align}
-  Using the above notation, the $d$-degree relaxation of the dual, $D_d$, is presented below.
-%\par
-%  \small
+\end{align}
+
+\noindent The $d$-degree relaxation of the dual, $D_d$, can be written as:
   \begin{flalign}\nonumber
-    &\inf_{\Xi_d} \sum_{j\in \mathcal J}\int_{\mathrm M_j}w_j\,d\lambda_j&(D_d)\\\nonumber
-    &\text{st.}\\
-    & w_j^d\in Q_d(X_{(T,j)})& \forall j\in \mathcal J\\
-    & v_j^d(T,\cdot)+p\in Q_d(D_{j})&\forall j\in \mathcal J\\
-    &-\mathcal L_{f_j}v_j^d\in Q_d(\mathcal T\cup D_{j})&\forall j\in \mathcal J\\
-    & w_j^d-\ip{\mu_{\theta_j},v_j^d(0,\cdot)}-p-1\in Q_d(D_j)&\forall j\in \mathcal J\\
-    & v_j^d-\ip{\mu_{\theta_k},v_k^d}\circ R_{(j,k)}\in Q_d(\mathcal T,D_j)& \forall (j,k)\in \Upsilon
+    & & \inf_{\Xi_d} \hspace*{0.1cm} & \sum_{j\in \mathcal J}\int_{D_j}w_j(x)\,d\lambda_j(x) && \hspace*{-0.3cm} (D_d) \nonumber\\
+    & & \text{st.} \hspace*{0.1cm} & w_j^d\in Q_d(X_{(T,j)}) && \hspace*{-0.3cm} \forall j\in \mathcal J \nonumber\\
+    & & & v_j^d(T,\cdot)+p\in Q_d(D_{j} \times \Theta_j) && \hspace*{-0.3cm} \forall j\in \mathcal J \nonumber\\
+    & & & -\mathcal L_{f_j}v_j^d\in Q_d(\mathcal T\times D_{j} \times \Theta_j) && \hspace*{-0.3cm} \forall j\in \mathcal J \nonumber\\
+    & & & w_j^d-\ip{\mu_{\theta_j},v_j^d(0,\cdot)}-p-1\in Q_d(D_j) && \hspace*{-0.3cm} \forall j\in \mathcal J \nonumber\\
+    & & & v_j^d-\ip{\mu_{\theta_k},v_k^d}\circ R_{(j,k)}\in Q_d(\mathcal T \times D_j \times \Theta_j) && \hspace*{-0.3cm} \forall (j,k)\in {\cal E} \nonumber
   \end{flalign}
-%  \normalsize
-  where $\Xi_d=\{v^d_j,w^d_j,p\}\in (\R_d[t,x,\theta])^{n_m}\times (\R_d[x])^{n_m}\times\R$, \mbox{$\Upsilon=\{(a,b)\mid a\in \mathcal J,\,(a,b)\in \mathcal E\}$} and the other variables are from the given hybrid system $\mathcal H$.
-  \begin{lemma}
-    The sequence $(\cup_{j\in \mathcal J}\{x\mid w_j^d\ge 1\})_d$ has a convergent sub-sequence of outer approximations of the BRS.
-  \end{lemma}
+where $\Xi_d=\Big\{ \big(\{v^d_j\}_{j\in {\cal J}},\{w^d_j\}_{j \in {\cal J}},p \big) \in \bigtimes_{j\in {\cal J}}\R_d[t,x,\theta]$ $\bigtimes_{j \in {\cal J}} \R_d[x]\times\R \Big\}$.
+A primal can similarly be constructed, but the solution to the dual can be used directly generate a sequence of outer approximations to the uncertain backwards reachable set:
+\begin{lemma}
+	For each $d \in \N$ and $j \in {\cal J}$, let $w_{j_d}$ denote the $j$-slice of the $w$-component of the solution to $D_d$. Then ${\cal X}_{(0,j_d)} = \{x \in D_j \mid w_{j_d}(x) \geq 1 \}$ is an outer approximation to ${\cal X}_{(0,j)}$ and $\lim_{d\to\infty}\lambda_{n_j}({\cal X}_{(0,j_d)} \backslash {\cal X}_{(0,j)}) = 0$.
+\end{lemma}
 \begin{proof}
-  The proof to this lemma is a compilation of proofs to Thms. 5--7 in \cite{shia2014convex}; it is not reproduced for brevity.
+  The proof to this lemma is an extension of Theorems 5--7 in \cite{shia2014convex} given Lemma \ref{lemma:dual_outerapprox}.
 \end{proof}

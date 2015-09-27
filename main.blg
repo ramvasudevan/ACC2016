@@ -8,45 +8,45 @@ Warning--string name "february" is undefined
 --line 51 of file refs.bib
 Warning--entry type for "spotless" isn't style-file defined
 --line 187 of file refs.bib
-You've used 18 entries,
+You've used 19 entries,
             1876 wiz_defined-function locations,
-            584 strings with 6413 characters,
-and the built_in function-call counts, 5526 in all, are:
-= -- 583
-> -- 156
+            589 strings with 6560 characters,
+and the built_in function-call counts, 5650 in all, are:
+= -- 598
+> -- 160
 < -- 0
-+ -- 60
-- -- 42
-* -- 331
-:= -- 701
-add.period$ -- 21
-call.type$ -- 18
++ -- 62
+- -- 43
+* -- 336
+:= -- 724
+add.period$ -- 23
+call.type$ -- 19
 change.case$ -- 14
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 317
-empty$ -- 545
-format.name$ -- 42
-if$ -- 1398
+cite$ -- 19
+duplicate$ -- 324
+empty$ -- 556
+format.name$ -- 43
+if$ -- 1426
 int.to.chr$ -- 0
-int.to.str$ -- 18
+int.to.str$ -- 19
 missing$ -- 19
-newline$ -- 61
-num.names$ -- 17
-pop$ -- 75
+newline$ -- 65
+num.names$ -- 18
+pop$ -- 77
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 254
+skip$ -- 256
 stack$ -- 0
 substring$ -- 435
-swap$ -- 153
+swap$ -- 154
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 50
-width$ -- 20
-write$ -- 177
+while$ -- 51
+width$ -- 21
+write$ -- 187
 (There were 2 warnings)

@@ -81,6 +81,11 @@ E.~Anderson and P.~Nash, {\em Linear programming in infinite-dimensional
 \newblock Wiley-Interscience series in discrete mathematics and optimization,
   Wiley, 1987.
 
+\bibitem{parrilo2000structured}
+P.~A. Parrilo, {\em Structured semidefinite programs and semialgebraic geometry
+  methods in robustness and optimization}.
+\newblock PhD thesis, Citeseer, 2000.
+
 \bibitem{spotless}
 ``Spotless.''
 
