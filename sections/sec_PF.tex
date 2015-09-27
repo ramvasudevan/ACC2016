@@ -99,23 +99,27 @@ Alternatively, using the standard definition of adjoint operators\footnote{A lin
 \end{align}
 \emph{Eqn~(\ref{eq:liouville_2}) defines a linear relation that initial and final measures evolving according to the hybrid dynamics must satsify.}
 
-\par
-In the execution of system $\mathcal H$, each mode can be entered in two ways -- at $t=0$; and because of a reset map, at any time $t\in \mathcal T\backslash\{0,T\}$; hence the initial measure in the $(t,x)$-projection can be decomposed as
+
+During the execution of a hybrid system, any mode can be entered either at $t=0$ or due to reset.
+The initial measure in the $(t,x)$-coordinate can be decomposed as:
 \begin{align}
-  \bar\mu_{0_j}=\delta_0\otimes\mu_{0_j}+\pi_{t,x}\sigma_{0_j}
+  \bar\mu_{0_j}=\delta_0\otimes\mu_{0_j}+\pi^{(t,x)}_*\sigma_{0_j}
 \end{align}
-with $\mu_{0_j}\in \mathcal M(D_j)$ is the measure supported on the initial conditions to the system at $t=0$, and $\sigma_{0_j}\in \mathcal M(\mathcal T\times D_j\times \Theta_j)$ is the measure on initial conditions after the first reset. State resets occur when the states reach the guard and, unless the solution terminates at the guard, for every solution terminating in the support of $\mu_{ G_{(i,j)}},\,\forall (i,j)\in \mathcal E$, there must exist a trajectory originating in the support of $\sigma_{0_j},\,\forall j\in \mathcal J$; that is, $\mu_{ G_{(i,j)}},\forall (i,j)\in \mathcal E$, and $\sigma_{0_j},\forall j\in \mathcal J$, are related.
-\par
-To see this relation, $\sigma_{0_j}$ is first decomposed into measures corresponding to the source of each arrival state; i.e.
+where $\mu_{0_j}\in \mathcal M(D_j)$ is the measure describing initial conditions to the system at $t=0$, $\sigma_{0_j}\in \mathcal M(\mathcal T\times D_j\times \Theta_j)$ is a measure describing initial conditions arriving due to reset, and $\pi^{(t,x)}_*$ denotes the pushforward constructed by lifting the $(t,x)$-projection operator, $\pi^{(t,x)}: \mathcal T\times D_j\times \Theta_j \to \mathcal T\times D_j$, to measures (refer to Chapter 11 in \cite{lee2003smooth} for an introduction to pushforwards). 
+State resets occur when the state reaches a guard. 
+As a result, we must formalize a relationship between $\mu_{ G_{(i,j)}}$ and $\sigma_{0_j},~\forall (i,j)\in \mathcal E$.
+To formalize this relationship notice that $\sigma_{0_j}$ can be decomposed into measures corresponding to the source of each arrival state:
 \begin{align}
   \sigma_{0_j}=\sum_{i\in \{k\mid (k,j)\in \mathcal E\}} \sigma_{(i,j)}\otimes \mu_{\theta_j},
 \end{align}
-where $\sigma_{(i,j)}$ is the measure on initial conditions post reset for all trajectories arriving at mode $j$ from guard $ G_{(i,j)}$ of mode $i$. Upon reaching the guard, the system transitions according to the reset map; in essence, viewing $R_{(j,k)}$ as a nonlinear transformation of the state-space, the relation in Eqn.~(\ref{eq:reset_measure}) between $\sigma_{(i,j)}$ and $\mu_{ G_{(i,j)}}$ is established.
+where $\sigma_{(i,j)}$ is the measure describing initial conditions that are reset into mode $j$ from guard $G_{(i,j)}$.
+Upon reaching the guard, the system transitions according to the reset map, $R_{(i,j)}$, which can be treated as a nonlinear transformation between $D_i$ and $D_j$.
+By applying a change of variables formula, as in Lemma 1 in \cite{shia2014convex}, we have:
 \begin{align}
-    \ip{\sigma_{(i,j)},w}=\ip{\pi_{t,x}\mu_{ G_{(i,j)}},w\circ R_{(i,j)}}
+    \ip{\sigma_{(i,j)},w}=\ip{\pi^{(t,x)}_*\mu_{ G_{(i,j)}},w\circ R_{(i,j)}}
     \label{eq:reset_measure}
 \end{align}
-where $w\in \mathcal C(\mathcal T\times \mathcal X_j)$ and
+where $w\in \mathcal C(\mathcal T\times \mathcal D_j)$ and
 $$
   \ip{\pi_{t,x}\mu_{ G_{(i,j)}},s}=\ip{\mu_{ G_{(i,j)}},s},\,\forall s\in \mathcal C(\mathcal T\times D_i);
 $$
