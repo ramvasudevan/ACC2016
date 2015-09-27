@@ -10,90 +10,95 @@ f_j=\begin{bmatrix}
 \end{bmatrix}'.
 \end{align}
 %In this augmented-state-space---henceforth referred to as the state-space of the system---the object of interest still remains the same, $X_{(0,j)},\,\forall j\in \mathcal J$. Furthermore, as the system transitions out of a mode, say at time $\tau_k$ the solution reaches $e_{ij}$, the uncertainty in mode $j$ is not related to the \emph{actual} value of the uncertainty in mode $i$ at $\tau_k$; in fact, the dimensions of the uncertain parameters $n_{\theta_j}$ need not equal $n_{\theta_i}$, much less their distributions.
-\par
-The object of interest is a set from which trajectories (piece-wise absolutely continuous functions) that emanate, and are governed by the dynamics of the system, reach another pre-specified set. Given the problem structure, one might be better served to formulate the problem as one based in an appropriate functional space; and use measures defined on the sets of interest as surrogates, and hence variables to be determined.
-\par
-Since the free variables in the ensuing problem formulation are measures on sets associated with a dynamical system, it is helpful to use occupation measures as a template. The occupation measure, first introduced in \cite{Pitman1977}, is to be interpreted as measuring the time the solution trajectories spend in a particular region of the state-space. For instance, suppose the system enters mode $j$ at $\tau_k$ with states taking initial values $x(\tau_k)=x_0$ and $\theta(\tau_k)=\theta$, the occupation measure, \mbox{$\mu_j(\cdot\mid \tau_k,x_0,\,\theta)\in \mathcal M(\mathcal T\times D_j\times \Theta_j)$}, is defined as
 
+To address this problem, we rely on the notion of occupation measures, first introduced in \cite{Pitman1977}, to transform the hybrid nonlinear dynamics of the system into a set linear dynamics over measures that can more readily be solved.
+Occupation measures can be interested as measuring the time a solution spends in a portion of the state-space. 
+For instance, suppose the system enters mode $j$ at $\tau_k$ with the states being initialized as $x(\tau_k)=x_0$ and $\theta(\tau_k)=\theta$.
+The occupation measure, \mbox{$\mu_j(\cdot\mid \tau_k,x_0,\,\theta)\in \mathcal M(\mathcal T\times D_j\times \Theta_j)$}, is defined as:
 \small
 \begin{align}
-\mu_j(A\times B\times C| \tau_k ,x_0,\theta)=\int_{0}^T I_{A\times B\times C}(t,x(t|\tau_k,x_0,\theta),\theta)dt.
+\hspace*{-1mm}\mu_j(A\times B\times C| \tau_k ,x_0,\theta)=\hspace*{-1.25mm}\int\limits_{\cal T} \hspace*{-1.25mm} I_{A\times B\times C}(t,x(t|\tau_k,x_0,\theta),\theta)dt.
 \end{align}
 \normalsize
-From the above, the follow relation between the Lesbegue measure on $\mathcal T$ and $\mu_j(\cdot\mid \tau_k,x_0,\theta)$ holds by definition.
+Note the follow relation between the Lebesgue measure on $\mathcal T$ and $\mu_j(\cdot\mid \tau_k,x_0,\theta)$ holds for all $v \in C(\mathcal T\times D_j\times \Theta_j)$:
 \begin{align}
 \ip{\mu_j(\cdot\mid \tau_k,x_0,\theta),v}=\ip{\lambda_t,v(t,x(t\mid \tau_k,x_0,\theta),\theta)},
 \label{eq:mu_lambda}
 \end{align}
-Note that in its definition, the occupational measure is a conditional measure -- conditioned on the arrival-time and initial values of the states in that mode.
-When considering a set of possible arrival-times and initial conditions, the {\em average occupation measure} is defined by {\em averaging} the occupation measure wrt. to a measure on the set of possible initial conditions of the mode ($\mu_{s_j}$); i.e.
+The occupational measure as defined is a conditional measure -- conditioned on the arrival-time and initial values of the states in that mode.
+To consider a set of possible arrival-times and initial conditions, we define the \emph{average occupation measure} by integrating the conditional occupation measure against a measure on the set of possible initial conditions of the mode, $\mu_{s_j} \in  M(\mathcal T\times D_j\times \Theta_j)$:
 \begin{align}
-\mu_j(A\times B\times C)=\int\limits_{\mathcal T\times \mathrm M_j\times \Theta}\mu_j(A\times B\times C\mid \tau_k,x_0,\theta)\,d \mu_{s_j}.
+\mu_j(A\times B\times C)= \hspace*{-5mm}\int\limits_{\mathcal T\times D_j\times \Theta}\hspace*{-5mm}\mu_j(A\times B\times C\mid \tau_k,x_0,\theta)\,d \mu_{s_j}.
 \label{eq:mu_avg}
 \end{align}
-\normalsize
 Observe that by definition, the uncertain variables are independent of the states' initial conditions; hence $\mu_{s_i}\in \mathcal M(\mathcal T\times D_j\times \Theta)$ is expressible as a product measure:
 \begin{align}
 \mu_{s_j}=\bar\mu_{0_j}\otimes \mu_{\theta_j},\
 \end{align}
-where $\bar \mu_{0_j}\in \mathcal M(\mathcal T\times D_j)$ is the measure on the set of initial conditions, and $\mu_{\theta_j}\in \mathcal M(\Theta_j)$ is provided by in the definition of $\mathcal H$.\par
-Similarly, measures on terminals sets $X_{(T,j)}$, $\mu_{T_j}\in \mathcal M(X_{(T,j)}\times \Theta_j)$
+where $\bar \mu_{0_j}\in \mathcal M(\mathcal T\times D_j)$ is a measure describing the set of initial conditions, and $\mu_{\theta_j}\in \mathcal M(\Theta_j)$ is as in the definition of $\mathcal H$.
+
+Similarly, measures on terminals sets, $\mu_{T_j}\in \mathcal M(X_{(T,j)}\times \Theta_j)$:
 \begin{align}
-\mu_{T_j}(A\times B)=\int\limits_{\mathcal T\times X_{(T,j)}\times \Theta}I_{A\times B}(x(T\mid \tau_k,x_0,\theta),\theta)\,d\mu_{s_{j}},
+\mu_{T_j}(A\times B)= \hspace*{-4mm}\int\limits_{\mathcal T\times X_{(T,j)}\times \Theta}\hspace*{-4mm}I_{A\times B}(x(T\mid \tau_k,x_0,\theta),\theta)\,d\mu_{s_{j}},
 \end{align}
-and guards, $\mu_{ G_{(j,k)}}\in \mathcal M(\mathcal T\times  G_{(j,k)}),\forall(j,k)\in \mathcal E$
+and guards, $\mu_{ G_{e}}\in \mathcal M(\mathcal T\times  G_{(j,k)})$:
 \begin{align}
-\begin{split}
-\mu_{\mathcal G_{(j,k)}}(A\times B\times& C)=\\&\int\limits_{\mathcal T\times \mathcal G_{(j,k)}}I_{A\times B\times C}(t,x(t\mid \tau_k,x_0,\theta),\theta)\,d\mu_{s_{j}}
-\end{split},
+\mu_{G_{(j,k)}}(A\times B\times C)=\hspace*{-5mm}\int\limits_{\mathcal T\times G_{(j,k)}}\hspace*{-5mm}I_{A\times B\times C}(t,x(t\mid \tau_k,x_0,\theta),\theta)\,d\mu_{s_{j}}
 \end{align}
-are defined. While measure $\mu_{T_j}$---supported on the terminal set at the final time---has an obvious interpretation, measures $\mu_{ G_{(j,k)}},\,\forall (j,k)\in \mathcal E$ are supported on the guards of mode $j$ and should be interpreted as the hitting times of the guard.
-For convenience, the {\em final measure} for each mode $j$ is defined as
+for all $(j,k) \in {\cal E}$ can be defined. 
+The measures $\mu_{ G_{(j,k)}}$ are supported on the guards of mode $j$ and should be interpreted as the hitting times of the guard.
+The {\em final measure} in each mode $j$ can be defined as:
 \begin{align}
   \mu_{f_j}=\delta_T\otimes \mu_{T_j}+\sum_{k\in\{l\mid (j,l)\in \mathcal E\}}\mu_{ G_{(j,k)}}.
 \label{eq:mu_T}
 \end{align}
-\normalsize
-\par
-Given a set of initial conditions $X_{0}$, the dynamics of the system---under appropriate assumptions---defines a bundle of trajectories of the system states. It is of interest to ensure that this bundle terminates in the desired set $X_T$, making $X_0$ a subset of the BRS; stated differently, it is necessary to relate $\{\mu_{s_j}\}_{j\in \mathcal J}$ with $\{\mu_{f_j}\}_{j\in \mathcal J}$ and the dynamics of the system. As a first step towards deducing said relation, linear operators {$\mathcal L_{ f_j}\colon \mathcal C^1(\mathcal T\times D_j\times \Theta_j)\rightarrow \mathcal C(\mathcal T\times D_j\times \Theta_j)$} satisfying Eqn.~(\ref{eq:Lv}) in which $v\in \mathcal C^1(\mathcal T\times D_j\times \Theta_j;\R)$ is an arbitrary test function, are defined.
+
+% Given a set of initial conditions $X_{0}$, the dynamics of the system---under appropriate assumptions---defines a bundle of trajectories of the system states. It is of interest to ensure that this bundle terminates in the desired set $X_T$, making $X_0$ a subset of the BRS; stated differently, it is necessary to relate $\{\mu_{s_j}\}_{j\in \mathcal J}$ with $\{\mu_{f_j}\}_{j\in \mathcal J}$ and the dynamics of the system. 
+To compute $X_0$, we relate $\{\mu_{s_j}\}_{j\in \mathcal J}$ with $\{\mu_{f_j}\}_{j\in \mathcal J}$ using the dynamics of the system.
+As a first step, define linear operators {$\mathcal L_{ f_j}\colon \mathcal C^1(\mathcal T\times D_j\times \Theta_j)\rightarrow \mathcal C(\mathcal T\times D_j\times \Theta_j)$} as:
 \begin{align}
       \mathcal L_{f_j}v=\frac{\partial v}{\partial t}+\ip{\nabla_x v,\tilde f_j}
     \label{eq:Lv}
 \end{align}
-\par
-Suppose the system transitioned to mode $j$ at \mbox{$t=\tau_{k-1}$} with the states taking initial values $x(\tau_{k-1})$ and $\theta$; the value of $v$, evaluated along the flow of the system states and at $t=\tau_{k}$ is computed using the fundamental theorem of calculus according to Eqn.~(\ref{eq:FTC}).
+where $v\in \mathcal C^1(\mathcal T\times D_j\times \Theta_j;\R)$ is an arbitrary test function.
+Suppose the system transitioned to mode $j$ at \mbox{$t=\tau_{k-1}$} with the state taking value upon reset $x(\tau_{k-1})$ and $\theta$.
+The value of $v$, evaluated along the flow of the system and at $t=\tau_{k}$ is computed using the Fundamental Theorem of Calculus:
 \begin{align}
-\begin{split}
-    v\left(\tau_k,x\left(\tau_{k}\mid x(\tau_{k-1}),\theta_{k-1}\right)\right)=v(\tau_{k-1},x(\tau_{k-1}),\theta_{k-1})\\
-    +\int_{\tau_{k-1}}^{\tau_{k}}\mathcal L_{f}v(t,x(t\mid \tau_{k-1},x(\tau_{k-1}),\theta_{k-1}))\,dt.
-\end{split}
+\begin{aligned}
+    v& \big(\tau_k,x(\tau_{k}\mid x(\tau_{k-1}),\theta_{k-1})\big)=v(\tau_{k-1},x(\tau_{k-1}),\theta_{k-1})\\
+    &+\int_{\tau_{k-1}}^{\tau_{k}}\hspace*{-2mm}\mathcal L_{f}v(t,x(t\mid \tau_{k-1},x(\tau_{k-1}),\theta_{k-1}))\,dt.
+\end{aligned}
 \label{eq:FTC}
 \end{align}
-Using Eqn.~(\ref{eq:mu_lambda}), Eqn.~(\ref{eq:FTC}) can be re-written as
-
+Using Eqn.~(\ref{eq:mu_lambda}), Eqn.~(\ref{eq:FTC}) can be re-written as:
 \small
 \begin{align}
-\begin{split}
-    v\left(\tau_k,x\left(\tau_{k}\mid \tau_{k-1},x(\tau_{k-1}),\theta_{k-1}\right)\right)=v(\tau_{k-1},x(\tau_{k-1}),\theta_{k-1})\\
-    +\ip{\mu_j(\cdot\mid \tau_{k-1},x(\tau_{k-1},\theta_{k-1}),\mathcal L_{ f}v}
-\end{split}
+\begin{aligned}
+    v\big(\tau_k,&x(\tau_{k}\mid \tau_{k-1},x(\tau_{k-1}),\theta_{k-1})\big)=v(\tau_{k-1},x(\tau_{k-1}),\theta_{k-1})\\
+    &+\ip{\mu_j(\cdot\mid \tau_{k-1},x(\tau_{k-1},\theta_{k-1}),\mathcal L_{ f}v},
+\end{aligned}
 \end{align}
 \normalsize
-which can be simplified by \emph{averaging} wrt. to the set of initial conditions $x(\tau_{k-1})$ and $\theta$ using Eqns.~(\ref{eq:mu_avg})--(\ref{eq:mu_T}) to arrive at
+which can be simplified further by using Eqns.~(\ref{eq:mu_avg})--(\ref{eq:mu_T}):
 \begin{align}
   \ip{\mu_{f_j},v}=\ip{\mu_{s_j},v}+\ip{\mu_{j},\mathcal L_{f}v}.
   \label{eq:liouville_1}
 \end{align}
-\par
+
 Alternatively, using the standard definition of adjoint operators\footnote{A linear operator $\mathcal L$ and its adjoint, $\mathcal L'$, satisfy the following relation:
 \begin{align*}
-    \ip{\mathcal L'\mu,v}=\ip{\mu,\mathcal Lv}=\int\limits_{\mathcal X}\mathcal Lv\,d\mu.
-\end{align*}}, Eqn.~(\ref{eq:liouville_1}) is re-written as
+    \ip{\mathcal L'\mu,v}=\ip{\mu,\mathcal Lv}.
+\end{align*}
+% \begin{align*}
+%     \ip{\mathcal L'\mu,v}=\ip{\mu,\mathcal Lv}=\int\limits_{\mathcal X}\mathcal Lv\,d\mu.
+% \end{align*}
+}, Eqn.~(\ref{eq:liouville_1}) is re-written as:
 \begin{align}
-\ip{\mu_{f_j},v}=\ip{\mu_{s_j},v}+\ip{\mathcal L'_{f}\mu_{j},v}
+\ip{\mu_{f_j},v}=\ip{\mu_{s_j},v}+\ip{\mathcal L'_{f}\mu_{j},v}.
   \label{eq:liouville_2}
 \end{align}
-Eqn~(\ref{eq:liouville_2}) is the desired equation that relates the dynamics of the state to the initial and final measures in each mode of the system.
+\emph{Eqn~(\ref{eq:liouville_2}) defines a linear relation that initial and final measures evolving according to the hybrid dynamics must satsify.}
+
 \par
 In the execution of system $\mathcal H$, each mode can be entered in two ways -- at $t=0$; and because of a reset map, at any time $t\in \mathcal T\backslash\{0,T\}$; hence the initial measure in the $(t,x)$-projection can be decomposed as
 \begin{align}
