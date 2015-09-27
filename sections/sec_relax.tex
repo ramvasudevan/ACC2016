@@ -22,10 +22,10 @@
     &\inf_{\Xi_d} \sum_{j\in \mathcal J}\int_{\mathrm M_j}w_j\,d\lambda_j&(D_d)\\\nonumber
     &\text{st.}\\
     & w_j^d\in Q_d(X_{(T,j)})& \forall j\in \mathcal J\\
-    & v_j^d(T,\cdot)+p\in Q_d(\mathrm M_{j})&\forall j\in \mathcal J\\
-    &-\mathcal L_{f_j}v_j^d\in Q_d(\mathcal T\cup \mathrm M_{j})&\forall j\in \mathcal J\\
-    & w_j^d-\ip{\mu_{\theta_j},v_j^d(0,\cdot)}-p-1\in Q_d(\mathrm M_j)&\forall j\in \mathcal J\\
-    & v_j^d-\ip{\mu_{\theta_k},v_k^d}\circ R_{(j,k)}\in Q_d(\mathcal T,\mathrm M_j)& \forall (j,k)\in \Upsilon
+    & v_j^d(T,\cdot)+p\in Q_d(D_{j})&\forall j\in \mathcal J\\
+    &-\mathcal L_{f_j}v_j^d\in Q_d(\mathcal T\cup D_{j})&\forall j\in \mathcal J\\
+    & w_j^d-\ip{\mu_{\theta_j},v_j^d(0,\cdot)}-p-1\in Q_d(D_j)&\forall j\in \mathcal J\\
+    & v_j^d-\ip{\mu_{\theta_k},v_k^d}\circ R_{(j,k)}\in Q_d(\mathcal T,D_j)& \forall (j,k)\in \Upsilon
   \end{flalign}
 %  \normalsize
   where $\Xi_d=\{v^d_j,w^d_j,p\}\in (\R_d[t,x,\theta])^{n_m}\times (\R_d[x])^{n_m}\times\R$, \mbox{$\Upsilon=\{(a,b)\mid a\in \mathcal J,\,(a,b)\in \mathcal E\}$} and the other variables are from the given hybrid system $\mathcal H$.

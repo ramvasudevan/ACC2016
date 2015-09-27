@@ -10,7 +10,7 @@ f_j=\begin{bmatrix}
 \par
 The object of interest is a set from which trajectories (piece-wise absolutely continuous functions) that emanate, and are governed by the dynamics of the system, reach another pre-specified set. Given the problem structure, one might be better served to formulate the problem as one based in an appropriate functional space; and use measures defined on the sets of interest as surrogates, and hence variables to be determined.
 \par
-Since the free variables in the ensuing problem formulation are measures on sets associated with a dynamical system, it is helpful to use occupation measures as a template. The occupation measure, first introduced in \cite{Pitman1977}, is to be interpreted as measuring the time the solution trajectories spend in a particular region of the state-space. For instance, suppose the system enters mode $j$ at $\tau_k$ with states taking initial values $x(\tau_k)=x_0$ and $\theta(\tau_k)=\theta$, the occupation measure, \mbox{$\mu_j(\cdot\mid \tau_k,x_0,\,\theta)\in \mathcal M(\mathcal T\times \mathrm M_j\times \Theta_j)$}, is defined as
+Since the free variables in the ensuing problem formulation are measures on sets associated with a dynamical system, it is helpful to use occupation measures as a template. The occupation measure, first introduced in \cite{Pitman1977}, is to be interpreted as measuring the time the solution trajectories spend in a particular region of the state-space. For instance, suppose the system enters mode $j$ at $\tau_k$ with states taking initial values $x(\tau_k)=x_0$ and $\theta(\tau_k)=\theta$, the occupation measure, \mbox{$\mu_j(\cdot\mid \tau_k,x_0,\,\theta)\in \mathcal M(\mathcal T\times D_j\times \Theta_j)$}, is defined as
 
 \small
 \begin{align}
@@ -23,36 +23,36 @@ From the above, the follow relation between the Lesbegue measure on $\mathcal T$
 \label{eq:mu_lambda}
 \end{align}
 Note that in its definition, the occupational measure is a conditional measure -- conditioned on the arrival-time and initial values of the states in that mode.
-When considering a set of possible arrival-times and initial conditions, the {\em average occupation measure} is defined by {\em averaging} the occupation measure wrt. to a measure on the set of possible initial conditions of the mode ($\check\mu_{0_j}$); i.e.
+When considering a set of possible arrival-times and initial conditions, the {\em average occupation measure} is defined by {\em averaging} the occupation measure wrt. to a measure on the set of possible initial conditions of the mode ($\mu_{s_j}$); i.e.
 \begin{align}
-\mu_j(A\times B\times C)=\int\limits_{\mathcal T\times \mathrm M_j\times \Theta}\mu_j(A\times B\times C\mid \tau_k,x_0,\theta)\,d\check \mu_{0_j}.
+\mu_j(A\times B\times C)=\int\limits_{\mathcal T\times \mathrm M_j\times \Theta}\mu_j(A\times B\times C\mid \tau_k,x_0,\theta)\,d \mu_{s_j}.
 \label{eq:mu_avg}
 \end{align}
 \normalsize
-Observe that by definition, the uncertain variables are independent of the states' initial conditions; hence $\check\mu_{0_i}\in \mathcal M(\mathcal T\times\mathrm M_j\times \Theta)$ is expressible as a product measure:
+Observe that by definition, the uncertain variables are independent of the states' initial conditions; hence $\mu_{s_i}\in \mathcal M(\mathcal T\times D_j\times \Theta)$ is expressible as a product measure:
 \begin{align}
 \mu_{s_j}=\bar\mu_{0_j}\otimes \mu_{\theta_j},\
 \end{align}
-where $\bar \mu_{0_j}\in \mathcal M(\mathcal T\times \mathrm M_j)$ is the measure on the set of initial conditions, and $\mu_{\theta_j}\in \mathcal M(\Theta)$ is provided by in the definition of $\mathcal H$.\par
-Similarly, measures on terminals sets $X_{(T,j)}$, $\mu_{T_j}\in \mathcal M(X_{(T,j)}\times \Theta)$
+where $\bar \mu_{0_j}\in \mathcal M(\mathcal T\times D_j)$ is the measure on the set of initial conditions, and $\mu_{\theta_j}\in \mathcal M(\Theta_j)$ is provided by in the definition of $\mathcal H$.\par
+Similarly, measures on terminals sets $X_{(T,j)}$, $\mu_{T_j}\in \mathcal M(X_{(T,j)}\times \Theta_j)$
 \begin{align}
 \mu_{T_j}(A\times B)=\int\limits_{\mathcal T\times X_{(T,j)}\times \Theta}I_{A\times B}(x(T\mid \tau_k,x_0,\theta),\theta)\,d\check\mu_{0_{j}},
 \end{align}
-and guards, $\mu_{\mathcal G_{(j,k)}}\in \mathcal M(\mathcal T\times \mathcal G_{(j,k)}),\forall(j,k)\in \mathcal E$
+and guards, $\mu_{ G_{(j,k)}}\in \mathcal M(\mathcal T\times  G_{(j,k)}),\forall(j,k)\in \mathcal E$
 \begin{align}
 \begin{split}
 \mu_{\mathcal G_{(j,k)}}(A\times B\times& C)=\\&\int\limits_{\mathcal T\times \mathcal G_{(j,k)}}I_{A\times B\times C}(t,x(t\mid \tau_k,x_0,\theta),\theta)\,d\check\mu_{0_{j}}
 \end{split},
 \end{align}
-are defined. While measure $\mu_{T_j}$---supported on the terminal set at the final time---has an obvious interpretation, measures $\mu_{\mathcal G_{(j,k)}},\,\forall (j,k)\in \mathcal E$ are supported on the guards of mode $j$ and should be interpreted as the hitting times of the guard.
+are defined. While measure $\mu_{T_j}$---supported on the terminal set at the final time---has an obvious interpretation, measures $\mu_{ G_{(j,k)}},\,\forall (j,k)\in \mathcal E$ are supported on the guards of mode $j$ and should be interpreted as the hitting times of the guard.
 For convenience, the {\em final measure} for each mode $j$ is defined as
 \begin{align}
-  \mu_{f_j}=\delta_T\otimes \mu_{T_j}+\sum_{k\in\{l\mid (j,l)\in \mathcal E\}}\mu_{\mathcal G_{(j,k)}}.
+  \mu_{f_j}=\delta_T\otimes \mu_{T_j}+\sum_{k\in\{l\mid (j,l)\in \mathcal E\}}\mu_{ G_{(j,k)}}.
 \label{eq:mu_T}
 \end{align}
 \normalsize
 \par
-Given a set of initial conditions $X_{0}$, the dynamics of the system---under appropriate assumptions---defines a bundle of trajectories of the system states. It is of interest to ensure that this bundle terminates in the desired set $X_T$, making $X_0$ a subset of the BRS; stated differently, it is necessary to relate $\coprod_{j\in \mathcal J}\mu_{s_j}$ with $\coprod_{j\in \mathcal J}\mu_{f_i}$ and the dynamics of the system. As a first step towards deducing said relation, linear operators {$\mathcal L_{ f_j}\colon \mathcal C^1(\mathcal T\times \mathrm M_j\times \Theta_j)\rightarrow \mathcal C(\mathcal T\times \mathrm M_j\times \Theta_j)$} satisfying Eqn.~(\ref{eq:Lv}) in which $v\in \mathcal C^1(\mathcal T\times \mathrm M_j\times \Theta_j;\R)$ is an arbitrary test function, are defined.
+Given a set of initial conditions $X_{0}$, the dynamics of the system---under appropriate assumptions---defines a bundle of trajectories of the system states. It is of interest to ensure that this bundle terminates in the desired set $X_T$, making $X_0$ a subset of the BRS; stated differently, it is necessary to relate $\{\mu_{s_j}\}_{j\in \mathcal J}$ with $\{\mu_{f_j}\}_{j\in \mathcal J}$ and the dynamics of the system. As a first step towards deducing said relation, linear operators {$\mathcal L_{ f_j}\colon \mathcal C^1(\mathcal T\times D_j\times \Theta_j)\rightarrow \mathcal C(\mathcal T\times D_j\times \Theta_j)$} satisfying Eqn.~(\ref{eq:Lv}) in which $v\in \mathcal C^1(\mathcal T\times D_j\times \Theta_j;\R)$ is an arbitrary test function, are defined.
 \begin{align}
       \mathcal L_{f_j}v=\frac{\partial v}{\partial t}+\ip{\nabla_x v,\tilde f_j}
     \label{eq:Lv}
@@ -96,22 +96,22 @@ In the execution of system $\mathcal H$, each mode can be entered in two ways --
 \begin{align}
   \bar\mu_{0_j}=\delta_0\otimes\mu_{0_j}+\pi_{t,x}\sigma_{0_j}
 \end{align}
-with $\mu_{0_j}\in \mathcal M(\mathrm M_j)$ is the measure supported on the initial conditions to the system at $t=0$, and $\sigma_{0_j}\in \mathcal M(\mathcal T\times \mathrm M_j\times \Theta_j)$ is the measure on initial conditions after the first reset. State resets occur when the states reach the guard and, unless the solution terminates at the guard, for every solution terminating in the support of $\mu_{\mathcal G_{(i,j)}},\,\forall (i,j)\in \mathcal E$, there must exist a trajectory originating in the support of $\sigma_{0_j},\,\forall j\in \mathcal J$; that is, $\mu_{\mathcal G_{(i,j)}},\forall (i,j)\in \mathcal E$, and $\sigma_{0_j},\forall j\in \mathcal J$, are related.
+with $\mu_{0_j}\in \mathcal M(D_j)$ is the measure supported on the initial conditions to the system at $t=0$, and $\sigma_{0_j}\in \mathcal M(\mathcal T\times D_j\times \Theta_j)$ is the measure on initial conditions after the first reset. State resets occur when the states reach the guard and, unless the solution terminates at the guard, for every solution terminating in the support of $\mu_{ G_{(i,j)}},\,\forall (i,j)\in \mathcal E$, there must exist a trajectory originating in the support of $\sigma_{0_j},\,\forall j\in \mathcal J$; that is, $\mu_{ G_{(i,j)}},\forall (i,j)\in \mathcal E$, and $\sigma_{0_j},\forall j\in \mathcal J$, are related.
 \par
 To see this relation, $\sigma_{0_j}$ is first decomposed into measures corresponding to the source of each arrival state; i.e.
 \begin{align}
   \sigma_{0_j}=\sum_{i\in \{k\mid (k,j)\in \mathcal E\}} \sigma_{(i,j)}\otimes \mu_{\theta_j},
 \end{align}
-where $\sigma_{(i,j)}$ is the measure on initial conditions post reset for all trajectories arriving at mode $j$ from guard $\mathcal G_{(i,j)}$ of mode $i$. Upon reaching the guard, the system transitions according to the reset map; in essence, viewing $R_{(j,k)}$ as a nonlinear transformation of the state-space, the relation in Eqn.~(\ref{eq:reset_measure}) between $\sigma_{(i,j)}$ and $\mu_{\mathcal G_{(i,j)}}$ is established.
+where $\sigma_{(i,j)}$ is the measure on initial conditions post reset for all trajectories arriving at mode $j$ from guard $ G_{(i,j)}$ of mode $i$. Upon reaching the guard, the system transitions according to the reset map; in essence, viewing $R_{(j,k)}$ as a nonlinear transformation of the state-space, the relation in Eqn.~(\ref{eq:reset_measure}) between $\sigma_{(i,j)}$ and $\mu_{ G_{(i,j)}}$ is established.
 \begin{align}
-    \ip{\sigma_{(i,j)},w}=\ip{\pi_{t,x}\mu_{\mathcal G_{(i,j)}},w\circ R_{(i,j)}}
+    \ip{\sigma_{(i,j)},w}=\ip{\pi_{t,x}\mu_{ G_{(i,j)}},w\circ R_{(i,j)}}
     \label{eq:reset_measure}
 \end{align}
 where $w\in \mathcal C(\mathcal T\times \mathcal X_j)$ and
 $$
-  \ip{\pi_{t,x}\mu_{\mathcal G_{(i,j)}},s}=\ip{\mu_{\mathcal G_{(i,j)}},s},\,\forall s\in \mathcal C(\mathcal T\times \mathrm M_i);
+  \ip{\pi_{t,x}\mu_{ G_{(i,j)}},s}=\ip{\mu_{ G_{(i,j)}},s},\,\forall s\in \mathcal C(\mathcal T\times D_i);
 $$
-essentially, $\sigma_{(i,j)}$ is a push-forward measure of $\mu_{\mathcal G_{(i,j)}}$.
+essentially, $\sigma_{(i,j)}$ is a push-forward measure of $\mu_{ G_{(i,j)}}$.
 %\begin{remark}
 %\label{remark:primal}
 %  \red{A note on domain in time and the Liouville's equations}
@@ -120,17 +120,17 @@ essentially, $\sigma_{(i,j)}$ is a push-forward measure of $\mu_{\mathcal G_{(i,
   \label{ssec:primal}
   With the constraints expressed in terms of measures, the problem of approximating the BRS is formulated as an infinite-dimensional Linear Program that supremizes the \emph{volume} of the set of initial condition.
   \begin{flalign}\nonumber
-  &\sup_{\Lambda}&\sum_{j=1}^{n_m}\ip{\mu_{0_j},1}&&(P)\\\nonumber
+  &\sup_{\Lambda}\sum_{j=1}^{n_m}\ip{\mu_{0_j},1}&&&(P)\\\nonumber
   &\text{st.}\\
-  &&\mu_{s_j}+\mathcal L_{f}'\mu_j=&\,\mu_{f_j}&\forall j\in \N_{n_m}\label{eq:primal:liouville}\\
-  &&\mu_{0_j}+\hat\mu_{0,j}=&\,\lambda_j&\forall j\in \N_{n_m}\\
-  &&\sum_{j=1}^{n_m}\ip{\mu_{T_j},1}=&\,\sum_{j=1}^{n_m}\ip{\mu_{0_j},1}\label{eq:mass_conservation}
+  &\mu_{s_j}+\mathcal L_{f}'\mu_j=\,\mu_{f_j}&&&\forall j\in \N_{n_m}\label{eq:primal:liouville}\\
+  &\mu_{0_j}+\hat\mu_{0,j}=\,\lambda_j&&&\forall j\in \N_{n_m}\\
+  &\sum_{j=1}^{n_m}\ip{\mu_{T_j},1}=\,\sum_{j=1}^{n_m}\ip{\mu_{0_j},1}\label{eq:mass_conservation}
   \end{flalign}
-  where $\lambda_j$ is the Lebesgue measure supported on $\mathrm M_j$.
-  $$\Lambda=\{\mu_j,\mu_{0_j},\mu_{T_j},\hat\mu_{0_j},\mu_{\mathcal G_{(j,k)}}\ge 0,\,\forall j\in \mathcal \N_{n_m},(j,k)\in \mathcal E\}.$$
-Variables $\hat\mu_{0_j}\in \mathcal M(\mathrm M_j)$ are slack variables introduced to enforce a stronger constraint than absolute continuity of $\mu_{0_j}$ wrt. to $\lambda_j$
+  where $\lambda_j$ is the Lebesgue measure supported on $D_j$.
+  $$\Lambda=\{\mu_j,\mu_{0_j},\mu_{T_j},\hat\mu_{0_j},\mu_{ G_{(j,k)}}\ge 0,\,\forall j\in \mathcal \N_{n_m},(j,k)\in \mathcal E\}.$$
+Variables $\hat\mu_{0_j}\in \mathcal M(D_j)$ are slack variables introduced to enforce a stronger constraint than absolute continuity of $\mu_{0_j}$ wrt. to $\lambda_j$
   \begin{flalign}
-  &&&\mu_{0_j}(A)\le \lambda_j(A)&\forall A\subset \mathrm M_j\label{eq:primal:domination}
+  &&&\mu_{0_j}(A)\le \lambda_j(A)&\forall A\subset D_j\label{eq:primal:domination}
     \end{flalign}
   The constraint in Eqn.~(\ref{eq:mass_conservation}) ensures that all trajectories that emanate $\cup_{j\in \mathcal J}\,spt(\mu_{0_j})$ reach $X_{T}$ at $t=T$, and is not {\em stuck} at any of the guards.
   %%%%%%%%%%
@@ -145,7 +145,7 @@ Variables $\hat\mu_{0_j}\in \mathcal M(\mathrm M_j)$ are slack variables introdu
   &\sum_{j\in \mathcal J}\lambda_j(spt(\mu_{0_j}))\le\sum_{j\in \mathcal J}\lambda_j( X_{(0,j)}).
   \label{eq:support_lemma:1}
   \end{align}
-    By definition of the BRS, all state trajectories that emanate from a subset of $X_0$ end in $X_T$. That is, for each $j\in \mathcal J$ and initial measure $\mu_{0_j}$, if $spt(\mu_{0_j})\subset X_{(0,j)}$, there exist measures $\mu_{j}$ and $\mu_{f,j}$ that satisfy Eqn.~(\ref{eq:primal:liouville}). Thus the following inequality is true.
+    By definition of the BRS, all state trajectories that emanate from a subset of $X_0$ end in $X_T$. That is, for each $j\in \mathcal J$ and initial measure $\mu_{0_j}$, if $spt(\mu_{0_j})\subset X_{(0,j)}$, there exist measures $\mu_{j}$ and $\mu_{f_j}$ that satisfy Eqn.~(\ref{eq:primal:liouville}). Thus the following inequality is true.
     \begin{align}
     \sum_{j\in \mathcal J}\lambda_j(spt(\mu_{0_j}))\ge \sum_{j\in \mathcal J}\lambda_j(X_{(0,j)})
       \label{eq:support_lemma:2}
@@ -195,7 +195,7 @@ Variables $\hat\mu_{0_j}\in \mathcal M(\mathrm M_j)$ are slack variables introdu
       \le &\,\ip{\mu_{\theta_{j_0}},v_{j_0}(0,x_0,\theta)}\\
       \le &\, w_{j_0}(x_0)-q-1.
     \end{align}
-    The final inequality implies that for every trajectory that ends in $X_{(t,j_k)}$, $x(t)=x_0\in \mathrm M_{j_0}$  satisfies the condition $w_{x_0}\ge 1$. Thus the set of initial conditions that begin in mode $j_0$ and reach the terminal set projected into mode $j_k$ is given by the super-level set
+    The final inequality implies that for every trajectory that ends in $X_{(t,j_k)}$, $x(t)=x_0\in D_{j}$  satisfies the condition $w_{x_0}\ge 1$. Thus the set of initial conditions that begin in mode $j_0$ and reach the terminal set projected into mode $j_k$ is given by the super-level set
     \begin{align}
       I_{(j_0,j_k)}=\{x\mid w_{j_0}\ge 1\}.
     \end{align}
