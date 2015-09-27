@@ -92,7 +92,7 @@ Consider a quasi-uncertain linear system evolving on a circle with dynamics:
 \begin{align}
 	\dot x = -0.7x+0.2\theta-0.1,
 \end{align}
-where $D_1 = [-1,1]$, $G_{(1,1)} = \{-1\}$, $R_{(1,1)}(x) = -x$. and $\theta\in [-1,1]$ is an unknown parameter affecting the dynamics. 
+where $D_1 = [-1,1]$, $G_{(1,1)} = \{-1\}$, $R_{(1,1)}(x) = -x$. and $\theta\in [-1,1]$ is an unknown parameter affecting the dynamics.
 The uncertain parameter can be thought of as arising due to structural modeling errors, or as a result of reducing a singular-perturbed system.
 \end{example}
 \begin{figure}[!t]
@@ -117,6 +117,10 @@ The uncertain parameter can be thought of as arising due to structural modeling 
     \draw[->, thick] (3.2,1.55) to [out=125, in =55] (2.7,1.5);
     \node at (2.8,2) {$2\alpha$};
     \draw[->,thick] (2.5,1.05) to [out=115, in =0] node[pos=0.5, above]{\small $\beta$} (2,1.4) ;
+    \draw[dotted,thick] (1.77,0.5) -- (1.15,.765);
+    \draw[<->] (1.3,.7)  -- node [pos=0,above] {$\delta$} (1.53,1.21);
+    \draw[dotted,thick] (1.77,0.5) -- (1.15,.765);
+    \draw[<->] (1.3,.7)  -- node [pos=0,above] {$\delta$} (1.53,1.21);
   \end{tikzpicture}
   \caption{Schematic of the rimless wheel with $\theta$ describing the effect of unknown terrain.}
   \label{fig:rw_schematic}
@@ -135,7 +139,7 @@ The continuous dynamics of the PRW are:
     \dot\beta&\sin(\beta)
   \end{bmatrix}',
 \end{align}
-where $\beta$ is the angle between the vertical (which is defined as the line that is perpendicular to the base of the inclined plane) and the pivoting spoke. 
+where $\beta$ is the angle between the vertical (which is defined as the line that is perpendicular to the base of the inclined plane) and the pivoting spoke.
 Once the swinging spoke makes contact with the terrain, the states are reset as:
 \begin{align}
 R_{(1,1)}(\beta^-,\dot \beta^-)=\begin{bmatrix}
@@ -162,5 +166,5 @@ We define the uncertain backwards reachable set mode-wise:
      \label{eq:brs}
 \end{aligned}
 \end{align}
-The uncertain backwards reachable set is then defined as $X_0 = \{X_{(0,j)} \}_{j\in {\cal J}}$. 
+The uncertain backwards reachable set is then defined as $X_0 = \{X_{(0,j)} \}_{j\in {\cal J}}$.
 Observe that by definition all initial conditions beginning from $X_0$ must reach $X_T$ at time $T$ regardless of mode transitions and uncertainty encountered along the way.
