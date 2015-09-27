@@ -88,13 +88,13 @@ Steps~\circled{7}--\circled{11} isolates the first hitting-time of a guard of mo
 Note that the uncertainty does not evolve with time.
 The uncertainty only changes when the system mode resets.
 This class of systems is still quite rich as is illustrated by the two representative examples ---a simple 1D pedagogical example, and a 2D representative of walking models---presented next.
-\begin{example}[1-D Quasi-Uncertain Linear System on a Circle]
+\begin{example}[1-D Quasi-Uncertain Linear System]
 \label{example:1D}
 Consider a quasi-uncertain linear system evolving on a circle with dynamics:
 \begin{align}
 	\dot x = -0.7x+0.2\theta-0.1,
 \end{align}
-where $D_1 = [-1,1]$, $G_{(1,1)} = \{-1\}$, $R_{(1,1)}(x) = -x$. and $\theta\in [-1,1]$ is an unknown parameter affecting the dynamics.
+where $D_1 = [-1,1]$, ${\cal G} = \emptyset$, and $\theta\in [-1,1]$ is an unknown parameter affecting the dynamics.
 The uncertain parameter can be thought of as arising due to structural modeling errors, or as a result of reducing a singular-perturbed system.
 \end{example}
 \begin{figure}[!t]
