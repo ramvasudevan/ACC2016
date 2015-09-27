@@ -3,19 +3,19 @@
   This section defines the notation, the class of systems, and problem considered throughout the paper.
 
   \subsection{Notations}
-  In the remainder of this text the following notation is adopted: 
-Sets are italicized and capitalized (ex. $K$). 
+  In the remainder of this text the following notation is adopted:
+Sets are italicized and capitalized (ex. $K$).
 The boundary of a set $K$ is denoted by $\partial K$.
-% The disjoint union of sets is defined as: $\coprod_{i\in I}K_i=\cup_{i\in I}K_i\times \{i\}$. 
-Finite truncations of the set of natural numbers are expressed as \mbox{$\N_n:=\{1,\ldots,n\}$}. 
-The set of continuous functions on a compact set $K$ is represented as $\mathcal C(K)$. 
-The ring of polynomials in $x$ is denoted by $\R[x]$, and the degree of a polynomial is equal to degree its largest multinomial; the degree of the multinomial $x^\alpha,\,\alpha\in \R_{\ge 0}^n$ is $|\alpha|=\|\alpha\|_1$; and $\R_d[x]$ is the set of polynomials in $x$ with maximum degree $d$. 
+% The disjoint union of sets is defined as: $\coprod_{i\in I}K_i=\cup_{i\in I}K_i\times \{i\}$.
+Finite truncations of the set of natural numbers are expressed as \mbox{$\N_n:=\{1,\ldots,n\}$}.
+The set of continuous and absolutely continuous functions on a compact set $K$ are represented as $\mathcal C(K)$ and $\mathcal C_{ab}(K)$ respectively.
+The ring of polynomials in $x$ is denoted by $\R[x]$, and the degree of a polynomial is equal to degree its largest multinomial; the degree of the multinomial $x^\alpha,\,\alpha\in \R_{\ge 0}^n$ is $|\alpha|=\|\alpha\|_1$; and $\R_d[x]$ is the set of polynomials in $x$ with maximum degree $d$.
 The dual to $\mathcal C(K)$ is the set of Radon measures on $K$, denoted as $\mathcal M(K)$, and the pairing of $\mu\in \mathcal M(K)$ and $v\in \mathcal C(K)$ is:
   \begin{align}
   \ip{\mu,v}=\int_{K}v(x)\,d\mu(x).
   \end{align}
 The space of Radon probability measures on $K$ is denoted by ${\cal P}(K)$.
-The Lebesgue measure is denoted by $\lambda$. 
+The Lebesgue measure is denoted by $\lambda$.
 Finally, supports of measures, $\mu$, are identified as $supp(\mu)$.
 
 \subsection{System class description}
@@ -48,15 +48,15 @@ In addition, the systems are not allowed to undergo infinite mode transitions in
 \end{assump}
 % To complete the characterization of systems in $\mathfrak{U}$, a description of how the components in Defn.~\ref{def:system} are related is warranted.
 Alg~\ref{alg:execution} describes the finite-time execution, $[0,T]$, of a hybrid system, $\mathcal H$, as in Defn.~\ref{def:system} as follows:
-Suppose that the system enters mode $j$ at time $t$ at location $x \in D_j$. 
-Recall the dynamics in this domain, $\tilde f_j$, are a function of a random parameter drawn from the distribution $\mu_{\theta_j}$; let this random variable take the value $\theta$. 
+Suppose that the system enters mode $j$ at time $t$ at location $x \in D_j$.
+Recall the dynamics in this domain, $\tilde f_j$, are a function of a random parameter drawn from the distribution $\mu_{\theta_j}$; let this random variable take the value $\theta$.
 The trajectory of the hybrid system beginning at time $t$ at $x$ is then given by any absolutely continuous function that satisfies the differential equation $\tilde f_j$ with a fixed $\theta$ as described in Steps~\circled{5}\&\circled{6}.
 This trajectory evolves until either the time evolution passes $T$ or the trajectory arrives at a guard, whichever happens first.
 Steps~\circled{7}--\circled{11} isolates the first hitting-time of a guard of mode $j$ and resets $\mathcal H$ to a new mode whereafter the same procedure is repeated until $t=T$.
 
-% Consider a (non-hybrid) system, $\Sigma$, with states denoted by $\gamma$ whose dynamics is identical to that of $x$ in mode $j$, $\tilde f_j$; and let $\gamma$ have identical initial conditions as $x$ in mode $j$. 
-% The trajectory of the states of $\Sigma$ is given by an absolutely continuous function that is the solution to the ODE in Steps~\circled{5}\&\circled{6}. 
-% If $\gamma(s),\,s\in [t,T]$, does not satisfies any of the constraints that define the guards of mode $j$ of $\mathcal H$, then the trajectory of $x$ remains in mode $j$ and is identical to that of $\gamma$, and the execution is terminated; otherwise, $\mathcal H$ undergoes a mode transition. 
+% Consider a (non-hybrid) system, $\Sigma$, with states denoted by $\gamma$ whose dynamics is identical to that of $x$ in mode $j$, $\tilde f_j$; and let $\gamma$ have identical initial conditions as $x$ in mode $j$.
+% The trajectory of the states of $\Sigma$ is given by an absolutely continuous function that is the solution to the ODE in Steps~\circled{5}\&\circled{6}.
+% If $\gamma(s),\,s\in [t,T]$, does not satisfies any of the constraints that define the guards of mode $j$ of $\mathcal H$, then the trajectory of $x$ remains in mode $j$ and is identical to that of $\gamma$, and the execution is terminated; otherwise, $\mathcal H$ undergoes a mode transition.
 
 \begin{algorithm}[!t]
 \small
@@ -83,7 +83,7 @@ Steps~\circled{7}--\circled{11} isolates the first hitting-time of a guard of mo
 \end{algorithm}
 
 Note that the uncertainty does not evolve with time.
-The uncertainty only changes when the system mode resets. 
+The uncertainty only changes when the system mode resets.
 This class of systems is still quite rich as is illustrated by the two representative examples ---a simple 1D pedagogical example, and a 2D representative of walking models---presented next.
 \begin{example}[1-D quasi-uncertain linear dynamical system]
 \label{example:1D}
@@ -91,14 +91,14 @@ Consider a quasi-uncertain linear system with dynamics:
 \begin{align}
 	\dot x = -0.7x+0.2\theta-0.1,
 \end{align}
-where \mbox{$x(t)\in [-1,1]$} and $\theta\in [-1,1]$ is an unknown parameter affecting the dynamics. 
-The uncertain parameter can be thought of as arising due to structural modeling errors, or as a result of reducing a singular-perturbed system. 
+where \mbox{$x(t)\in [-1,1]$} and $\theta\in [-1,1]$ is an unknown parameter affecting the dynamics.
+The uncertain parameter can be thought of as arising due to structural modeling errors, or as a result of reducing a singular-perturbed system.
 Note that this system is not a hybrid system; however, it can be treated as one.
 One way to achieve this is by considering a single mode hybrid system with domain $D_1 = [-1,1]$, with a guard $ G_{(1,1)} = \{-1\}$, and a reset map $R_{(1,1)}(x) = -x$.
 \end{example}
 \begin{figure}[!t]
 \centering
-  \begin{tikzpicture}
+  \begin{tikzpicture}[scale=1]
     \draw[-,ultra thick] (0,2) to (2,1);
     \draw[dashed, thick] (2,1) -- (5.6,-0.8)-- (4.85,-.8);
     \draw[ultra thick] (2,1) to (1.85,0.7) -- (4.85,-0.8)--(0,-0.8);
@@ -111,12 +111,13 @@ One way to achieve this is by considering a single mode hybrid system with domai
     \spoke{(2.95,1.25)}{-135};
     \draw[dotted,thick] (2,1) -- (2,2);
     \draw[dotted, thick] (2,1) -- (2.75,.25);
-    \draw[->,thick] (2.3, 0.7) to [out=-145, in =125] (2.3,0.2) node[below] {$\theta$};
+    \draw[->,thick] (2.3, 0.7) to [out=-145, in =75] (2.2,0.5) ;
+    \node at (2.1,0.7) {\small $\theta$};
     \draw[->,thick] (4,-.35) to  [out=-145, in =125] (4,-0.8);
     \node at (3.7,-0.6) {$\gamma$};
     \draw[->, thick] (3.08,1.75) to [out=150, in =65] (2.6,1.6);
     \node at (2.8,2) {$2\alpha$};
-    \draw[->,thick] (2.5,1.12) to [out=135, in =-90] (1.8,1.7) node[left]{$\vartheta$};
+    \draw[->,thick] (2.5,1.12) to [out=115, in =0] node[pos=0.62, above]{\small $\beta$} (2,1.4) ;
   \end{tikzpicture}
   \caption{Schematic of the rimless wheel with $\theta$ being the disturbance.}
   \label{fig:rw_schematic}
@@ -125,45 +126,44 @@ One way to achieve this is by considering a single mode hybrid system with domai
 \begin{example}[Planar Rimless Wheel (PRW) with Uneven Terrain]
 \label{example:rw}
 The planar rimless wheel---constituted by a massless axle to which $n$ (angularly) equidistant spokes are connected---is a simple model of legged locomotion.
-Figure~\ref{fig:rw_schematic} presents a schematic of a rimless wheel---with spokes separated by an angle $2\alpha$---rolling down an inclined plane. 
+Figure~\ref{fig:rw_schematic} presents a schematic of a rimless wheel---with spokes separated by an angle $2\alpha$---rolling down an inclined plane.
 The PRW is a hybrid system consisting of one mode; every time the spoke makes contact with the surface of the inclined plane, the system undergoes a reset.
 The continuous dynamics of the PRW are:
 \begin{align}
   \begin{bmatrix}
-    \dot \vartheta& \ddot\vartheta
+    \dot \beta& \ddot\beta
   \end{bmatrix}'=\begin{bmatrix}
-    \dot\vartheta&\sin(\vartheta)
+    \dot\beta&\sin(\beta)
   \end{bmatrix}',
 \end{align}
 where $\vartheta$ is the angle between the swinging spoke and the vertical located at the pivoting leg. Once the swinging spoke makes contact with the terrain, the states are reset as:
 \begin{align}
-R_{(1,1)}(\vartheta^-,\dot \vartheta^-)=\begin{bmatrix}
-    2\gamma-\vartheta^-&
-    \cos(2\alpha)\,\dot\vartheta^-
+R_{(1,1)}(\beta^-,\dot \beta^-)=\begin{bmatrix}
+    2\gamma-\beta^-&
+    \cos(2\alpha)\,\dot\beta^-
   \end{bmatrix}'.
 \end{align}
 For a PRW rolling down an inclined plane with flat terrain, at the instance when the swinging spoke makes contact with the ground, the states of the system satisfy the following condition which defines the guard:
 \begin{align}
-\vartheta = \gamma+\alpha.
+\beta = \gamma+\alpha.
 \end{align}
 For a PRW rolling down an inclined with an uneven terrain the guard is defined as:
 \begin{align}
-\mathcal G_{(1,1)}=\{x\mid x=\gamma+\alpha+\theta\}.
+G_{(1,1)}=\{x\mid x=\gamma+\alpha+\theta\}.
 \end{align}
 Observe that as the PRW continues to roll, \emph{the terrain is allowed to change since the random variable $\theta$ is allowed to take a distinct value after each reset}.
 \end{example}
 
 \subsection{Problem description}
-{\emph The objective of this work is to estimate the largest set of initial conditions from which all state trajectories of a quasi-uncertain hybrid system regardless of uncertainty reach the terminal set $X_T$ by a pre-specified time, $T$.}
-We define this set mode-wise:
-\par
-Depending on $\mathcal E$, there may be more than one trunk through which state trajectories can reach the terminal set. Consequently, the problem can be re-stated, with specificity, as wanting to find the largest set of initial conditions in each mode, $X_{(0,j)},\,\forall j\in \mathcal J$, that can reach $X_T$ where $X_{(0,j)}$ is given by
+{\em The objective of this work is to estimate the largest set of initial conditions from which all state trajectories of $\mathcal H$, regardless of uncertainty sequence, reach the terminal set $X_T$ by a pre-specified time, $T$.}
+We define this set mode-wise with a slight abuse of notations as
 \begin{align}
 \begin{aligned}
-     X_{(0,j)}:=\{x_0\in \mathrm M_j\mid \forall x=\mathcal H(x_0,[0,T]) \\\,x(T)\in X_T\}
+     X_{(0,j)}:=\{x_0\in \mathrm M_j\mid \forall x=\mathcal H(x_0,T) \\\,x(T)\in X_T\}
      \label{eq:brs}
 \end{aligned}
 \end{align}
+where $\mathcal H\colon \cup_{j\in \mathcal J} D_j\times \R\rightarrow \mathcal C_{ab}([0,T])$ is a functional representation of the system execution.
 Observe that, by definition, for systems from $\mathfrak{U}$, if $X_{(0,j)}$ is the largest non-empty BRS in mode $j$, then all initial conditions from $X_{(0,j)}$, must reach $X_T$ at time $T$, regardless of the number of mode transitions that may occur in the interim and for every possible concomitant sequence of parametric uncertainty.
 \par
 For convenience, hereafter the times at which the system's state is relevant is denoted by the set $\mathcal T:=[0,\,T]$, and the projections of $X_T$ onto every mode, $j$, is denoted by $X_{(T,j)}$.

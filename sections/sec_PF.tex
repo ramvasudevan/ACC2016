@@ -36,12 +36,12 @@ Observe that by definition, the uncertain variables are independent of the state
 where $\bar \mu_{0_j}\in \mathcal M(\mathcal T\times D_j)$ is the measure on the set of initial conditions, and $\mu_{\theta_j}\in \mathcal M(\Theta_j)$ is provided by in the definition of $\mathcal H$.\par
 Similarly, measures on terminals sets $X_{(T,j)}$, $\mu_{T_j}\in \mathcal M(X_{(T,j)}\times \Theta_j)$
 \begin{align}
-\mu_{T_j}(A\times B)=\int\limits_{\mathcal T\times X_{(T,j)}\times \Theta}I_{A\times B}(x(T\mid \tau_k,x_0,\theta),\theta)\,d\check\mu_{0_{j}},
+\mu_{T_j}(A\times B)=\int\limits_{\mathcal T\times X_{(T,j)}\times \Theta}I_{A\times B}(x(T\mid \tau_k,x_0,\theta),\theta)\,d\mu_{s_{j}},
 \end{align}
 and guards, $\mu_{ G_{(j,k)}}\in \mathcal M(\mathcal T\times  G_{(j,k)}),\forall(j,k)\in \mathcal E$
 \begin{align}
 \begin{split}
-\mu_{\mathcal G_{(j,k)}}(A\times B\times& C)=\\&\int\limits_{\mathcal T\times \mathcal G_{(j,k)}}I_{A\times B\times C}(t,x(t\mid \tau_k,x_0,\theta),\theta)\,d\check\mu_{0_{j}}
+\mu_{\mathcal G_{(j,k)}}(A\times B\times& C)=\\&\int\limits_{\mathcal T\times \mathcal G_{(j,k)}}I_{A\times B\times C}(t,x(t\mid \tau_k,x_0,\theta),\theta)\,d\mu_{s_{j}}
 \end{split},
 \end{align}
 are defined. While measure $\mu_{T_j}$---supported on the terminal set at the final time---has an obvious interpretation, measures $\mu_{ G_{(j,k)}},\,\forall (j,k)\in \mathcal E$ are supported on the guards of mode $j$ and should be interpreted as the hitting times of the guard.
