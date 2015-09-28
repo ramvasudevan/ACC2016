@@ -6,13 +6,13 @@ This sequence of relaxations is constructed by characterizing each measure using
   $$y_{\mu,n}=\ip{\mu,x^n}.$$}
 and assuming the following:
 \begin{assump}
-The vector field in each mode and reset map between modes is a polynomial. 
+The vector field in each mode and reset map between modes is a polynomial.
 Moreover the domain, the value of uncertainties, the guard, and the target set in each mode is a semi-algebraic set.
   \label{assump:poly}
 \end{assump}
 Recall that polynomials are dense in the set of continuous functions by the Stone-Weierstrass Theorem so this assumption is made without too much loss of generality.
 
-Under this assumption, given any finite $d$-degree truncation of the moment sequence of all measures in the primal $(P)$, a primal relaxation, $(P_d)$, can be formulated over the moments of measures to construct an SDP. 
+Under this assumption, given any finite $d$-degree truncation of the moment sequence of all measures in the primal $(P)$, a primal relaxation, $(P_d)$, can be formulated over the moments of measures to construct an SDP.
 The dual to $(P_d)$, $(D_d)$, can be expressed as a sums-of-squares (SOS) program by considering $d$-degree polynomials in place of the continuous variables in $D$.
 
 To formalize this dual program, first note that a polynomial $p \in \R[x]$ is SOS or $p \in \text{SOS}$ if it can be written as $p(x) = \sum_{i=1}^m q_i^2(x)$ for a set of polynomials $\{q_i\}_{i=1}^m \subset \R[x]$.
@@ -34,11 +34,11 @@ We define the $d$-degree {\em quadratic module} of $A$ as:
     & & & w_j^d-\ip{\mu_{\theta_j},v_j^d(0,\cdot)}-p-1\in Q_d(D_j) && \hspace*{-0.3cm} \forall j\in \mathcal J \nonumber\\
     & & & v_j^d-\ip{\mu_{\theta_k},v_k^d}\circ R_{(j,k)}\in Q_d(\mathcal T \times D_j \times \Theta_j) && \hspace*{-0.3cm} \forall (j,k)\in {\cal E} \nonumber
   \end{flalign}
-where $\Xi_d=\Big\{ \big(\{v^d_j\}_{j\in {\cal J}},\{w^d_j\}_{j \in {\cal J}},p \big) \in \bigtimes_{j\in {\cal J}}\R_d[t,x,\theta]$ $\bigtimes_{j \in {\cal J}} \R_d[x]\times\R \Big\}$.
+where $\Xi_d=\Big\{ \big(\{v^d_j\}_{j\in {\cal J}},\{w^d_j\}_{j \in {\mathcal J}},p \big) \in \bigtimes_{j\in {\cal J}}\R_d[t,x,\theta]$ $\bigtimes_{j \in {\cal J}} \R_d[x]\times\R \Big\}$.
 A primal can similarly be constructed, but the solution to the dual can be used directly generate a sequence of outer approximations to the uncertain backwards reachable set:
 \begin{lemma}
-	For each $d \in \N$ and $j \in {\cal J}$, let $w_{j_d}$ denote the $j$-slice of the $w$-component of the solution to $D_d$. Then ${\cal X}_{(0,j_d)} = \{x \in D_j \mid w_{j_d}(x) \geq 1 \}$ is an outer approximation to ${\cal X}_{(0,j)}$ and $\lim_{d\to\infty}\lambda_{n_j}({\cal X}_{(0,j_d)} \backslash {\cal X}_{(0,j)}) = 0$.
+	For each $d \in \N$ and $j \in {\cal J}$, let $w_{j_d}$ denote the $j$-slice of the $w$-component of the solution to $D_d$. Then ${ X}_{(0,j_d)} = \{x \in D_j \mid w_{j_d}(x) \geq 1 \}$ is an outer approximation to ${ X}_{(0,j)}$ and $\lim_{d\to\infty}\lambda_{n_j}({ X}_{(0,j_d)} \backslash { X}_{(0,j)}) = 0$.
 \end{lemma}
 \begin{proof}
-  The proof to this lemma is an extension of Theorems 5--7 in \cite{shia2014convex} given Lemma \ref{lemma:dual_outerapprox}.
+  The proof to this lemma is an extension of Theorems 5--7 in \cite{shia2014convex} given Lemma~\ref{lemma:dual_outerapprox}.
 \end{proof}

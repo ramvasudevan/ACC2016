@@ -41,7 +41,7 @@ To avoid any ambiguity during transitions between discrete states, we assume the
 \begin{assump}
     In each discrete state, the guards are mutually exclusive; i.e.
     \begin{align}
-    \mathcal G_{(i,j)}\cap \mathcal G_{(i,k)}=\emptyset,\phantom{8}\forall (i,j),(i,k)\in \mathcal E, \forall j\ne k
+     G_{(i,j)}\cap G_{(i,k)}=\emptyset,\phantom{8}\forall (i,j),(i,k)\in \mathcal E, \forall j\ne k
     \end{align}
 \end{assump}
 In addition, the systems are not allowed to undergo infinite mode transitions in any finite time-interval.
@@ -50,7 +50,7 @@ In addition, the systems are not allowed to undergo infinite mode transitions in
   \label{assump:zeno}
 \end{assump}
 % To complete the characterization of systems in $\mathfrak{U}$, a description of how the components in Defn.~\ref{def:system} are related is warranted.
-Alg~\ref{alg:execution} describes the finite-time execution, $[0,T]$, of a hybrid system, $\mathcal H$, as in Defn.~\ref{def:system} as follows:
+Alg.~\ref{alg:execution} describes the finite-time execution, $[0,T]$, of a hybrid system, $\mathcal H$, as in Defn.~\ref{def:system} as follows:
 Suppose that the system enters mode $j$ at time $t$ at location $x \in D_j$.
 Recall the dynamics in this domain, $\tilde f_j$, are a function of a random parameter drawn from the distribution $\mu_{\theta_j}$; let this random variable take the value $\theta$.
 The trajectory of the hybrid system beginning at time $t$ at $x$ is then given by any absolutely continuous function that satisfies the differential equation $\tilde f_j$ with a fixed $\theta$ as described in Steps~\circled{5}\&\circled{6}.
